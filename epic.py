@@ -3,3 +3,7 @@ def wosers():
 
 print('lel')
 wosers()
+def epicer():
+	print('cringe')
+
+epicer()
