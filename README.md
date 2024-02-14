@@ -1,1 +1,1 @@
-# The best team poops everyday
+# The best team
