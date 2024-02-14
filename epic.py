@@ -1,4 +1,4 @@
-def epic():
+def epicer():
 	print('cringe')
 
-epic()
+epicer()
