@@ -1,4 +1,5 @@
-def epic():
+def wosers():
 	print('cringe')
 
-epic()
+print('lel')
+wosers()
