@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://di2y33m7tskd0"
+path="res://.godot/imported/Koto Breaker - Waterflame.mp3-f1cf885e341a31a109e2c824514f030e.mp3str"
+
+[deps]
+
+source_file="res://art/Koto Breaker - Waterflame.mp3"
+dest_files=["res://.godot/imported/Koto Breaker - Waterflame.mp3-f1cf885e341a31a109e2c824514f030e.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
