@@ -6,6 +6,8 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	look_at(get_global_mouse_position())
+	
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1

@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://lho1j1nn418x"]
 
-[ext_resource type="Texture2D" uid="uid://bclxufr4qgaob" path="res://art/icon.svg" id="1_5gi43"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_jgedc"]
+[ext_resource type="Texture2D" uid="uid://cddi6lrbft6w6" path="res://art/kenny_top_down_shooter/PNG/Man Brown/manBrown_gun.png" id="2_6syta"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l6d15"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_5gi43")
+"texture": ExtResource("2_6syta")
 }],
 "loop": true,
 "name": &"default",
@@ -19,9 +19,9 @@ radius = 32.249
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_jgedc")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_l6d15")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
