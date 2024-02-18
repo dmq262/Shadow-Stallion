@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://2u8d1qo2hx55"
+path="res://.godot/imported/Footsteps - Effecism.mp3-3c5ff1e6d21fbe334c4a128a4d71dd25.mp3str"
+
+[deps]
+
+source_file="res://art/Footsteps - Effecism.mp3"
+dest_files=["res://.godot/imported/Footsteps - Effecism.mp3-3c5ff1e6d21fbe334c4a128a4d71dd25.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

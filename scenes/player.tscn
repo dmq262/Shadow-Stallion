@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://lho1j1nn418x"]
+[gd_scene load_steps=6 format=3 uid="uid://lho1j1nn418x"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_jgedc"]
 [ext_resource type="Texture2D" uid="uid://cddi6lrbft6w6" path="res://art/kenny_top_down_shooter/PNG/Man Brown/manBrown_gun.png" id="2_6syta"]
+[ext_resource type="AudioStream" uid="uid://clemdpp56tbbc" path="res://art/Footsteps - Effecism_single.mp3" id="3_bjjxd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l6d15"]
 animations = [{
@@ -26,3 +27,7 @@ sprite_frames = SubResource("SpriteFrames_l6d15")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_w7e8e")
+
+[node name="sound_footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bjjxd")
+volume_db = -5.0
