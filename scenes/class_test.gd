@@ -5,3 +5,4 @@ var right_door = false
 var bottom_door = false
 var coordinates = Vector2()
 var children = []
+var distance = INF
