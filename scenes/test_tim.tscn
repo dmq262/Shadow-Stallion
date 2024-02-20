@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://citl8wi4m7rnq"]
+
+[ext_resource type="Script" path="res://scenes/test_tim.gd" id="1_wper4"]
+[ext_resource type="Script" path="res://scenes/class_test.gd" id="2_6wsfi"]
+
+[node name="test_tim" type="Node"]
+script = ExtResource("1_wper4")
+
+[node name="class_test" type="Node" parent="."]
+script = ExtResource("2_6wsfi")
