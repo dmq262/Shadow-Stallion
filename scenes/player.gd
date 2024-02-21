@@ -1,16 +1,28 @@
 extends CharacterBody2D
 
+@export var bullet_scene: PackedScene
+
 const SPEED = 300
 var dash_vector = Vector2(0, 0)
-var dash_power = 20
+var dash_power = 15
 var old_playback = 0
 
 func _ready():
 	pass
 
 func _physics_process(delta):
+	#Combat
 	look_at(get_global_mouse_position())
 	
+	#Shoot Bullet
+	if Input.is_action_just_pressed("shoot"):
+		var bullet = bullet_scene.instantiate()
+		bullet.global_position = $gun_tip.global_position
+		bullet.direction = (get_global_mouse_position() - global_position).normalized()
+		get_tree().current_scene.add_child(bullet)
+		
+	
+	#Movement
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1

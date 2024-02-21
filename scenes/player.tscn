@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://lho1j1nn418x"]
+[gd_scene load_steps=7 format=3 uid="uid://lho1j1nn418x"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_jgedc"]
 [ext_resource type="Texture2D" uid="uid://cddi6lrbft6w6" path="res://art/kenny_top_down_shooter/PNG/Man Brown/manBrown_gun.png" id="2_6syta"]
+[ext_resource type="PackedScene" uid="uid://bjj1q82mdpxhu" path="res://scenes/bullet.tscn" id="2_otwcl"]
 [ext_resource type="AudioStream" uid="uid://clemdpp56tbbc" path="res://art/Footsteps - Effecism_single.mp3" id="3_bjjxd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l6d15"]
@@ -20,7 +21,7 @@ radius = 32.249
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_jgedc")
-metadata/_edit_group_ = true
+bullet_scene = ExtResource("2_otwcl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l6d15")
@@ -31,3 +32,6 @@ shape = SubResource("CircleShape2D_w7e8e")
 [node name="sound_footsteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_bjjxd")
 volume_db = -5.0
+
+[node name="gun_tip" type="Marker2D" parent="."]
+position = Vector2(23, 10)
