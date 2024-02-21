@@ -35,3 +35,7 @@ volume_db = -5.0
 
 [node name="gun_tip" type="Marker2D" parent="."]
 position = Vector2(23, 10)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
