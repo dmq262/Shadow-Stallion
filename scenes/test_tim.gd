@@ -43,7 +43,7 @@ func _ready():
 	#Set Distances
 	set_distances(start_room)
 	
-	print_rooms()
+	#print_rooms()
 	
 
 func set_distances(parent):
