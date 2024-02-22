@@ -161,6 +161,13 @@ func build_rooms(center_coordinates):
 			else:
 				build_wall((room.coordinates - center_coordinates + Vector2(0, .5)) * room_size, PI/2, wall_scene_solid)
 				
+			#Put Room Scene in Walls
+			room_scenes.shuffle()
+			var new_room = room_scenes[0].instantiate()
+			new_room.global_position = (room.coordinates - center_coordinates) * room_size
+			get_tree().current_scene.add_child(new_room)
+			get_tree().current_scene.move_child(new_room, 0)
+				
 
 #Helper Function for build_rooms
 func build_wall(wall_position, wall_rotation, wall_scene):
