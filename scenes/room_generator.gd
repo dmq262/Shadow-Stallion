@@ -2,6 +2,7 @@ extends Node
 
 @export var wall_scene_solid: PackedScene
 @export var wall_scene_door: PackedScene
+@export var room_scenes: Array
 
 var room_grid = []
 var available_rooms = []

@@ -15,6 +15,7 @@ script = ExtResource("1_ycr1g")
 script = ExtResource("2_recex")
 wall_scene_solid = ExtResource("3_jflow")
 wall_scene_door = ExtResource("4_1sgyl")
+room_scenes = [ExtResource("3_jflow")]
 
 [node name="player" parent="." instance=ExtResource("1_chdsk")]
 

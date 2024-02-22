@@ -19,7 +19,7 @@ func _physics_process(delta):
 		var bullet = bullet_scene.instantiate()
 		bullet.global_position = $gun_tip.global_position
 		bullet.direction = (get_global_mouse_position() - global_position).normalized()
-		bullet.add_to_group("player_bullets")
+		bullet.add_to_group("player_bullet")
 		get_tree().current_scene.add_child(bullet)
 		
 	
