@@ -11,4 +11,4 @@ func _process(delta):
 
 func game_start():
 	$music.play()
-	$room_generator.generate_rooms(5, 64)
+	$room_generator.generate_rooms()

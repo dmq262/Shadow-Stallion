@@ -1,16 +1,19 @@
 extends Node
 
-@export var wall_scene: PackedScene
+@export var wall_scene_solid: PackedScene
+@export var wall_scene_door: PackedScene
 
 var room_grid = []
 var available_rooms = []
 var room_count = 1
+var max_rooms = 19
 var grid_size = 5
-var room_size = 300
+var room_size = 1000
 
 #Generate Rooms
-func generate_rooms(grid_size_input = 5, room_size_input = 64):
+func generate_rooms(grid_size_input = 5, max_rooms_input = 19, room_size_input = 1000):
 	#Set Variables
+	max_rooms = max_rooms_input
 	grid_size = grid_size_input
 	room_size = room_size_input
 	
@@ -51,6 +54,7 @@ func generate_rooms(grid_size_input = 5, room_size_input = 64):
 	print_rooms()
 	
 	#Build Rooms
+	build_rooms(start_room.coordinates)
 
 #Uses depth first search to create rooms
 func add_room(parent, available_rooms):
@@ -62,7 +66,7 @@ func add_room(parent, available_rooms):
 	room_count += 1
 	
 	#End SRomm Generation after 19 rooms
-	if room_count > 18:
+	if room_count > max_rooms:
 		return true
 	
 	#Pick Random Room, build up avaliable rooms and set parent.
@@ -129,8 +133,40 @@ func set_distances(parent):
 		parent = queue.pop_front()
 
 
-func build_rooms():
-	pass
+func build_rooms(center_coordinates):
+	for row in room_grid:
+		for room in row:
+			#Skip if current room is not used
+			if not room.is_room:
+				continue
+				
+			#Build Solid Top Wall if there is no room above
+			if room.coordinates.y == 0 or (not room_grid[room.coordinates.y -1][room.coordinates.x].is_room):
+				build_wall((room.coordinates - center_coordinates - Vector2(0, .5)) * room_size, PI/2, wall_scene_solid)
+				
+			#Build Solid Left Wall if there is no room to the left
+			if room.coordinates.x == 0 or (not room_grid[room.coordinates.y][room.coordinates.x - 1].is_room):
+				build_wall((room.coordinates - center_coordinates - Vector2(.5, 0)) * room_size, 0, wall_scene_solid)
+			
+			#Build Right Wall
+			if room.right_door:
+				build_wall((room.coordinates - center_coordinates + Vector2(.5, 0)) * room_size, 0, wall_scene_door)
+			else:
+				build_wall((room.coordinates - center_coordinates + Vector2(.5, 0)) * room_size, 0, wall_scene_solid)
+				
+			#Build Bottom Wall
+			if room.bottom_door:
+				build_wall((room.coordinates - center_coordinates + Vector2(0, .5)) * room_size, PI/2, wall_scene_door)
+			else:
+				build_wall((room.coordinates - center_coordinates + Vector2(0, .5)) * room_size, PI/2, wall_scene_solid)
+				
+
+#Helper Function for build_rooms
+func build_wall(wall_position, wall_rotation, wall_scene):
+	var wall = wall_scene.instantiate()
+	wall.position = wall_position
+	wall.rotation = wall_rotation
+	get_tree().current_scene.add_child(wall)
 
 #Print room_grid
 func print_rooms():

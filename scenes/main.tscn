@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://buepa1xrwwjak"]
+[gd_scene load_steps=8 format=3 uid="uid://buepa1xrwwjak"]
 
 [ext_resource type="PackedScene" uid="uid://lho1j1nn418x" path="res://scenes/player.tscn" id="1_chdsk"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_ycr1g"]
 [ext_resource type="Script" path="res://scenes/room_generator.gd" id="2_recex"]
 [ext_resource type="AudioStream" uid="uid://di2y33m7tskd0" path="res://art/Koto Breaker - Waterflame.mp3" id="3_85aef"]
+[ext_resource type="PackedScene" uid="uid://t8wfyw8o5x4y" path="res://scenes/wall_solid.tscn" id="3_jflow"]
+[ext_resource type="PackedScene" uid="uid://bgh751mybevw0" path="res://scenes/wall_door.tscn" id="4_1sgyl"]
 [ext_resource type="Texture2D" uid="uid://bclxufr4qgaob" path="res://art/icon.svg" id="4_ktlkw"]
 
 [node name="main" type="Node"]
@@ -11,9 +13,10 @@ script = ExtResource("1_ycr1g")
 
 [node name="room_generator" type="Node" parent="."]
 script = ExtResource("2_recex")
+wall_scene_solid = ExtResource("3_jflow")
+wall_scene_door = ExtResource("4_1sgyl")
 
 [node name="player" parent="." instance=ExtResource("1_chdsk")]
-position = Vector2(566, 295)
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_85aef")
