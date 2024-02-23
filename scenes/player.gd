@@ -37,8 +37,12 @@ func _physics_process(delta):
 	#Implement Dash Mechanic
 	if Input.is_action_just_pressed("dash"):
 		dash_vector = velocity.normalized() * dash_power
-	if dash_vector.length() > .01:
+	
+	var old_dash_vector = dash_vector
+	if dash_vector.length() > 0:
 		dash_vector -= delta * dash_vector.normalized() * 50
+	if (old_dash_vector.length() < dash_vector.length()):
+		dash_vector = Vector2.ZERO
 	
 	var collision = move_and_collide(velocity.normalized() * delta * SPEED + dash_vector)
 	
