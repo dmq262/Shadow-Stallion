@@ -42,7 +42,7 @@ func _physics_process(delta):
 	
 	var collision = move_and_collide(velocity.normalized() * delta * SPEED + dash_vector)
 	
-	if collision and collision.get_collider().is_in_group('wall'):
+	if collision and (collision.get_collider().is_in_group('wall') or collision.get_collider().is_in_group('enemy')):
 		velocity = velocity.slide(collision.get_normal())
 		dash_vector = dash_vector.slide(collision.get_normal())
 		move_and_collide(velocity * delta * SPEED + dash_vector)
