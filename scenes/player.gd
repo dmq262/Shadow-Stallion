@@ -42,6 +42,12 @@ func _physics_process(delta):
 	
 	var collision = move_and_collide(velocity.normalized() * delta * SPEED + dash_vector)
 	
+	if collision and collision.get_collider().is_in_group('wall'):
+		velocity = velocity.slide(collision.get_normal())
+		dash_vector = dash_vector.slide(collision.get_normal())
+		move_and_collide(velocity * delta * SPEED + dash_vector)
+		
+	
 	#PROCESS PLAYER SOUNDS
 	if velocity.length() > 0 and not $sound_footsteps.playing:
 		$sound_footsteps.play()
