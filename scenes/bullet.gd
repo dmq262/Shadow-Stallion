@@ -22,6 +22,6 @@ func _on_body_entered(body):
 		body.queue_free()
 		queue_free()
 	elif body.is_in_group("player") and is_in_group("enemy_bullet"):
-		queue_free()
+		body.hide()
 	elif body.is_in_group("wall"):
 		queue_free()
