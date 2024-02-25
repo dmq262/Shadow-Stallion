@@ -28,10 +28,6 @@ func _physics_process(delta):
 	if player == null or (not active):
 		return
 		
-	if Input.is_action_just_pressed('shoot'):
-		#astar_generator.test(get_global_mouse_position())
-		pass
-		
 	#Process movement
 	if astar != null:
 		process_movement(delta)
@@ -41,19 +37,6 @@ func _physics_process(delta):
 		die()
 		
 	look_at(player.position)
-
-
-func test(destination):
-	#Convert current and destination coordinations to Astargrid coordinates
-	var current_point = (Vector2.ZERO + Vector2((room_size * grid_size) / 2, (room_size * grid_size) / 2)) / cell_size
-	current_point = Vector2i(current_point)
-	var destination_point = (destination + Vector2((room_size * grid_size) / 2, (room_size * grid_size) / 2)) / cell_size
-	destination_point = Vector2i(destination_point)
-
-	
-	#Get Path, returns AstarGrid coordinates(in pixels), need to offset back to world coordinates
-	var path = astar.get_id_path(current_point, destination_point)
-	print(path)
 
 
 func process_movement(delta):
@@ -75,13 +58,10 @@ func process_movement(delta):
 		#Set path if new path is not empty
 		if not new_path.is_empty():
 			path = new_path
-	
-	print(target, path)
-
+			path.pop_front() #First cell is current Position, so remove it
 	
 	#If further than 3 cells away, and current cell has reached target, get new target
-	if path.size() > 2 and current_point == Vector2i(target):
-		print('new target', target, path)
+	if path.size() > 1 and current_point == Vector2i(target):
 		target = path.pop_front()
 	
 	#Set velocity and move
@@ -89,9 +69,7 @@ func process_movement(delta):
 	velocity.normalized()
 
 	var collision = move_and_collide(velocity * delta * speed)
-	if collision:
-		velocity = velocity.slide(collision.get_normal())
-		move_and_collide(velocity * delta * speed)
+
 
 func die():
 	queue_free()

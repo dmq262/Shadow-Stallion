@@ -5,7 +5,7 @@ var grid_size
 var cell_size
 var astar = AStarGrid2D.new()
 
-func generate_astar(room_size_input = 1000, grid_size_input = 5, cell_size_input = 40):
+func generate_astar(room_size_input = 1000, grid_size_input = 5, cell_size_input = 25):
 	#Set variables
 	room_size = room_size_input
 	grid_size = grid_size_input
@@ -33,8 +33,8 @@ func generate_astar(room_size_input = 1000, grid_size_input = 5, cell_size_input
 			rect_position.y = point1.y - 1
 		
 		#Get Size of area
-		var rect_width = abs(point1.x - point2.x) + 2
-		var rect_height = abs(point1.y - point2.y) + 2
+		var rect_width = abs(point1.x - point2.x) + 3
+		var rect_height = abs(point1.y - point2.y) + 3
 		
 		astar.fill_solid_region(Rect2i(rect_position, Vector2i(rect_width, rect_height)))
 		
