@@ -3,9 +3,10 @@ extends CharacterBody2D
 var speed = 200
 var active = false
 var player
-var cooldown = 0
-var cooldown_progress = 3
+var cooldown = 2
+var cooldown_progress = 2
 var health = 100
+var player_in_range = false
 
 #Pathfinding Variables, assigned by 'astar_generator'
 var astar
@@ -27,7 +28,14 @@ func _physics_process(delta):
 	#Do nothing if unable to find player, or not active
 	if player == null or (not active):
 		return
-		
+	
+	#Hit Player
+	if cooldown_progress <= 0 and player_in_range:
+		cooldown_progress = cooldown
+		player.health -= 50
+	elif cooldown_progress > 0:
+		cooldown_progress -= delta
+	
 	#Process movement
 	if astar != null:
 		process_movement(delta)
@@ -73,3 +81,14 @@ func process_movement(delta):
 
 func die():
 	queue_free()
+
+
+#DETECT IF PLAYER IN RANGE
+func _on_hit_area_body_entered(body):
+	if body.is_in_group('player'):
+		player_in_range = true
+
+
+func _on_hit_area_body_exited(body):
+	if body.is_in_group('player'):
+		player_in_range = false
