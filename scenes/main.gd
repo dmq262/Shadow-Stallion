@@ -12,9 +12,12 @@ func _process(delta):
 			wall.queue_free()
 		for room in get_tree().get_nodes_in_group('room'):
 			room.queue_free()
+			
+		
 		$player.health = 100
 		$player.show()
 		$player.global_position = Vector2(0, 0)
+		await get_tree().process_frame
 		game_start()
 
 func game_start():
