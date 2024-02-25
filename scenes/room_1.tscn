@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctojywrvgekv8"]
+[gd_scene load_steps=6 format=3 uid="uid://ctojywrvgekv8"]
 
 [ext_resource type="Script" path="res://scenes/room.gd" id="1_mlc48"]
 [ext_resource type="Texture2D" uid="uid://c55ju2fsp2bj2" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_07.png" id="2_3gj7r"]
 [ext_resource type="PackedScene" uid="uid://fyigbswlhc3n" path="res://scenes/enemy_ranged.tscn" id="3_mmfld"]
+[ext_resource type="PackedScene" uid="uid://chdfb7a3ytnyo" path="res://scenes/enemy_melee.tscn" id="4_6qrex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47gnu"]
 size = Vector2(953, 950)
@@ -11,6 +12,7 @@ size = Vector2(953, 950)
 script = ExtResource("1_mlc48")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(7.62939e-05, 0.499966)
 scale = Vector2(15.625, 15.6406)
 texture = ExtResource("2_3gj7r")
@@ -28,10 +30,7 @@ position = Vector2(500, 500)
 [node name="enemy_ranged" parent="." instance=ExtResource("3_mmfld")]
 position = Vector2(174, -139)
 
-[node name="enemy_ranged3" parent="." instance=ExtResource("3_mmfld")]
-position = Vector2(-257, -306)
-
-[node name="enemy_ranged2" parent="." instance=ExtResource("3_mmfld")]
-position = Vector2(-103, 297)
+[node name="enemy_melee" parent="." instance=ExtResource("4_6qrex")]
+position = Vector2(-260, 204)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

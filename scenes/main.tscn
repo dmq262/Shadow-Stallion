@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://buepa1xrwwjak"]
+[gd_scene load_steps=10 format=3 uid="uid://buepa1xrwwjak"]
 
 [ext_resource type="PackedScene" uid="uid://lho1j1nn418x" path="res://scenes/player.tscn" id="1_chdsk"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_ycr1g"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bgh751mybevw0" path="res://scenes/wall_door.tscn" id="4_1sgyl"]
 [ext_resource type="Texture2D" uid="uid://bclxufr4qgaob" path="res://art/icon.svg" id="4_ktlkw"]
 [ext_resource type="PackedScene" uid="uid://ctojywrvgekv8" path="res://scenes/room_1.tscn" id="5_pvomk"]
+[ext_resource type="Script" path="res://scenes/astar_generator.gd" id="6_b3nrf"]
 
 [node name="main" type="Node"]
 script = ExtResource("1_ycr1g")
@@ -17,6 +18,9 @@ script = ExtResource("2_recex")
 wall_scene_solid = ExtResource("3_jflow")
 wall_scene_door = ExtResource("4_1sgyl")
 room_scenes = [ExtResource("5_pvomk")]
+
+[node name="astar_generator" type="Node" parent="."]
+script = ExtResource("6_b3nrf")
 
 [node name="player" parent="." instance=ExtResource("1_chdsk")]
 
