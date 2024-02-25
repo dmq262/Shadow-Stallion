@@ -6,11 +6,16 @@ const SPEED = 300
 var dash_vector = Vector2(0, 0)
 var dash_power = 15
 var old_playback = 0
+var health = 100
 
 func _ready():
 	pass
 
 func _physics_process(delta):
+	#Die if health reaches 0
+	if health <= 0:
+		die()
+	
 	#Combat
 	look_at(get_global_mouse_position())
 	
@@ -61,4 +66,8 @@ func _physics_process(delta):
 	if $sound_footsteps.get_playback_position() < old_playback:
 		$sound_footsteps.pitch_scale = randf_range(.85, 1.15)
 	old_playback = $sound_footsteps.get_playback_position()
+	
+
+func die():
+	hide()
 
