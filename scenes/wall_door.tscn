@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgh751mybevw0"]
+[gd_scene load_steps=4 format=3 uid="uid://bgh751mybevw0"]
 
-[ext_resource type="Texture2D" uid="uid://bclxufr4qgaob" path="res://art/icon.svg" id="1_3aqqa"]
+[ext_resource type="Texture2D" uid="uid://cq1uji5x58f52" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_19.png" id="1_3r24d"]
+[ext_resource type="PackedScene" uid="uid://cocjxwr5hoqg6" path="res://scenes/unwalkable.tscn" id="2_ukba5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dp022"]
 size = Vector2(41, 405.75)
@@ -8,14 +9,14 @@ size = Vector2(41, 405.75)
 [node name="wall_door" type="StaticBody2D" groups=["wall"]]
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(0.5, 296.5)
-scale = Vector2(0.320313, 3.17969)
-texture = ExtResource("1_3aqqa")
+position = Vector2(-0.499999, 297)
+scale = Vector2(0.640625, 6.34375)
+texture = ExtResource("1_3r24d")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(0.5, -297.5)
-scale = Vector2(0.320313, 3.16406)
-texture = ExtResource("1_3aqqa")
+position = Vector2(0.5, -297)
+scale = Vector2(0.640625, 6.34375)
+texture = ExtResource("1_3r24d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 297.125)
@@ -30,3 +31,11 @@ position = Vector2(-20, -500)
 
 [node name="bottom_right" type="Marker2D" parent="."]
 position = Vector2(20, 500)
+
+[node name="unwalkable" parent="." instance=ExtResource("2_ukba5")]
+position = Vector2(0, 297)
+scale = Vector2(0.4, 4)
+
+[node name="unwalkable2" parent="." instance=ExtResource("2_ukba5")]
+position = Vector2(0, -297)
+scale = Vector2(0.4, 4.1)

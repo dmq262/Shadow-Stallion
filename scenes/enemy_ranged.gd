@@ -7,6 +7,7 @@ var active = false
 var player
 var cooldown = 3
 var cooldown_progress = 3
+var health = 100
 
 func _ready():
 	cooldown_progress = randf_range(0, cooldown)
@@ -19,6 +20,10 @@ func _physics_process(delta):
 	#Do nothing if unable to find player, or not active
 	if player == null or (not active):
 		return
+		
+	#Die when health reaches 0
+	if health <= 0:
+		die()
 		
 	look_at(player.position)
 	
@@ -37,3 +42,6 @@ func shoot_bullet():
 	bullet.direction = (player.global_position - global_position).normalized()
 	bullet.add_to_group("enemy_bullet")
 	get_tree().current_scene.add_child(bullet)
+	
+func die():
+	queue_free()

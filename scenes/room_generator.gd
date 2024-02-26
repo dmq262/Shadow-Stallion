@@ -13,10 +13,12 @@ var room_size = 1000
 
 #Generate Rooms
 func generate_rooms(grid_size_input = 5, max_rooms_input = 19, room_size_input = 1000):
-	#Set Variables
+	#Set/Reset Variables
 	max_rooms = max_rooms_input
 	grid_size = grid_size_input
 	room_size = room_size_input
+	room_grid = []
+	available_rooms = []
 	
 	#initialize room_grid
 	for i in range(grid_size):
@@ -37,6 +39,8 @@ func generate_rooms(grid_size_input = 5, max_rooms_input = 19, room_size_input =
 	
 	#Add Doors
 	add_door(start_room)
+	
+	print_rooms()
 	
 	#Add Random Doors
 	for row in room_grid:
@@ -59,10 +63,6 @@ func generate_rooms(grid_size_input = 5, max_rooms_input = 19, room_size_input =
 
 #Uses depth first search to create rooms
 func add_room(parent, available_rooms):
-	#Leave if room is already discovered. May happen when branching from a previous Room.
-	if parent.is_room:
-		return false
-	
 	parent.is_room = true
 	room_count += 1
 	
@@ -73,6 +73,10 @@ func add_room(parent, available_rooms):
 	#Pick Random Room, build up avaliable rooms and set parent.
 	available_rooms.shuffle()
 	for room in available_rooms:
+		#Skip if room is already discovered. May happen when branching from a previous Room.
+		if room.is_room:
+			continue
+		
 		var new_available_rooms = []
 		if (room.coordinates.y + 1 < grid_size) and (not room_grid[room.coordinates.y + 1][room.coordinates.x].is_room):
 			new_available_rooms.append(room_grid[room.coordinates.y + 1][room.coordinates.x])
