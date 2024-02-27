@@ -20,4 +20,12 @@ func set_ammo(ammo):
 		else:
 			ammo_texture.hide()
 		count += 1
-		
+
+func set_gun_cooldown(current, max):
+	$gun_cooldown.ratio = float(current)/max
+
+func set_sword_cooldown(current, max):
+	$sword_cooldown.ratio = float(current)/max
+
+func set_dash_cooldown(current, max):
+	$dash_cooldown.ratio = float(current)/max

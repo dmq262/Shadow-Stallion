@@ -32,3 +32,6 @@ func update_hud():
 	$hud.set_health($player.health, $player.max_health)
 	$hud.set_ammo($player.ammo)
 	$hud.set_expirience($player.expirience, $player.max_expirience)
+	$hud.set_gun_cooldown($player.gun_cooldown_progress, $player.gun_cooldown)
+	$hud.set_sword_cooldown($player.sword_cooldown_progress, $player.sword_cooldown)
+	$hud.set_dash_cooldown($player.dash_cooldown_progress, $player.dash_cooldown)

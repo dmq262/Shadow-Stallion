@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-@export var bullet_scene: PackedScene
 
 #Player Stats
 var health = 200
@@ -14,14 +13,21 @@ var old_playback = 0
 var speed = 300
 var dash_vector = Vector2(0, 0)
 var dash_power = 15
+var dash_cooldown = 5
+var dash_cooldown_progress = 0
 
 #Gun Variables
+@export var bullet_scene: PackedScene
 var ammo = 5
 var max_ammo = 5
+var gun_cooldown = 3
+var gun_cooldown_progress = 0
 
 #Sword Variables
 var bullets_in_range = []
 var enemies_in_range = []
+var sword_cooldown = 3
+var sword_cooldown_progress = 0
 
 func _ready():
 	pass
@@ -33,9 +39,11 @@ func _physics_process(delta):
 	
 	#Combat
 	look_at(get_global_mouse_position())
+	update_cooldowns(delta)
 	
 	#Shoot Bullet
-	if Input.is_action_just_pressed("shoot") and ammo > 0:
+	if Input.is_action_just_pressed("shoot") and ammo > 0 and gun_cooldown_progress <= 0:
+		gun_cooldown_progress = gun_cooldown
 		ammo -= 1
 		
 		var bullet = bullet_scene.instantiate()
@@ -45,7 +53,9 @@ func _physics_process(delta):
 		get_tree().current_scene.add_child(bullet)
 		
 	#Block/Parry/Swing Sword
-	if Input.is_action_just_pressed('block'):
+	if Input.is_action_just_pressed('block') and sword_cooldown_progress <= 0:
+		sword_cooldown_progress = sword_cooldown
+		
 		for enemy_bullet in bullets_in_range:
 			bullets_in_range.erase(enemy_bullet)
 			enemy_bullet.queue_free()
@@ -66,7 +76,8 @@ func _physics_process(delta):
 		velocity.y -=1
 	
 	#Implement Dash Mechanic
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") and dash_cooldown_progress <= 0:
+		dash_cooldown_progress = dash_cooldown
 		dash_vector = velocity.normalized() * dash_power
 	
 	var old_dash_vector = dash_vector
@@ -92,7 +103,23 @@ func _physics_process(delta):
 	if $sound_footsteps.get_playback_position() < old_playback:
 		$sound_footsteps.pitch_scale = randf_range(.85, 1.15)
 	old_playback = $sound_footsteps.get_playback_position()
-	
+
+#Update gun, sword, and dash cooldowns
+func update_cooldowns(delta):
+	if gun_cooldown_progress > 0:
+		gun_cooldown_progress -= delta
+	if gun_cooldown_progress < 0:
+		gun_cooldown_progress = 0
+		
+	if sword_cooldown_progress > 0:
+		sword_cooldown_progress -= delta
+	if sword_cooldown_progress < 0:
+		sword_cooldown_progress = 0
+		
+	if dash_cooldown_progress > 0:
+		dash_cooldown_progress -= delta
+	if dash_cooldown_progress < 0:
+		dash_cooldown_progress = 0
 
 func die():
 	hide()

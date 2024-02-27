@@ -71,3 +71,48 @@ texture = ExtResource("2_gp0mx")
 [node name="ammo_10" type="TextureRect" parent="ammo_container"]
 layout_mode = 2
 texture = ExtResource("2_gp0mx")
+
+[node name="gun_cooldown" type="ProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -98.0
+offset_right = -96.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+fill_mode = 3
+show_percentage = false
+
+[node name="sword_cooldown" type="ProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -33.0
+offset_top = -98.0
+offset_right = 39.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+fill_mode = 3
+show_percentage = false
+
+[node name="dash_cooldown" type="ProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = -98.0
+offset_right = 168.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+fill_mode = 3
+show_percentage = false
