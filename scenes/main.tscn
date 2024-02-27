@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://buepa1xrwwjak"]
+[gd_scene load_steps=11 format=3 uid="uid://buepa1xrwwjak"]
 
 [ext_resource type="PackedScene" uid="uid://lho1j1nn418x" path="res://scenes/player.tscn" id="1_chdsk"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_ycr1g"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bclxufr4qgaob" path="res://art/icon.svg" id="4_ktlkw"]
 [ext_resource type="PackedScene" uid="uid://ctojywrvgekv8" path="res://scenes/room_1.tscn" id="5_pvomk"]
 [ext_resource type="Script" path="res://scenes/astar_generator.gd" id="6_b3nrf"]
+[ext_resource type="PackedScene" uid="uid://jmtyntu3kstk" path="res://scenes/hud.tscn" id="10_1ui1c"]
 
 [node name="main" type="Node"]
 script = ExtResource("1_ycr1g")
@@ -31,3 +32,5 @@ volume_db = -15.0
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(326, 250)
 texture = ExtResource("4_ktlkw")
+
+[node name="hud" parent="." instance=ExtResource("10_1ui1c")]

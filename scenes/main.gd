@@ -7,6 +7,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	update_hud()
+	
+	#Temp Restart mechanic
 	if Input.is_action_just_pressed("restart"):
 		for wall in get_tree().get_nodes_in_group('wall'):
 			wall.queue_free()
@@ -24,3 +27,8 @@ func game_start():
 	$music.play()
 	$room_generator.generate_rooms()
 	$astar_generator.generate_astar()
+	
+func update_hud():
+	$hud.set_health($player.health, $player.max_health)
+	$hud.set_ammo($player.ammo)
+	$hud.set_expirience($player.expirience, $player.max_expirience)
