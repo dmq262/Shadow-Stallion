@@ -63,5 +63,5 @@ func drop_loot(loot_scene, type, value):
 	loot.type = type
 	loot.value = value
 	loot.global_position = global_position
-	loot.velocity = Vector2(randf_range(-3, 3), randf_range(-3, 3))
+	loot.velocity = Vector2(randf_range(-7, 7), randf_range(-7, 7))
 	get_tree().current_scene.add_child(loot)
