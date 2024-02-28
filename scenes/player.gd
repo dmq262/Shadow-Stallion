@@ -37,9 +37,31 @@ func _physics_process(delta):
 	if health <= 0:
 		die()
 	
-	#Combat
-	look_at(get_global_mouse_position())
 	update_cooldowns(delta)
+	process_combat()
+	process_movement(delta)
+
+
+#Update gun, sword, and dash cooldowns
+func update_cooldowns(delta):
+	if gun_cooldown_progress > 0:
+		gun_cooldown_progress -= delta
+	if gun_cooldown_progress < 0:
+		gun_cooldown_progress = 0
+		
+	if sword_cooldown_progress > 0:
+		sword_cooldown_progress -= delta
+	if sword_cooldown_progress < 0:
+		sword_cooldown_progress = 0
+		
+	if dash_cooldown_progress > 0:
+		dash_cooldown_progress -= delta
+	if dash_cooldown_progress < 0:
+		dash_cooldown_progress = 0
+
+
+func process_combat():
+	look_at(get_global_mouse_position())
 	
 	#Shoot Bullet
 	if Input.is_action_just_pressed("shoot") and ammo > 0 and gun_cooldown_progress <= 0:
@@ -62,8 +84,9 @@ func _physics_process(delta):
 			
 		for enemy in enemies_in_range:
 			enemy.health -= 100
-			
-	
+
+
+func process_movement(delta):
 	#Movement
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
@@ -92,7 +115,6 @@ func _physics_process(delta):
 		velocity = velocity.slide(collision.get_normal())
 		dash_vector = dash_vector.slide(collision.get_normal())
 		move_and_collide(velocity * delta * speed + dash_vector)
-		
 	
 	#PROCESS PLAYER SOUNDS
 	if velocity.length() > 0 and not $sound_footsteps.playing:
@@ -104,25 +126,10 @@ func _physics_process(delta):
 		$sound_footsteps.pitch_scale = randf_range(.85, 1.15)
 	old_playback = $sound_footsteps.get_playback_position()
 
-#Update gun, sword, and dash cooldowns
-func update_cooldowns(delta):
-	if gun_cooldown_progress > 0:
-		gun_cooldown_progress -= delta
-	if gun_cooldown_progress < 0:
-		gun_cooldown_progress = 0
-		
-	if sword_cooldown_progress > 0:
-		sword_cooldown_progress -= delta
-	if sword_cooldown_progress < 0:
-		sword_cooldown_progress = 0
-		
-	if dash_cooldown_progress > 0:
-		dash_cooldown_progress -= delta
-	if dash_cooldown_progress < 0:
-		dash_cooldown_progress = 0
 
 func die():
 	hide()
+
 
 #SWORD AREA ON ENTER AND EXIT
 func _on_sword_hitbox_area_entered(area):
