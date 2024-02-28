@@ -3,6 +3,7 @@ extends Area2D
 var player
 var velocity = Vector2.ZERO
 var acceleration = 10
+var speed = 200
 var type = "ammo"
 var value = 20
 
@@ -13,17 +14,18 @@ func _process(delta):
 	#Pick up if close enough
 	if player and (player.global_position - global_position).length() < 30:
 		player_pickup()
-	#If in range, move towards player(scales with proximity
+	#If in range, move towards player(scales with proximity)
 	elif player:
-		velocity += ((player.global_position - global_position).normalized() * acceleration * delta * 2) / ((player.global_position - global_position).length() / 25)
-	#If not in range, slow down
-	elif velocity.length() != 0:
+		#velocity += ((player.global_position - global_position).normalized() * acceleration * delta * 2) / ((player.global_position - global_position).length() / 25)
+		global_position += ((player.global_position - global_position).normalized() * delta * speed) / ((player.global_position - global_position).length() / 50)
+	
+	#Remove Initial velocity
+	if velocity.length() != 0:
 		var old_vel = velocity
 		velocity -= velocity.normalized() * delta * acceleration
 		
 		if old_vel.length() < velocity.length():
 			velocity = Vector2.ZERO
-		
 
 
 func player_pickup():
