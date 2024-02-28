@@ -1,5 +1,11 @@
 extends CharacterBody2D
 
+#Loot
+@export var health_scene: PackedScene
+@export var ammo_scene: PackedScene
+@export var expirience_scene: PackedScene
+
+#Stats
 var speed = 200
 var active = false
 var player
@@ -80,8 +86,23 @@ func process_movement(delta):
 
 
 func die():
+	for i in range(randi_range(1, 4)):
+		drop_loot(health_scene)
+		
+	for i in range(randi_range(1, 4)):
+		drop_loot(ammo_scene)
+		
+	for i in range(randi_range(1, 4)):
+		drop_loot(expirience_scene)
+	
 	queue_free()
 
+
+func drop_loot(loot_scene):
+	var loot = loot_scene.instantiate()
+	loot.global_position = global_position
+	loot.velocity = Vector2(randf_range(-3, 3), randf_range(-3, 3))
+	get_tree().current_scene.add_child(loot)
 
 #DETECT IF PLAYER IN RANGE
 func _on_hit_area_body_entered(body):
