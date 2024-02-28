@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://brxn0yu1liuyo"]
+
+[ext_resource type="Script" path="res://scenes/loot.gd" id="1_5jt2e"]
+[ext_resource type="Texture2D" uid="uid://be36sqncsu7fq" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_161.png" id="1_anct7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_br3l4"]
+radius = 147.085
+
+[node name="ammo" type="Area2D"]
+script = ExtResource("1_5jt2e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_anct7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_br3l4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
