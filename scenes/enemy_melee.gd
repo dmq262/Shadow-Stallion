@@ -87,19 +87,21 @@ func process_movement(delta):
 
 func die():
 	for i in range(randi_range(1, 4)):
-		drop_loot(health_scene)
+		drop_loot(health_scene, "health", 20)
 		
 	for i in range(randi_range(1, 4)):
-		drop_loot(ammo_scene)
+		drop_loot(ammo_scene, "ammo", 1)
 		
 	for i in range(randi_range(1, 4)):
-		drop_loot(expirience_scene)
+		drop_loot(expirience_scene, "expirience", 20)
 	
 	queue_free()
 
 
-func drop_loot(loot_scene):
+func drop_loot(loot_scene, type, value):
 	var loot = loot_scene.instantiate()
+	loot.type = type
+	loot.value = value
 	loot.global_position = global_position
 	loot.velocity = Vector2(randf_range(-3, 3), randf_range(-3, 3))
 	get_tree().current_scene.add_child(loot)
