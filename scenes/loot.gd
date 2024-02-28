@@ -15,7 +15,7 @@ func _process(delta):
 		player_pickup()
 	#If in range, move towards player(scales with proximity
 	elif player:
-		velocity += ((player.global_position - global_position).normalized() * acceleration * delta) / ((player.global_position - global_position).length() / 50)
+		velocity += ((player.global_position - global_position).normalized() * acceleration * delta * 2) / ((player.global_position - global_position).length() / 25)
 	#If not in range, slow down
 	elif velocity.length() != 0:
 		var old_vel = velocity

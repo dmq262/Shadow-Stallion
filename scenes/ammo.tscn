@@ -12,7 +12,7 @@ script = ExtResource("1_5jt2e")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_anct7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["loot"]]
 shape = SubResource("CircleShape2D_br3l4")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

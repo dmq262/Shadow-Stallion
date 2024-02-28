@@ -13,7 +13,7 @@ script = ExtResource("1_eh7hv")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_dkorm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["loot"]]
 shape = SubResource("CircleShape2D_xmy05")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
