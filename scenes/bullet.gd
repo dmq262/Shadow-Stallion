@@ -23,7 +23,6 @@ func _on_body_entered(body):
 		body.health -= 50
 		queue_free()
 	elif body.is_in_group("player") and is_in_group("enemy_bullet"):
-		body.hide()
 		body.health -= 50
 		queue_free()
 	elif body.is_in_group("wall"):
