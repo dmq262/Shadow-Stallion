@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_jgedc"]
 [ext_resource type="Texture2D" uid="uid://cddi6lrbft6w6" path="res://art/kenny_top_down_shooter/PNG/Man Brown/manBrown_gun.png" id="2_6syta"]
 [ext_resource type="PackedScene" uid="uid://bjj1q82mdpxhu" path="res://scenes/bullet.tscn" id="2_otwcl"]
-[ext_resource type="AudioStream" uid="uid://clemdpp56tbbc" path="res://art/Footsteps - Effecism_single.mp3" id="3_bjjxd"]
+[ext_resource type="AudioStream" uid="uid://clemdpp56tbbc" path="res://art/Audio/Footsteps - Effecism_single.mp3" id="3_bjjxd"]
 [ext_resource type="Texture2D" uid="uid://ba7up7wbxupqb" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_20.png" id="5_hdb23"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l6d15"]
