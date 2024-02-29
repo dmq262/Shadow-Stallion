@@ -3,6 +3,7 @@ extends Node
 @export var wall_scene_solid: PackedScene
 @export var wall_scene_door: PackedScene
 @export var room_scenes: Array
+@export var start_room_scene: PackedScene
 
 var room_grid = []
 var available_rooms = []
@@ -166,11 +167,17 @@ func build_rooms(center_coordinates):
 				build_wall((room.coordinates - center_coordinates + Vector2(0, .5)) * room_size, PI/2, wall_scene_solid)
 				
 			#Put Room Scene in Walls
-			room_scenes.shuffle()
-			var new_room = room_scenes[0].instantiate()
-			new_room.global_position = (room.coordinates - center_coordinates) * room_size
-			get_tree().current_scene.add_child(new_room)
-			get_tree().current_scene.move_child(new_room, 0)
+			if room.distance == 0:
+				var new_room = start_room_scene.instantiate()
+				new_room.global_position = (room.coordinates - center_coordinates) * room_size
+				get_tree().current_scene.add_child(new_room)
+				get_tree().current_scene.move_child(new_room, 0)
+			else:
+				room_scenes.shuffle()
+				var new_room = room_scenes[0].instantiate()
+				new_room.global_position = (room.coordinates - center_coordinates) * room_size
+				get_tree().current_scene.add_child(new_room)
+				get_tree().current_scene.move_child(new_room, 0)
 				
 
 #Helper Function for build_rooms
