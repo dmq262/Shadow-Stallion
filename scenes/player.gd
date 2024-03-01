@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+#Gamestate Variables
+var stats_opened = false
+var dead = false
+var old_playback = 0  #Used for Footstep Sound
 
 #Player Stats
 var health = 200
@@ -7,7 +11,6 @@ var max_health = 200
 var expirience = 0
 var max_expirience = 20
 
-var old_playback = 0
 
 #Movement Variables
 var speed = 300
@@ -147,3 +150,21 @@ func _on_sword_hitbox_body_entered(body):
 func _on_sword_hitbox_body_exited(body):
 	if body.is_in_group('enemy') and enemies_in_range.has(body):
 		enemies_in_range.erase(body)
+
+
+func upgrade_stat(stat):
+	print(stat)
+	if stat == "health":
+		max_health += 20
+	elif stat == "speed":
+		speed += 20
+	elif stat == "ammo":
+		max_ammo += 1
+	elif stat == "gun_cooldown":
+		max_ammo += 1
+	elif stat == "bullet_speed":
+		max_ammo += 20
+	elif stat == "bullet_damage":
+		max_ammo += 20
+	elif stat == "bullet_size":
+		max_ammo += 20

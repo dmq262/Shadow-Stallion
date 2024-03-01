@@ -36,3 +36,5 @@ position = Vector2(326, 250)
 texture = ExtResource("4_ktlkw")
 
 [node name="hud" parent="." instance=ExtResource("10_1ui1c")]
+
+[connection signal="upgrade_stat" from="hud" to="." method="_on_hud_upgrade_stat"]
