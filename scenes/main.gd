@@ -7,7 +7,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#HUD Control
 	update_hud()
+	if Input.is_action_just_pressed('stats'):
+		$player.stats_opened = $hud.toggle_stats()
 	
 	#Temp Restart mechanic
 	if Input.is_action_just_pressed("restart"):

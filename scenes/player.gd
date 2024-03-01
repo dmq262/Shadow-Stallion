@@ -67,7 +67,7 @@ func process_combat():
 	look_at(get_global_mouse_position())
 	
 	#Shoot Bullet
-	if Input.is_action_just_pressed("shoot") and ammo > 0 and gun_cooldown_progress <= 0:
+	if Input.is_action_just_pressed("shoot") and ammo > 0 and gun_cooldown_progress <= 0 and not stats_opened:
 		gun_cooldown_progress = gun_cooldown
 		ammo -= 1
 		

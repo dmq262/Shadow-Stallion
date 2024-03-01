@@ -7,6 +7,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("shoot"): # For testing purposes
 		pass
 
+#SET HEAD UP DISPLAY COMPONENTS
 func set_expirience(current, max):
 	$gameplay/expirience_bar.ratio = float(current)/max
 
@@ -30,6 +31,16 @@ func set_sword_cooldown(current, max):
 
 func set_dash_cooldown(current, max):
 	$gameplay/dash_cooldown.ratio = float(current)/max
+
+
+#TOGGLE STATS
+func toggle_stats():
+	if $stats.visible:
+		$stats.hide()
+		return false
+	else:
+		$stats.show()
+		return true
 
 
 #UPGRADE BUTTONS
