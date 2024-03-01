@@ -1,118 +1,365 @@
-[gd_scene load_steps=3 format=3 uid="uid://jmtyntu3kstk"]
+[gd_scene load_steps=6 format=3 uid="uid://jmtyntu3kstk"]
 
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_lbv4i"]
 [ext_resource type="Texture2D" uid="uid://be36sqncsu7fq" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_161.png" id="2_gp0mx"]
+[ext_resource type="Texture2D" uid="uid://16hm2e1vv0rb" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_183.png" id="3_nbt64"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wwage"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_3dts4"]
+font_size = 21
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_lbv4i")
 
-[node name="health_bar" type="ProgressBar" parent="."]
+[node name="gameplay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="health_bar" type="ProgressBar" parent="gameplay"]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.04
 anchor_right = 0.04
-offset_left = -1.2
+offset_left = 48.4
 offset_top = 72.0
-offset_right = 487.8
+offset_right = 537.4
 offset_bottom = 99.0
 value = 10.0
 show_percentage = false
 
-[node name="expirience_bar" type="ProgressBar" parent="."]
+[node name="expirience_bar" type="ProgressBar" parent="gameplay"]
 offset_left = 47.0
 offset_top = 16.0
 offset_right = 1241.0
 offset_bottom = 42.0
 show_percentage = false
 
-[node name="ammo_container" type="HBoxContainer" parent="."]
+[node name="ammo_container" type="HBoxContainer" parent="gameplay"]
 offset_left = 572.0
 offset_top = 55.0
 offset_right = 1248.0
 offset_bottom = 119.0
 metadata/_edit_group_ = true
 
-[node name="ammo_1" type="TextureRect" parent="ammo_container"]
+[node name="ammo_1" type="TextureRect" parent="gameplay/ammo_container"]
 layout_mode = 2
 texture = ExtResource("2_gp0mx")
 expand_mode = 2
 
-[node name="ammo_2" type="TextureRect" parent="ammo_container"]
+[node name="ammo_2" type="TextureRect" parent="gameplay/ammo_container"]
 layout_mode = 2
 texture = ExtResource("2_gp0mx")
 
-[node name="ammo_3" type="TextureRect" parent="ammo_container"]
+[node name="ammo_3" type="TextureRect" parent="gameplay/ammo_container"]
 layout_mode = 2
 texture = ExtResource("2_gp0mx")
 
-[node name="ammo_4" type="TextureRect" parent="ammo_container"]
+[node name="ammo_4" type="TextureRect" parent="gameplay/ammo_container"]
 layout_mode = 2
 texture = ExtResource("2_gp0mx")
 
-[node name="ammo_5" type="TextureRect" parent="ammo_container"]
+[node name="ammo_5" type="TextureRect" parent="gameplay/ammo_container"]
 layout_mode = 2
 texture = ExtResource("2_gp0mx")
 
-[node name="ammo_6" type="TextureRect" parent="ammo_container"]
+[node name="ammo_6" type="TextureRect" parent="gameplay/ammo_container"]
 layout_mode = 2
 texture = ExtResource("2_gp0mx")
 
-[node name="ammo_7" type="TextureRect" parent="ammo_container"]
+[node name="ammo_7" type="TextureRect" parent="gameplay/ammo_container"]
 layout_mode = 2
 texture = ExtResource("2_gp0mx")
 
-[node name="ammo_8" type="TextureRect" parent="ammo_container"]
+[node name="ammo_8" type="TextureRect" parent="gameplay/ammo_container"]
 layout_mode = 2
 texture = ExtResource("2_gp0mx")
 
-[node name="ammo_9" type="TextureRect" parent="ammo_container"]
+[node name="ammo_9" type="TextureRect" parent="gameplay/ammo_container"]
 layout_mode = 2
 texture = ExtResource("2_gp0mx")
 
-[node name="ammo_10" type="TextureRect" parent="ammo_container"]
+[node name="ammo_10" type="TextureRect" parent="gameplay/ammo_container"]
 layout_mode = 2
 texture = ExtResource("2_gp0mx")
 
-[node name="gun_cooldown" type="ProgressBar" parent="."]
+[node name="gun_cooldown" type="ProgressBar" parent="gameplay"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -168.0
-offset_top = -98.0
-offset_right = -96.0
-offset_bottom = -26.0
+offset_left = 452.0
+offset_top = 582.0
+offset_right = 524.0
+offset_bottom = 654.0
 grow_horizontal = 2
 grow_vertical = 0
 fill_mode = 3
 show_percentage = false
 
-[node name="sword_cooldown" type="ProgressBar" parent="."]
+[node name="sword_cooldown" type="ProgressBar" parent="gameplay"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -33.0
-offset_top = -98.0
-offset_right = 39.0
-offset_bottom = -26.0
+offset_left = 587.0
+offset_top = 582.0
+offset_right = 659.0
+offset_bottom = 654.0
 grow_horizontal = 2
 grow_vertical = 0
 fill_mode = 3
 show_percentage = false
 
-[node name="dash_cooldown" type="ProgressBar" parent="."]
+[node name="dash_cooldown" type="ProgressBar" parent="gameplay"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 96.0
-offset_top = -98.0
-offset_right = 168.0
-offset_bottom = -26.0
+offset_left = 716.0
+offset_top = 582.0
+offset_right = 788.0
+offset_bottom = 654.0
 grow_horizontal = 2
 grow_vertical = 0
 fill_mode = 3
 show_percentage = false
+
+[node name="stats" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="stats"]
+layout_mode = 0
+offset_right = 1287.0
+offset_bottom = 722.0
+color = Color(0.145098, 0.145098, 0.145098, 0.847059)
+
+[node name="base_label" type="Label" parent="stats"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 40.0
+offset_right = 300.0
+offset_bottom = 95.0
+text = "Base
+"
+label_settings = SubResource("LabelSettings_wwage")
+
+[node name="base_stats_label" type="Label" parent="stats"]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 140.0
+offset_right = 521.0
+offset_bottom = 236.0
+text = "Max Health
+
+Speed"
+label_settings = SubResource("LabelSettings_3dts4")
+
+[node name="base_stats" type="Label" parent="stats"]
+layout_mode = 0
+offset_left = 531.0
+offset_top = 140.0
+offset_right = 646.0
+offset_bottom = 236.0
+text = "10
+
+8"
+label_settings = SubResource("LabelSettings_3dts4")
+horizontal_alignment = 2
+
+[node name="upgrade_health" type="Button" parent="stats"]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 133.0
+offset_right = 369.0
+offset_bottom = 177.0
+icon = ExtResource("3_nbt64")
+expand_icon = true
+
+[node name="upgrade_speed" type="Button" parent="stats"]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 199.0
+offset_right = 369.0
+offset_bottom = 243.0
+icon = ExtResource("3_nbt64")
+expand_icon = true
+
+[node name="gun_label" type="Label" parent="stats"]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 292.0
+offset_right = 303.0
+offset_bottom = 347.0
+text = "Gun"
+label_settings = SubResource("LabelSettings_wwage")
+
+[node name="gun_stats_label" type="Label" parent="stats"]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 371.0
+offset_right = 556.0
+offset_bottom = 665.0
+text = "Max Ammo
+
+Cooldown
+
+Bullet Speed
+
+Bullet Size
+
+Bullet Damage"
+label_settings = SubResource("LabelSettings_3dts4")
+
+[node name="gun_stats" type="Label" parent="stats"]
+layout_mode = 0
+offset_left = 499.0
+offset_top = 371.0
+offset_right = 646.0
+offset_bottom = 665.0
+text = "0
+
+0
+
+0
+
+0
+
+0"
+label_settings = SubResource("LabelSettings_3dts4")
+horizontal_alignment = 2
+
+[node name="upgrade_ammo" type="Button" parent="stats"]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 364.0
+offset_right = 369.0
+offset_bottom = 408.0
+icon = ExtResource("3_nbt64")
+expand_icon = true
+
+[node name="upgrade_gun_cooldown" type="Button" parent="stats"]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 431.0
+offset_right = 369.0
+offset_bottom = 475.0
+icon = ExtResource("3_nbt64")
+expand_icon = true
+
+[node name="upgrade_bullet_speed" type="Button" parent="stats"]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 497.0
+offset_right = 369.0
+offset_bottom = 541.0
+icon = ExtResource("3_nbt64")
+expand_icon = true
+
+[node name="upgrade_bullet_size" type="Button" parent="stats"]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 562.0
+offset_right = 369.0
+offset_bottom = 606.0
+icon = ExtResource("3_nbt64")
+expand_icon = true
+
+[node name="upgrade_bullet_damage" type="Button" parent="stats"]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 629.0
+offset_right = 369.0
+offset_bottom = 673.0
+icon = ExtResource("3_nbt64")
+expand_icon = true
+
+[node name="sword_label" type="Label" parent="stats"]
+layout_mode = 0
+offset_left = 875.0
+offset_top = 64.0
+offset_right = 1025.0
+offset_bottom = 119.0
+text = "Sword"
+label_settings = SubResource("LabelSettings_wwage")
+
+[node name="sword_stats_label" type="Label" parent="stats"]
+layout_mode = 0
+offset_left = 1024.0
+offset_top = 162.0
+offset_right = 1150.0
+offset_bottom = 330.0
+text = "Cooldown
+
+Damage
+
+Size"
+label_settings = SubResource("LabelSettings_3dts4")
+
+[node name="sword_stats" type="Label" parent="stats"]
+layout_mode = 0
+offset_left = 1053.0
+offset_top = 162.0
+offset_right = 1179.0
+offset_bottom = 330.0
+text = "0
+
+0
+
+0"
+label_settings = SubResource("LabelSettings_3dts4")
+horizontal_alignment = 2
+
+[node name="dash_label" type="Label" parent="stats"]
+layout_mode = 0
+offset_left = 881.0
+offset_top = 381.0
+offset_right = 1054.0
+offset_bottom = 436.0
+text = "Dash
+"
+label_settings = SubResource("LabelSettings_wwage")
+
+[node name="dash_stats_label" type="Label" parent="stats"]
+layout_mode = 0
+offset_left = 1023.0
+offset_top = 478.0
+offset_right = 1149.0
+offset_bottom = 646.0
+text = "Cooldown
+
+Power"
+label_settings = SubResource("LabelSettings_3dts4")
+
+[node name="dash_stats" type="Label" parent="stats"]
+layout_mode = 0
+offset_left = 1122.0
+offset_top = 478.0
+offset_right = 1181.0
+offset_bottom = 646.0
+text = "0
+
+0"
+label_settings = SubResource("LabelSettings_3dts4")
+horizontal_alignment = 2
+
+[connection signal="pressed" from="stats/upgrade_health" to="." method="upgrade_health"]
+[connection signal="pressed" from="stats/upgrade_speed" to="." method="upgrade_speed"]
+[connection signal="pressed" from="stats/upgrade_ammo" to="." method="upgrade_ammo"]
+[connection signal="pressed" from="stats/upgrade_gun_cooldown" to="." method="upgrade_gun_cooldown"]
+[connection signal="pressed" from="stats/upgrade_bullet_speed" to="." method="upgrade_bullet_speed"]
+[connection signal="pressed" from="stats/upgrade_bullet_size" to="." method="upgrade_bullet_size"]
+[connection signal="pressed" from="stats/upgrade_bullet_damage" to="." method="upgrade_bullet_damage"]
