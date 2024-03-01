@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://cr5s3ole88uiu"]
 
 [ext_resource type="Texture2D" uid="uid://c55ju2fsp2bj2" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_07.png" id="1_7ekuo"]
-[ext_resource type="Texture2D" uid="uid://b5gnvnv3r7tti" path="res://art/instruction_images/instructions_dash.png" id="1_550dj"]
-[ext_resource type="Texture2D" uid="uid://e4ek2m0h50sg" path="res://art/instruction_images/instructions_move.png" id="2_i47jw"]
-[ext_resource type="Texture2D" uid="uid://c0hrgyub5f8l2" path="res://art/instruction_images/instructions_gun.png" id="4_kjf6s"]
-[ext_resource type="Texture2D" uid="uid://bhksxuo6papna" path="res://art/instruction_images/instructions_sword.png" id="5_shs0l"]
+[ext_resource type="Texture2D" uid="uid://b5gnvnv3r7tti" path="res://art/symbols/instructions_dash.png" id="1_550dj"]
+[ext_resource type="Texture2D" uid="uid://e4ek2m0h50sg" path="res://art/symbols/instructions_move.png" id="2_i47jw"]
+[ext_resource type="Texture2D" uid="uid://c0hrgyub5f8l2" path="res://art/symbols/instructions_gun.png" id="4_kjf6s"]
+[ext_resource type="Texture2D" uid="uid://bhksxuo6papna" path="res://art/symbols/instructions_sword.png" id="5_shs0l"]
 
 [node name="room_start" type="Node2D"]
 

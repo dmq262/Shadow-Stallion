@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://jmtyntu3kstk"]
+[gd_scene load_steps=10 format=3 uid="uid://jmtyntu3kstk"]
 
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_lbv4i"]
 [ext_resource type="Texture2D" uid="uid://be36sqncsu7fq" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_161.png" id="2_gp0mx"]
-[ext_resource type="Texture2D" uid="uid://16hm2e1vv0rb" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_183.png" id="3_nbt64"]
+[ext_resource type="Texture2D" uid="uid://cmx6qiobg4klx" path="res://art/symbols/symbol_base.png" id="3_caf3n"]
+[ext_resource type="Texture2D" uid="uid://drlfjh28pbv3u" path="res://art/symbols/Symbol_plus.png" id="4_2sxvn"]
+[ext_resource type="Texture2D" uid="uid://mco2kwxpshmh" path="res://art/symbols/symbol_gun.png" id="4_oyn34"]
+[ext_resource type="Texture2D" uid="uid://u23s30387dnl" path="res://art/symbols/symbol_sword.png" id="6_skhqd"]
+[ext_resource type="Texture2D" uid="uid://dueq3uh2d2cmh" path="res://art/symbols/symbol_dash.png" id="7_vcsax"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wwage"]
-font_size = 40
+font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_3dts4"]
-font_size = 21
+font_size = 22
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_lbv4i")
@@ -137,6 +141,7 @@ fill_mode = 3
 show_percentage = false
 
 [node name="stats" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -146,7 +151,7 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 1287.0
 offset_bottom = 722.0
-color = Color(0.145098, 0.145098, 0.145098, 0.847059)
+color = Color(0.160784, 0.160784, 0.160784, 0.890196)
 
 [node name="base" type="Control" parent="stats"]
 anchors_preset = 0
@@ -155,20 +160,29 @@ offset_bottom = 40.0
 
 [node name="base_label" type="Label" parent="stats/base"]
 layout_mode = 0
-offset_left = 150.0
-offset_top = 40.0
-offset_right = 300.0
-offset_bottom = 95.0
+offset_left = 145.0
+offset_top = 38.0
+offset_right = 295.0
+offset_bottom = 93.0
 text = "Base
 "
 label_settings = SubResource("LabelSettings_wwage")
 
+[node name="base_symbol" type="TextureRect" parent="stats/base"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 91.0
+offset_right = 218.0
+offset_bottom = 279.0
+texture = ExtResource("3_caf3n")
+expand_mode = 1
+
 [node name="base_stats_label" type="Label" parent="stats/base"]
 layout_mode = 0
-offset_left = 406.0
-offset_top = 140.0
-offset_right = 521.0
-offset_bottom = 236.0
+offset_left = 377.0
+offset_top = 114.0
+offset_right = 500.0
+offset_bottom = 213.0
 text = "Max Health
 
 Speed"
@@ -176,32 +190,32 @@ label_settings = SubResource("LabelSettings_3dts4")
 
 [node name="base_stats" type="Label" parent="stats/base"]
 layout_mode = 0
-offset_left = 531.0
-offset_top = 140.0
-offset_right = 646.0
-offset_bottom = 236.0
+offset_left = 502.0
+offset_top = 114.0
+offset_right = 617.0
+offset_bottom = 213.0
 text = "10
 
 8"
 label_settings = SubResource("LabelSettings_3dts4")
 horizontal_alignment = 2
 
-[node name="upgrade_health" type="Button" parent="stats/base"]
+[node name="upgrade_health" type="Button" parent="stats/base" groups=["upgrade_button"]]
 layout_mode = 0
-offset_left = 324.0
-offset_top = 133.0
-offset_right = 369.0
-offset_bottom = 177.0
-icon = ExtResource("3_nbt64")
+offset_left = 293.0
+offset_top = 111.0
+offset_right = 333.0
+offset_bottom = 150.0
+icon = ExtResource("4_2sxvn")
 expand_icon = true
 
-[node name="upgrade_speed" type="Button" parent="stats/base"]
+[node name="upgrade_speed" type="Button" parent="stats/base" groups=["upgrade_button"]]
 layout_mode = 0
-offset_left = 324.0
-offset_top = 199.0
-offset_right = 369.0
-offset_bottom = 243.0
-icon = ExtResource("3_nbt64")
+offset_left = 294.0
+offset_top = 179.0
+offset_right = 335.0
+offset_bottom = 219.0
+icon = ExtResource("4_2sxvn")
 expand_icon = true
 
 [node name="gun" type="Control" parent="stats"]
@@ -211,19 +225,29 @@ offset_bottom = 40.0
 
 [node name="gun_label" type="Label" parent="stats/gun"]
 layout_mode = 0
-offset_left = 153.0
-offset_top = 292.0
-offset_right = 303.0
-offset_bottom = 347.0
+offset_left = 148.0
+offset_top = 312.0
+offset_right = 298.0
+offset_bottom = 367.0
 text = "Gun"
 label_settings = SubResource("LabelSettings_wwage")
 
+[node name="gun_symbol" type="TextureRect" parent="stats/gun"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 558.0
+offset_right = 264.0
+offset_bottom = 700.0
+rotation = -0.760964
+texture = ExtResource("4_oyn34")
+expand_mode = 1
+
 [node name="gun_stats_label" type="Label" parent="stats/gun"]
 layout_mode = 0
-offset_left = 409.0
-offset_top = 371.0
-offset_right = 556.0
-offset_bottom = 665.0
+offset_left = 379.0
+offset_top = 363.0
+offset_right = 536.0
+offset_bottom = 666.0
 text = "Max Ammo
 
 Cooldown
@@ -237,10 +261,10 @@ label_settings = SubResource("LabelSettings_3dts4")
 
 [node name="gun_stats" type="Label" parent="stats/gun"]
 layout_mode = 0
-offset_left = 499.0
-offset_top = 371.0
-offset_right = 646.0
-offset_bottom = 665.0
+offset_left = 469.0
+offset_top = 363.0
+offset_right = 616.0
+offset_bottom = 666.0
 text = "0
 
 0
@@ -253,49 +277,49 @@ text = "0
 label_settings = SubResource("LabelSettings_3dts4")
 horizontal_alignment = 2
 
-[node name="upgrade_ammo" type="Button" parent="stats/gun"]
+[node name="upgrade_ammo" type="Button" parent="stats/gun" groups=["upgrade_button"]]
 layout_mode = 0
-offset_left = 324.0
-offset_top = 364.0
-offset_right = 369.0
-offset_bottom = 408.0
-icon = ExtResource("3_nbt64")
+offset_left = 294.0
+offset_top = 360.0
+offset_right = 335.0
+offset_bottom = 400.0
+icon = ExtResource("4_2sxvn")
 expand_icon = true
 
-[node name="upgrade_gun_cooldown" type="Button" parent="stats/gun"]
+[node name="upgrade_gun_cooldown" type="Button" parent="stats/gun" groups=["upgrade_button"]]
 layout_mode = 0
-offset_left = 324.0
-offset_top = 431.0
-offset_right = 369.0
-offset_bottom = 475.0
-icon = ExtResource("3_nbt64")
+offset_left = 294.0
+offset_top = 430.0
+offset_right = 335.0
+offset_bottom = 470.0
+icon = ExtResource("4_2sxvn")
 expand_icon = true
 
-[node name="upgrade_bullet_speed" type="Button" parent="stats/gun"]
+[node name="upgrade_bullet_speed" type="Button" parent="stats/gun" groups=["upgrade_button"]]
 layout_mode = 0
-offset_left = 324.0
-offset_top = 497.0
-offset_right = 369.0
-offset_bottom = 541.0
-icon = ExtResource("3_nbt64")
+offset_left = 294.0
+offset_top = 498.0
+offset_right = 335.0
+offset_bottom = 538.0
+icon = ExtResource("4_2sxvn")
 expand_icon = true
 
-[node name="upgrade_bullet_size" type="Button" parent="stats/gun"]
+[node name="upgrade_bullet_size" type="Button" parent="stats/gun" groups=["upgrade_button"]]
 layout_mode = 0
-offset_left = 324.0
-offset_top = 562.0
-offset_right = 369.0
+offset_left = 294.0
+offset_top = 564.0
+offset_right = 337.0
 offset_bottom = 606.0
-icon = ExtResource("3_nbt64")
+icon = ExtResource("4_2sxvn")
 expand_icon = true
 
-[node name="upgrade_bullet_damage" type="Button" parent="stats/gun"]
+[node name="upgrade_bullet_damage" type="Button" parent="stats/gun" groups=["upgrade_button"]]
 layout_mode = 0
-offset_left = 324.0
-offset_top = 629.0
-offset_right = 369.0
-offset_bottom = 673.0
-icon = ExtResource("3_nbt64")
+offset_left = 294.0
+offset_top = 633.0
+offset_right = 337.0
+offset_bottom = 675.0
+icon = ExtResource("4_2sxvn")
 expand_icon = true
 
 [node name="sword" type="Control" parent="stats"]
@@ -305,19 +329,28 @@ offset_bottom = 40.0
 
 [node name="sword_label" type="Label" parent="stats/sword"]
 layout_mode = 0
-offset_left = 875.0
-offset_top = 64.0
-offset_right = 1025.0
-offset_bottom = 119.0
+offset_left = 870.0
+offset_top = 246.0
+offset_right = 1020.0
+offset_bottom = 301.0
 text = "Sword"
 label_settings = SubResource("LabelSettings_wwage")
 
+[node name="sword_symbol" type="TextureRect" parent="stats/sword"]
+layout_mode = 0
+offset_left = 743.0
+offset_top = 315.0
+offset_right = 965.0
+offset_bottom = 472.0
+texture = ExtResource("6_skhqd")
+expand_mode = 1
+
 [node name="sword_stats_label" type="Label" parent="stats/sword"]
 layout_mode = 0
-offset_left = 1024.0
-offset_top = 162.0
-offset_right = 1150.0
-offset_bottom = 330.0
+offset_left = 1080.0
+offset_top = 302.0
+offset_right = 1206.0
+offset_bottom = 470.0
 text = "Cooldown
 
 Damage
@@ -327,10 +360,10 @@ label_settings = SubResource("LabelSettings_3dts4")
 
 [node name="sword_stats" type="Label" parent="stats/sword"]
 layout_mode = 0
-offset_left = 1053.0
-offset_top = 162.0
-offset_right = 1179.0
-offset_bottom = 330.0
+offset_left = 1109.0
+offset_top = 302.0
+offset_right = 1235.0
+offset_bottom = 470.0
 text = "0
 
 0
@@ -339,31 +372,31 @@ text = "0
 label_settings = SubResource("LabelSettings_3dts4")
 horizontal_alignment = 2
 
-[node name="upgrade_sword_cooldown" type="Button" parent="stats/sword"]
+[node name="upgrade_sword_cooldown" type="Button" parent="stats/sword" groups=["upgrade_button"]]
 layout_mode = 0
-offset_left = 956.0
-offset_top = 156.0
-offset_right = 1001.0
-offset_bottom = 200.0
-icon = ExtResource("3_nbt64")
+offset_left = 1011.0
+offset_top = 300.0
+offset_right = 1049.0
+offset_bottom = 338.0
+icon = ExtResource("4_2sxvn")
 expand_icon = true
 
-[node name="upgrade_sword_damage" type="Button" parent="stats/sword"]
+[node name="upgrade_sword_damage" type="Button" parent="stats/sword" groups=["upgrade_button"]]
 layout_mode = 0
-offset_left = 956.0
-offset_top = 223.0
-offset_right = 1001.0
-offset_bottom = 267.0
-icon = ExtResource("3_nbt64")
+offset_left = 1011.0
+offset_top = 368.0
+offset_right = 1050.0
+offset_bottom = 406.0
+icon = ExtResource("4_2sxvn")
 expand_icon = true
 
-[node name="upgrade_sword_size" type="Button" parent="stats/sword"]
+[node name="upgrade_sword_size" type="Button" parent="stats/sword" groups=["upgrade_button"]]
 layout_mode = 0
-offset_left = 956.0
-offset_top = 288.0
-offset_right = 1001.0
-offset_bottom = 332.0
-icon = ExtResource("3_nbt64")
+offset_left = 1011.0
+offset_top = 436.0
+offset_right = 1050.0
+offset_bottom = 474.0
+icon = ExtResource("4_2sxvn")
 expand_icon = true
 
 [node name="dash" type="Control" parent="stats"]
@@ -373,20 +406,29 @@ offset_bottom = 40.0
 
 [node name="dash_label" type="Label" parent="stats/dash"]
 layout_mode = 0
-offset_left = 881.0
-offset_top = 381.0
-offset_right = 1054.0
-offset_bottom = 436.0
+offset_left = 876.0
+offset_top = 508.0
+offset_right = 1049.0
+offset_bottom = 563.0
 text = "Dash
 "
 label_settings = SubResource("LabelSettings_wwage")
 
+[node name="dash_symbol" type="TextureRect" parent="stats/dash"]
+layout_mode = 0
+offset_left = 732.0
+offset_top = 556.0
+offset_right = 997.0
+offset_bottom = 706.0
+texture = ExtResource("7_vcsax")
+expand_mode = 1
+
 [node name="dash_stats_label" type="Label" parent="stats/dash"]
 layout_mode = 0
-offset_left = 1023.0
-offset_top = 478.0
-offset_right = 1149.0
-offset_bottom = 646.0
+offset_left = 1079.0
+offset_top = 572.0
+offset_right = 1205.0
+offset_bottom = 740.0
 text = "Cooldown
 
 Power"
@@ -394,33 +436,43 @@ label_settings = SubResource("LabelSettings_3dts4")
 
 [node name="dash_stats" type="Label" parent="stats/dash"]
 layout_mode = 0
-offset_left = 1122.0
-offset_top = 478.0
-offset_right = 1181.0
-offset_bottom = 646.0
+offset_left = 1178.0
+offset_top = 572.0
+offset_right = 1237.0
+offset_bottom = 740.0
 text = "0
 
 0"
 label_settings = SubResource("LabelSettings_3dts4")
 horizontal_alignment = 2
 
-[node name="upgrade_dash_cooldown" type="Button" parent="stats/dash"]
+[node name="upgrade_dash_cooldown" type="Button" parent="stats/dash" groups=["upgrade_button"]]
 layout_mode = 0
-offset_left = 956.0
-offset_top = 473.0
-offset_right = 1001.0
-offset_bottom = 517.0
-icon = ExtResource("3_nbt64")
+offset_left = 1012.0
+offset_top = 570.0
+offset_right = 1053.0
+offset_bottom = 610.0
+icon = ExtResource("4_2sxvn")
 expand_icon = true
 
-[node name="upgrade_dash_power" type="Button" parent="stats/dash"]
+[node name="upgrade_dash_power" type="Button" parent="stats/dash" groups=["upgrade_button"]]
 layout_mode = 0
-offset_left = 956.0
-offset_top = 539.0
-offset_right = 1001.0
-offset_bottom = 583.0
-icon = ExtResource("3_nbt64")
+offset_left = 1012.0
+offset_top = 638.0
+offset_right = 1054.0
+offset_bottom = 679.0
+icon = ExtResource("4_2sxvn")
 expand_icon = true
+
+[node name="level_points" type="Label" parent="stats"]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 79.0
+offset_right = 1142.0
+offset_bottom = 172.0
+text = "Current Exp: 0/0
+Unspent Levels: 0"
+label_settings = SubResource("LabelSettings_3dts4")
 
 [connection signal="pressed" from="stats/base/upgrade_health" to="." method="upgrade_button" binds= ["health"]]
 [connection signal="pressed" from="stats/base/upgrade_speed" to="." method="upgrade_button" binds= ["speed"]]
