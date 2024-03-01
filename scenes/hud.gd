@@ -44,24 +44,6 @@ func toggle_stats():
 
 
 #UPGRADE BUTTONS
-func upgrade_health():
-	emit_signal('upgrade_stat', 'health')
-	
-func upgrade_speed():
-	emit_signal('upgrade_stat', 'speed')
-	
-func upgrade_ammo():
-	emit_signal('upgrade_stat', 'ammo')
-	
-func upgrade_gun_cooldown():
-	emit_signal('upgrade_stat', 'gun_cooldown')
-	
-func upgrade_bullet_speed():
-	emit_signal('upgrade_stat', 'bullet_speed')
-	
-func upgrade_bullet_damage():
-	emit_signal('upgrade_stat', 'bullet_damage')
-	
-func upgrade_bullet_size():
-	emit_signal('upgrade_stat', 'bullet_size')
+func upgrade_button(stat: String):
+	emit_signal('upgrade_stat', stat)
 

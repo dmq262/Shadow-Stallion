@@ -137,7 +137,6 @@ fill_mode = 3
 show_percentage = false
 
 [node name="stats" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -149,7 +148,12 @@ offset_right = 1287.0
 offset_bottom = 722.0
 color = Color(0.145098, 0.145098, 0.145098, 0.847059)
 
-[node name="base_label" type="Label" parent="stats"]
+[node name="base" type="Control" parent="stats"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="base_label" type="Label" parent="stats/base"]
 layout_mode = 0
 offset_left = 150.0
 offset_top = 40.0
@@ -159,7 +163,7 @@ text = "Base
 "
 label_settings = SubResource("LabelSettings_wwage")
 
-[node name="base_stats_label" type="Label" parent="stats"]
+[node name="base_stats_label" type="Label" parent="stats/base"]
 layout_mode = 0
 offset_left = 406.0
 offset_top = 140.0
@@ -170,7 +174,7 @@ text = "Max Health
 Speed"
 label_settings = SubResource("LabelSettings_3dts4")
 
-[node name="base_stats" type="Label" parent="stats"]
+[node name="base_stats" type="Label" parent="stats/base"]
 layout_mode = 0
 offset_left = 531.0
 offset_top = 140.0
@@ -182,7 +186,7 @@ text = "10
 label_settings = SubResource("LabelSettings_3dts4")
 horizontal_alignment = 2
 
-[node name="upgrade_health" type="Button" parent="stats"]
+[node name="upgrade_health" type="Button" parent="stats/base"]
 layout_mode = 0
 offset_left = 324.0
 offset_top = 133.0
@@ -191,7 +195,7 @@ offset_bottom = 177.0
 icon = ExtResource("3_nbt64")
 expand_icon = true
 
-[node name="upgrade_speed" type="Button" parent="stats"]
+[node name="upgrade_speed" type="Button" parent="stats/base"]
 layout_mode = 0
 offset_left = 324.0
 offset_top = 199.0
@@ -200,7 +204,12 @@ offset_bottom = 243.0
 icon = ExtResource("3_nbt64")
 expand_icon = true
 
-[node name="gun_label" type="Label" parent="stats"]
+[node name="gun" type="Control" parent="stats"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="gun_label" type="Label" parent="stats/gun"]
 layout_mode = 0
 offset_left = 153.0
 offset_top = 292.0
@@ -209,7 +218,7 @@ offset_bottom = 347.0
 text = "Gun"
 label_settings = SubResource("LabelSettings_wwage")
 
-[node name="gun_stats_label" type="Label" parent="stats"]
+[node name="gun_stats_label" type="Label" parent="stats/gun"]
 layout_mode = 0
 offset_left = 409.0
 offset_top = 371.0
@@ -226,7 +235,7 @@ Bullet Size
 Bullet Damage"
 label_settings = SubResource("LabelSettings_3dts4")
 
-[node name="gun_stats" type="Label" parent="stats"]
+[node name="gun_stats" type="Label" parent="stats/gun"]
 layout_mode = 0
 offset_left = 499.0
 offset_top = 371.0
@@ -244,7 +253,7 @@ text = "0
 label_settings = SubResource("LabelSettings_3dts4")
 horizontal_alignment = 2
 
-[node name="upgrade_ammo" type="Button" parent="stats"]
+[node name="upgrade_ammo" type="Button" parent="stats/gun"]
 layout_mode = 0
 offset_left = 324.0
 offset_top = 364.0
@@ -253,7 +262,7 @@ offset_bottom = 408.0
 icon = ExtResource("3_nbt64")
 expand_icon = true
 
-[node name="upgrade_gun_cooldown" type="Button" parent="stats"]
+[node name="upgrade_gun_cooldown" type="Button" parent="stats/gun"]
 layout_mode = 0
 offset_left = 324.0
 offset_top = 431.0
@@ -262,7 +271,7 @@ offset_bottom = 475.0
 icon = ExtResource("3_nbt64")
 expand_icon = true
 
-[node name="upgrade_bullet_speed" type="Button" parent="stats"]
+[node name="upgrade_bullet_speed" type="Button" parent="stats/gun"]
 layout_mode = 0
 offset_left = 324.0
 offset_top = 497.0
@@ -271,7 +280,7 @@ offset_bottom = 541.0
 icon = ExtResource("3_nbt64")
 expand_icon = true
 
-[node name="upgrade_bullet_size" type="Button" parent="stats"]
+[node name="upgrade_bullet_size" type="Button" parent="stats/gun"]
 layout_mode = 0
 offset_left = 324.0
 offset_top = 562.0
@@ -280,7 +289,7 @@ offset_bottom = 606.0
 icon = ExtResource("3_nbt64")
 expand_icon = true
 
-[node name="upgrade_bullet_damage" type="Button" parent="stats"]
+[node name="upgrade_bullet_damage" type="Button" parent="stats/gun"]
 layout_mode = 0
 offset_left = 324.0
 offset_top = 629.0
@@ -289,7 +298,12 @@ offset_bottom = 673.0
 icon = ExtResource("3_nbt64")
 expand_icon = true
 
-[node name="sword_label" type="Label" parent="stats"]
+[node name="sword" type="Control" parent="stats"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="sword_label" type="Label" parent="stats/sword"]
 layout_mode = 0
 offset_left = 875.0
 offset_top = 64.0
@@ -298,7 +312,7 @@ offset_bottom = 119.0
 text = "Sword"
 label_settings = SubResource("LabelSettings_wwage")
 
-[node name="sword_stats_label" type="Label" parent="stats"]
+[node name="sword_stats_label" type="Label" parent="stats/sword"]
 layout_mode = 0
 offset_left = 1024.0
 offset_top = 162.0
@@ -311,7 +325,7 @@ Damage
 Size"
 label_settings = SubResource("LabelSettings_3dts4")
 
-[node name="sword_stats" type="Label" parent="stats"]
+[node name="sword_stats" type="Label" parent="stats/sword"]
 layout_mode = 0
 offset_left = 1053.0
 offset_top = 162.0
@@ -325,7 +339,39 @@ text = "0
 label_settings = SubResource("LabelSettings_3dts4")
 horizontal_alignment = 2
 
-[node name="dash_label" type="Label" parent="stats"]
+[node name="upgrade_sword_cooldown" type="Button" parent="stats/sword"]
+layout_mode = 0
+offset_left = 956.0
+offset_top = 156.0
+offset_right = 1001.0
+offset_bottom = 200.0
+icon = ExtResource("3_nbt64")
+expand_icon = true
+
+[node name="upgrade_sword_damage" type="Button" parent="stats/sword"]
+layout_mode = 0
+offset_left = 956.0
+offset_top = 223.0
+offset_right = 1001.0
+offset_bottom = 267.0
+icon = ExtResource("3_nbt64")
+expand_icon = true
+
+[node name="upgrade_sword_size" type="Button" parent="stats/sword"]
+layout_mode = 0
+offset_left = 956.0
+offset_top = 288.0
+offset_right = 1001.0
+offset_bottom = 332.0
+icon = ExtResource("3_nbt64")
+expand_icon = true
+
+[node name="dash" type="Control" parent="stats"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="dash_label" type="Label" parent="stats/dash"]
 layout_mode = 0
 offset_left = 881.0
 offset_top = 381.0
@@ -335,7 +381,7 @@ text = "Dash
 "
 label_settings = SubResource("LabelSettings_wwage")
 
-[node name="dash_stats_label" type="Label" parent="stats"]
+[node name="dash_stats_label" type="Label" parent="stats/dash"]
 layout_mode = 0
 offset_left = 1023.0
 offset_top = 478.0
@@ -346,7 +392,7 @@ text = "Cooldown
 Power"
 label_settings = SubResource("LabelSettings_3dts4")
 
-[node name="dash_stats" type="Label" parent="stats"]
+[node name="dash_stats" type="Label" parent="stats/dash"]
 layout_mode = 0
 offset_left = 1122.0
 offset_top = 478.0
@@ -358,10 +404,33 @@ text = "0
 label_settings = SubResource("LabelSettings_3dts4")
 horizontal_alignment = 2
 
-[connection signal="pressed" from="stats/upgrade_health" to="." method="upgrade_health"]
-[connection signal="pressed" from="stats/upgrade_speed" to="." method="upgrade_speed"]
-[connection signal="pressed" from="stats/upgrade_ammo" to="." method="upgrade_ammo"]
-[connection signal="pressed" from="stats/upgrade_gun_cooldown" to="." method="upgrade_gun_cooldown"]
-[connection signal="pressed" from="stats/upgrade_bullet_speed" to="." method="upgrade_bullet_speed"]
-[connection signal="pressed" from="stats/upgrade_bullet_size" to="." method="upgrade_bullet_size"]
-[connection signal="pressed" from="stats/upgrade_bullet_damage" to="." method="upgrade_bullet_damage"]
+[node name="upgrade_dash_cooldown" type="Button" parent="stats/dash"]
+layout_mode = 0
+offset_left = 956.0
+offset_top = 473.0
+offset_right = 1001.0
+offset_bottom = 517.0
+icon = ExtResource("3_nbt64")
+expand_icon = true
+
+[node name="upgrade_dash_power" type="Button" parent="stats/dash"]
+layout_mode = 0
+offset_left = 956.0
+offset_top = 539.0
+offset_right = 1001.0
+offset_bottom = 583.0
+icon = ExtResource("3_nbt64")
+expand_icon = true
+
+[connection signal="pressed" from="stats/base/upgrade_health" to="." method="upgrade_button" binds= ["health"]]
+[connection signal="pressed" from="stats/base/upgrade_speed" to="." method="upgrade_button" binds= ["speed"]]
+[connection signal="pressed" from="stats/gun/upgrade_ammo" to="." method="upgrade_button" binds= ["ammo"]]
+[connection signal="pressed" from="stats/gun/upgrade_gun_cooldown" to="." method="upgrade_button" binds= ["gun_cooldown"]]
+[connection signal="pressed" from="stats/gun/upgrade_bullet_speed" to="." method="upgrade_button" binds= ["bullet_speed"]]
+[connection signal="pressed" from="stats/gun/upgrade_bullet_size" to="." method="upgrade_button" binds= ["bullet_size"]]
+[connection signal="pressed" from="stats/gun/upgrade_bullet_damage" to="." method="upgrade_button" binds= ["bullet_damage"]]
+[connection signal="pressed" from="stats/sword/upgrade_sword_cooldown" to="." method="upgrade_button" binds= ["sword_cooldown"]]
+[connection signal="pressed" from="stats/sword/upgrade_sword_damage" to="." method="upgrade_button" binds= ["sword_damage"]]
+[connection signal="pressed" from="stats/sword/upgrade_sword_size" to="." method="upgrade_button" binds= ["sword_size"]]
+[connection signal="pressed" from="stats/dash/upgrade_dash_cooldown" to="." method="upgrade_button" binds= ["dash_cooldown"]]
+[connection signal="pressed" from="stats/dash/upgrade_dash_power" to="." method="upgrade_button" binds= ["dash_power"]]
