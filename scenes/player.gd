@@ -8,9 +8,9 @@ var old_playback = 0  #Used for Footstep Sound
 #Player Stats
 var health = 200
 var max_health = 200
-var expirience = 0
-var max_expirience = 20
-
+var expirience = 1
+var max_expirience = 100
+var level_points = 10
 
 #Movement Variables
 var speed = 300
@@ -25,12 +25,17 @@ var ammo = 5
 var max_ammo = 5
 var gun_cooldown = 3
 var gun_cooldown_progress = 0
+var bullet_speed = 1
+var bullet_size = 1
+var bullet_damage = 1
 
 #Sword Variables
 var bullets_in_range = []
 var enemies_in_range = []
 var sword_cooldown = 3
 var sword_cooldown_progress = 0
+var sword_damage = 1
+var sword_size = 1
 
 func _ready():
 	pass
@@ -65,6 +70,8 @@ func update_cooldowns(delta):
 
 func process_combat():
 	look_at(get_global_mouse_position())
+	if ammo > max_ammo:
+		ammo = max_ammo
 	
 	#Shoot Bullet
 	if Input.is_action_just_pressed("shoot") and ammo > 0 and gun_cooldown_progress <= 0 and not stats_opened:
@@ -153,18 +160,37 @@ func _on_sword_hitbox_body_exited(body):
 
 
 func upgrade_stat(stat):
+	level_points -= 1
 	print(stat)
+	#BASE
 	if stat == "health":
 		max_health += 20
+		health += 20
 	elif stat == "speed":
 		speed += 20
+	#GUN
 	elif stat == "ammo":
 		max_ammo += 1
+		ammo += 1
 	elif stat == "gun_cooldown":
-		max_ammo += 1
+		gun_cooldown += 1
 	elif stat == "bullet_speed":
 		max_ammo += 20
 	elif stat == "bullet_damage":
 		max_ammo += 20
 	elif stat == "bullet_size":
 		max_ammo += 20
+	#SWORD
+	elif stat == "sword_cooldown":
+		sword_cooldown += 20
+	elif stat == "sword_damage":
+		max_ammo += 20
+	elif stat == "sword_size":
+		max_ammo += 20
+	#DASH
+	elif stat == "dash_cooldown":
+		dash_cooldown += 20
+	elif stat == "dash_power":
+		max_ammo += 20
+	else:
+		print(stat, "not found")
