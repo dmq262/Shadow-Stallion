@@ -6,11 +6,11 @@ var dead = false
 var old_playback = 0  #Used for Footstep Sound
 
 #Player Stats
-var health = 200
-var max_health = 200
-var expirience = 1
+var health = 80
+var max_health = 100
+var expirience = 5
 var max_expirience = 100
-var level_points = 50
+var level_points = 5
 
 #Movement Variables
 var speed = 300
@@ -21,7 +21,7 @@ var dash_cooldown_progress = 0
 
 #Gun Variables
 @export var bullet_scene: PackedScene
-var ammo = 5
+var ammo = 3
 var max_ammo = 5
 var gun_cooldown = 5
 var gun_cooldown_progress = 0
@@ -39,11 +39,11 @@ var sword_size = 1
 
 #Upgrade Variables
 var upgrade_increments = {
-	"health": [30],
-	"speed": [50, 50, 25, 25, 25, 25, 10],
+	"health": [25],
+	"speed": [50, 50, 25, 25, 10],
 	"ammo": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
 	"gun_cooldown": [-1, -.5, -.5, -.5, -.5, -.25, -.25, -.25, -.25, -.1, -.1, -.1, -.1, -.1, 0],
-	"bullet_speed": [50, 50, 25, 25, 25, 25, 10],
+	"bullet_speed": [50, 50, 25, 25, 10],
 	"bullet_size": [.5, .25, .25, .25, .25, .25, .25, 0],
 	"bullet_damage": [30],
 	"sword_cooldown": [-1, -.5, -.5, -.5, -.5, -.25, -.25, -.25, -.25, -.1, -.1, -.1, -.1, -.1, 0],
@@ -74,7 +74,7 @@ func cap_variables():
 		health = max_health
 	if expirience > max_expirience:
 		level_points += 1
-		expirience = 0
+		expirience -= max_expirience
 
 
 #Update gun, sword, and dash cooldowns
@@ -140,7 +140,7 @@ func process_movement(delta):
 		velocity.y -=1
 	
 	#Implement Dash Mechanic
-	if Input.is_action_just_pressed("dash") and dash_cooldown_progress <= 0:
+	if (Input.is_action_just_pressed("dash")) and (dash_cooldown_progress) <= 0 and (velocity != Vector2.ZERO):
 		dash_cooldown_progress = dash_cooldown
 		dash_vector = velocity.normalized() * dash_power
 	
@@ -197,6 +197,7 @@ func upgrade_stat(stat):
 	if stat == "health":
 		max_health += upgrade_increments[stat][0]
 		health += upgrade_increments[stat][0]
+		upgrade_increments[stat][0] += 5
 	elif stat == "speed":
 		speed += upgrade_increments[stat][0]
 	#GUN
