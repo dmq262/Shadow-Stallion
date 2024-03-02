@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr5s3ole88uiu"]
+[gd_scene load_steps=10 format=3 uid="uid://cr5s3ole88uiu"]
 
 [ext_resource type="Texture2D" uid="uid://c55ju2fsp2bj2" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_07.png" id="1_7ekuo"]
 [ext_resource type="Texture2D" uid="uid://b5gnvnv3r7tti" path="res://art/symbols/instructions_dash.png" id="1_550dj"]
 [ext_resource type="Texture2D" uid="uid://e4ek2m0h50sg" path="res://art/symbols/instructions_move.png" id="2_i47jw"]
 [ext_resource type="Texture2D" uid="uid://c0hrgyub5f8l2" path="res://art/symbols/instructions_gun.png" id="4_kjf6s"]
 [ext_resource type="Texture2D" uid="uid://bhksxuo6papna" path="res://art/symbols/instructions_sword.png" id="5_shs0l"]
+[ext_resource type="PackedScene" uid="uid://70r47x5kqg7o" path="res://scenes/health.tscn" id="6_b1lds"]
+[ext_resource type="PackedScene" uid="uid://ykxldkk5vri2" path="res://scenes/expirience.tscn" id="6_vlj85"]
+[ext_resource type="PackedScene" uid="uid://brxn0yu1liuyo" path="res://scenes/ammo.tscn" id="7_4cjpv"]
+[ext_resource type="Texture2D" uid="uid://btfvcflrngqx8" path="res://art/symbols/instructions_loot.png" id="9_dv21a"]
 
 [node name="room_start" type="Node2D"]
 
@@ -21,21 +25,38 @@ position = Vector2(-500, -500)
 position = Vector2(500, 500)
 
 [node name="move_instruction" type="Sprite2D" parent="."]
-position = Vector2(-250, 250)
-scale = Vector2(0.35, 0.35)
+position = Vector2(-274, -218)
+scale = Vector2(0.285862, 0.285862)
 texture = ExtResource("2_i47jw")
 
 [node name="dash_instruction" type="Sprite2D" parent="."]
-position = Vector2(-250, -250)
-scale = Vector2(0.3, 0.3)
+position = Vector2(275, -174)
+scale = Vector2(0.273297, 0.273297)
 texture = ExtResource("1_550dj")
 
 [node name="gun_instruction" type="Sprite2D" parent="."]
-position = Vector2(250, -250)
-scale = Vector2(0.3, 0.3)
+position = Vector2(-6.80938, -208.152)
+scale = Vector2(0.222023, 0.222023)
 texture = ExtResource("4_kjf6s")
 
 [node name="sword_instruction" type="Sprite2D" parent="."]
-position = Vector2(250, 250)
-scale = Vector2(0.34, 0.34)
+position = Vector2(-213.413, 208.111)
+scale = Vector2(0.288357, 0.288357)
 texture = ExtResource("5_shs0l")
+
+[node name="health" parent="." instance=ExtResource("6_b1lds")]
+position = Vector2(132, 273)
+type = "health"
+
+[node name="expirience" parent="." instance=ExtResource("6_vlj85")]
+position = Vector2(388, 274)
+type = "expirience"
+
+[node name="ammo" parent="." instance=ExtResource("7_4cjpv")]
+position = Vector2(251, 274)
+value = 2
+
+[node name="InstructionsLoot" type="Sprite2D" parent="."]
+position = Vector2(262.637, 352.563)
+scale = Vector2(0.278916, 0.278916)
+texture = ExtResource("9_dv21a")

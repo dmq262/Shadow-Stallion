@@ -4,8 +4,8 @@ var player
 var velocity = Vector2.ZERO
 var acceleration = 10
 var speed = 200
-var type = "ammo"
-var value = 20
+@export var type = "ammo"
+@export var value = 20
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
