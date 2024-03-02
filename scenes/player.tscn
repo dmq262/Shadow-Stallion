@@ -38,6 +38,7 @@ shape = SubResource("CircleShape2D_w7e8e")
 [node name="sound_footsteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_bjjxd")
 volume_db = -13.901
+pitch_scale = 50.0
 
 [node name="gun_tip" type="Marker2D" parent="."]
 position = Vector2(23, 10)
