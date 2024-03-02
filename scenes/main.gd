@@ -40,6 +40,7 @@ func update_hud():
 	$hud.set_dash_cooldown($player.dash_cooldown_progress, $player.dash_cooldown)
 	
 	$hud.set_stats($player.health, $player.speed, $player.max_ammo, $player.gun_cooldown, $player.bullet_speed, $player.bullet_size, $player.bullet_damage, $player.sword_cooldown, $player.sword_damage, $player.sword_size, $player.dash_cooldown, $player.dash_power, $player.level_points, $player.expirience, $player.max_expirience)
+	$hud.show_upgrades($player.level_points, $player.upgrade_increments)
 
 
 func _on_hud_upgrade_stat(stat):

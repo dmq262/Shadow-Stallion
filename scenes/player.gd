@@ -10,20 +10,20 @@ var health = 200
 var max_health = 200
 var expirience = 1
 var max_expirience = 100
-var level_points = 10
+var level_points = 50
 
 #Movement Variables
 var speed = 300
 var dash_vector = Vector2(0, 0)
-var dash_power = 15
-var dash_cooldown = 5
+var dash_power = 10
+var dash_cooldown = 10
 var dash_cooldown_progress = 0
 
 #Gun Variables
 @export var bullet_scene: PackedScene
 var ammo = 5
 var max_ammo = 5
-var gun_cooldown = 3
+var gun_cooldown = 5
 var gun_cooldown_progress = 0
 var bullet_speed = 1
 var bullet_size = 1
@@ -32,10 +32,26 @@ var bullet_damage = 1
 #Sword Variables
 var bullets_in_range = []
 var enemies_in_range = []
-var sword_cooldown = 3
+var sword_cooldown = 5
 var sword_cooldown_progress = 0
 var sword_damage = 1
 var sword_size = 1
+
+#Upgrade Variables
+var upgrade_increments = {
+	"health": [30],
+	"speed": [50, 50, 25, 25, 25, 25, 10],
+	"ammo": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+	"gun_cooldown": [-1, -.5, -.5, -.5, -.5, -.25, -.25, -.25, -.25, -.1, -.1, -.1, -.1, -.1, 0],
+	"bullet_speed": [50, 50, 25, 25, 25, 25, 10],
+	"bullet_size": [.5, .25, .25, .25, .25, .25, .25, 0],
+	"bullet_damage": [30],
+	"sword_cooldown": [-1, -.5, -.5, -.5, -.5, -.25, -.25, -.25, -.25, -.1, -.1, -.1, -.1, -.1, 0],
+	"sword_damage": [30],
+	"sword_size": [.5, .25, .25, .25, .25, .25, .25, 0],
+	"dash_cooldown": [-2, -2, -1, -1, -.5, -.5, -.5, -.5, -.25, -.25, -.25, -.25, -.1, -.1, -.1, -.1, -.1, 0],
+	"dash_power": [2.5, 2.5, 1, 1, 1, .5, .5, .5, .5, 0],
+}
 
 func _ready():
 	pass
@@ -45,33 +61,48 @@ func _physics_process(delta):
 	if health <= 0:
 		die()
 	
+	cap_variables()
 	update_cooldowns(delta)
 	process_combat()
 	process_movement(delta)
+
+
+func cap_variables():
+	if ammo > max_ammo:
+		ammo = max_ammo
+	if health > max_health:
+		health = max_health
+	if expirience > max_expirience:
+		level_points += 1
+		expirience = 0
 
 
 #Update gun, sword, and dash cooldowns
 func update_cooldowns(delta):
 	if gun_cooldown_progress > 0:
 		gun_cooldown_progress -= delta
+	if gun_cooldown_progress > gun_cooldown:
+		gun_cooldown_progress = gun_cooldown
 	if gun_cooldown_progress < 0:
 		gun_cooldown_progress = 0
 		
 	if sword_cooldown_progress > 0:
 		sword_cooldown_progress -= delta
+	if sword_cooldown_progress > sword_cooldown:
+		sword_cooldown_progress = sword_cooldown
 	if sword_cooldown_progress < 0:
 		sword_cooldown_progress = 0
 		
 	if dash_cooldown_progress > 0:
 		dash_cooldown_progress -= delta
+	if dash_cooldown_progress > dash_cooldown:
+		dash_cooldown_progress = dash_cooldown
 	if dash_cooldown_progress < 0:
 		dash_cooldown_progress = 0
 
 
 func process_combat():
 	look_at(get_global_mouse_position())
-	if ammo > max_ammo:
-		ammo = max_ammo
 	
 	#Shoot Bullet
 	if Input.is_action_just_pressed("shoot") and ammo > 0 and gun_cooldown_progress <= 0 and not stats_opened:
@@ -159,38 +190,41 @@ func _on_sword_hitbox_body_exited(body):
 		enemies_in_range.erase(body)
 
 
+#PROCESS STAT UPGRADES
 func upgrade_stat(stat):
 	level_points -= 1
-	print(stat)
 	#BASE
 	if stat == "health":
-		max_health += 20
-		health += 20
+		max_health += upgrade_increments[stat][0]
+		health += upgrade_increments[stat][0]
 	elif stat == "speed":
-		speed += 20
+		speed += upgrade_increments[stat][0]
 	#GUN
 	elif stat == "ammo":
-		max_ammo += 1
-		ammo += 1
+		max_ammo += upgrade_increments[stat][0]
+		ammo += upgrade_increments[stat][0]
 	elif stat == "gun_cooldown":
-		gun_cooldown += 1
+		gun_cooldown += upgrade_increments[stat][0]
 	elif stat == "bullet_speed":
-		max_ammo += 20
+		bullet_speed += upgrade_increments[stat][0]
 	elif stat == "bullet_damage":
-		max_ammo += 20
+		bullet_damage += upgrade_increments[stat][0]
 	elif stat == "bullet_size":
-		max_ammo += 20
+		bullet_size += upgrade_increments[stat][0]
 	#SWORD
 	elif stat == "sword_cooldown":
-		sword_cooldown += 20
+		sword_cooldown += upgrade_increments[stat][0]
 	elif stat == "sword_damage":
-		max_ammo += 20
+		sword_damage += upgrade_increments[stat][0]
 	elif stat == "sword_size":
-		max_ammo += 20
+		sword_size += upgrade_increments[stat][0]
 	#DASH
 	elif stat == "dash_cooldown":
-		dash_cooldown += 20
+		dash_cooldown += upgrade_increments[stat][0]
 	elif stat == "dash_power":
-		max_ammo += 20
+		dash_power += upgrade_increments[stat][0]
 	else:
 		print(stat, "not found")
+		
+	if (stat in upgrade_increments) and upgrade_increments[stat].size() > 1:
+		upgrade_increments[stat].pop_front()
