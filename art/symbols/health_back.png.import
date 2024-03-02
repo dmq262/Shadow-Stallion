@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drlfjh28pbv3u"
-path="res://.godot/imported/symbol_plus.png-406d89c84b1053b9e6525d5999eef708.ctex"
+uid="uid://vrrh5vtcnx7e"
+path="res://.godot/imported/health_back.png-41746c6f6b7edbfe816ab65cf1ab1bc5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/symbols/symbol_plus.png"
-dest_files=["res://.godot/imported/symbol_plus.png-406d89c84b1053b9e6525d5999eef708.ctex"]
+source_file="res://art/symbols/health_back.png"
+dest_files=["res://.godot/imported/health_back.png-41746c6f6b7edbfe816ab65cf1ab1bc5.ctex"]
 
 [params]
 

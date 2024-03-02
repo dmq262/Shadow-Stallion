@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://brxn0yu1liuyo"]
 
 [ext_resource type="Script" path="res://scenes/loot.gd" id="1_5jt2e"]
-[ext_resource type="Texture2D" uid="uid://be36sqncsu7fq" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_161.png" id="1_anct7"]
+[ext_resource type="Texture2D" uid="uid://d18rteywmtapf" path="res://art/symbols/bullet_back.png" id="2_qls84"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_br3l4"]
 radius = 147.085
@@ -9,11 +9,13 @@ radius = 147.085
 [node name="ammo" type="Area2D"]
 script = ExtResource("1_5jt2e")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_anct7")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["loot"]]
 shape = SubResource("CircleShape2D_br3l4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1.19209e-07)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_qls84")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

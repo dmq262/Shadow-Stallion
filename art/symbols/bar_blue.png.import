@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drlfjh28pbv3u"
-path="res://.godot/imported/symbol_plus.png-406d89c84b1053b9e6525d5999eef708.ctex"
+uid="uid://bklix2mckyjet"
+path="res://.godot/imported/bar_blue.png-557f32019d8c8005696dc8aad621fd74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/symbols/symbol_plus.png"
-dest_files=["res://.godot/imported/symbol_plus.png-406d89c84b1053b9e6525d5999eef708.ctex"]
+source_file="res://art/symbols/bar_blue.png"
+dest_files=["res://.godot/imported/bar_blue.png-557f32019d8c8005696dc8aad621fd74.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drlfjh28pbv3u"
-path="res://.godot/imported/symbol_plus.png-406d89c84b1053b9e6525d5999eef708.ctex"
+uid="uid://csg2bdwpt84wt"
+path="res://.godot/imported/cooldown_dash.png-dccc4c74e6f4aa9980022cd8372689c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/symbols/symbol_plus.png"
-dest_files=["res://.godot/imported/symbol_plus.png-406d89c84b1053b9e6525d5999eef708.ctex"]
+source_file="res://art/symbols/cooldown_dash.png"
+dest_files=["res://.godot/imported/cooldown_dash.png-dccc4c74e6f4aa9980022cd8372689c6.ctex"]
 
 [params]
 

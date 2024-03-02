@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drlfjh28pbv3u"
-path="res://.godot/imported/symbol_plus.png-406d89c84b1053b9e6525d5999eef708.ctex"
+uid="uid://cb3xckqvtb1qn"
+path="res://.godot/imported/sword_slash_2.png-d216b2528213837d6c97e89e03d3667d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/symbols/symbol_plus.png"
-dest_files=["res://.godot/imported/symbol_plus.png-406d89c84b1053b9e6525d5999eef708.ctex"]
+source_file="res://art/symbols/sword_slash_2.png"
+dest_files=["res://.godot/imported/sword_slash_2.png-d216b2528213837d6c97e89e03d3667d.ctex"]
 
 [params]
 

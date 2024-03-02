@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drlfjh28pbv3u"
-path="res://.godot/imported/symbol_plus.png-406d89c84b1053b9e6525d5999eef708.ctex"
+uid="uid://ctafe4bmkf3vw"
+path="res://.godot/imported/cooldown_sword_progress.png-38662a2128c711c18f34c470f419919a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/symbols/symbol_plus.png"
-dest_files=["res://.godot/imported/symbol_plus.png-406d89c84b1053b9e6525d5999eef708.ctex"]
+source_file="res://art/symbols/cooldown_sword_progress.png"
+dest_files=["res://.godot/imported/cooldown_sword_progress.png-38662a2128c711c18f34c470f419919a.ctex"]
 
 [params]
 
