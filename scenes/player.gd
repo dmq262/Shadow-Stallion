@@ -137,6 +137,9 @@ func process_combat():
 			
 		for enemy in enemies_in_range:
 			enemy.health -= sword_damage
+			
+		$sword_hitbox/sword_animation.sprite_frames.set_animation_loop('slash', false)
+		$sword_hitbox/sword_animation.play('slash')
 
 
 func process_movement(delta):

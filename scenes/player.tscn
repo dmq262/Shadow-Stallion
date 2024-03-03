@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://lho1j1nn418x"]
+[gd_scene load_steps=13 format=3 uid="uid://lho1j1nn418x"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_jgedc"]
 [ext_resource type="Texture2D" uid="uid://cddi6lrbft6w6" path="res://art/kenny_top_down_shooter/PNG/Man Brown/manBrown_gun.png" id="2_6syta"]
 [ext_resource type="PackedScene" uid="uid://bjj1q82mdpxhu" path="res://scenes/bullet.tscn" id="2_otwcl"]
 [ext_resource type="AudioStream" uid="uid://clemdpp56tbbc" path="res://art/Audio/Footsteps - Effecism_single.mp3" id="3_bjjxd"]
-[ext_resource type="Texture2D" uid="uid://ba7up7wbxupqb" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_20.png" id="5_hdb23"]
+[ext_resource type="Texture2D" uid="uid://be5msdtfv7pyl" path="res://art/symbols/sword_slash_1.png" id="5_wg1hc"]
+[ext_resource type="Texture2D" uid="uid://cb3xckqvtb1qn" path="res://art/symbols/sword_slash_2.png" id="6_20elm"]
+[ext_resource type="Texture2D" uid="uid://cjmjq22trtkyc" path="res://art/symbols/sword_slash_3.png" id="7_sp5nf"]
+[ext_resource type="Texture2D" uid="uid://bamme0ywft6tt" path="res://art/symbols/sword_slash_4.png" id="8_y5mgy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l6d15"]
 animations = [{
@@ -21,7 +24,30 @@ animations = [{
 radius = 32.249
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1eh45"]
-size = Vector2(103, 91)
+size = Vector2(103, 125)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2plma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_wg1hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_20elm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sp5nf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y5mgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wg1hc")
+}],
+"loop": true,
+"name": &"slash",
+"speed": 24.0
+}]
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 3
@@ -49,17 +75,18 @@ position_smoothing_speed = 10.0
 
 [node name="sword_hitbox" type="Area2D" parent="."]
 position = Vector2(57, 0)
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sword_hitbox"]
-position = Vector2(15.5, 0.5)
+position = Vector2(15.5, -7.5)
 shape = SubResource("RectangleShape2D_1eh45")
 
-[node name="Sprite2D" type="Sprite2D" parent="sword_hitbox"]
-modulate = Color(1, 1, 1, 0.337255)
-position = Vector2(15.5, 0.499998)
-scale = Vector2(1.60938, 1.42187)
-texture = ExtResource("5_hdb23")
+[node name="sword_animation" type="AnimatedSprite2D" parent="sword_hitbox"]
+position = Vector2(-69, 19)
+rotation = 1.5708
+scale = Vector2(0.146187, 0.139763)
+sprite_frames = SubResource("SpriteFrames_2plma")
+animation = &"slash"
+flip_h = true
 
 [connection signal="area_entered" from="sword_hitbox" to="." method="_on_sword_hitbox_area_entered"]
 [connection signal="area_exited" from="sword_hitbox" to="." method="_on_sword_hitbox_area_exited"]
