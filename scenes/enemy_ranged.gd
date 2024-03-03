@@ -8,9 +8,10 @@ extends CharacterBody2D
 const SPEED = 300.0
 var active = false
 var player
-var cooldown = 3
-var cooldown_progress = 3
+var cooldown = 2
+var cooldown_progress = 2
 var health = 100
+var damage = 25
 
 func _ready():
 	cooldown_progress = randf_range(0, cooldown)
@@ -20,14 +21,14 @@ func _ready():
 		print('player not found')
 
 func _physics_process(delta):
-	#Do nothing if unable to find player, or not active
-	if player == null or (not active):
-		return
-		
 	#Die when health reaches 0
 	if health <= 0:
 		die()
 		
+	#Do nothing if unable to find player, or not active
+	if player == null or (not active):
+		return
+	
 	look_at(player.position)
 	
 	#Shoot at player
@@ -42,6 +43,7 @@ func _physics_process(delta):
 func shoot_bullet():
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = $gun_tip.global_position
+	bullet.damage = damage
 	bullet.direction = (player.global_position - global_position).normalized()
 	bullet.add_to_group("enemy_bullet")
 	get_tree().current_scene.add_child(bullet)
@@ -50,11 +52,11 @@ func die():
 	for i in range(randi_range(1, 4)):
 		drop_loot(health_scene, "health", 20)
 		
-	for i in range(randi_range(1, 4)):
+	for i in range(randi_range(2, 5)):
 		drop_loot(ammo_scene, "ammo", 1)
 		
-	for i in range(randi_range(1, 4)):
-		drop_loot(expirience_scene, "expirience", 20)
+	for i in range(randi_range(3, 7)):
+		drop_loot(expirience_scene, "expirience", 7)
 	
 	queue_free()
 

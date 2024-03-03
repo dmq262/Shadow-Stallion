@@ -6,13 +6,14 @@ extends CharacterBody2D
 @export var expirience_scene: PackedScene
 
 #Stats
-var speed = 200
+var speed = 180
 var active = false
 var player
-var cooldown = 2
-var cooldown_progress = 2
+var cooldown = 1.2
+var cooldown_progress = 1.2
 var health = 100
 var player_in_range = false
+var damage = 25
 
 #Pathfinding Variables, assigned by 'astar_generator'
 var astar
@@ -31,6 +32,10 @@ func _ready():
 	
 
 func _physics_process(delta):
+	#Die when health reaches 0
+	if health <= 0:
+		die()
+	
 	#Do nothing if unable to find player, or not active
 	if player == null or (not active):
 		return
@@ -38,7 +43,7 @@ func _physics_process(delta):
 	#Hit Player
 	if cooldown_progress <= 0 and player_in_range:
 		cooldown_progress = cooldown
-		player.health -= 50
+		player.health -= damage
 	elif cooldown_progress > 0:
 		cooldown_progress -= delta
 	
@@ -46,10 +51,7 @@ func _physics_process(delta):
 	if astar != null:
 		process_movement(delta)
 	
-	#Die when health reaches 0
-	if health <= 0:
-		die()
-		
+
 	look_at(player.position)
 
 
@@ -89,11 +91,11 @@ func die():
 	for i in range(randi_range(1, 4)):
 		drop_loot(health_scene, "health", 20)
 		
-	for i in range(randi_range(1, 4)):
+	for i in range(randi_range(2, 5)):
 		drop_loot(ammo_scene, "ammo", 1)
 		
-	for i in range(randi_range(1, 4)):
-		drop_loot(expirience_scene, "expirience", 20)
+	for i in range(randi_range(3, 7)):
+		drop_loot(expirience_scene, "expirience", 7)
 	
 	queue_free()
 
