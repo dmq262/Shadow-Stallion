@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal player_death()
+
 #Gamestate Variables
 var stats_opened = false
 var dead = false
@@ -57,6 +59,9 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	if dead:
+		return
+	
 	#Die if health reaches 0
 	if health <= 0:
 		die()
@@ -176,6 +181,8 @@ func process_movement(delta):
 
 
 func die():
+	emit_signal("player_death")
+	dead = true
 	hide()
 
 
@@ -238,3 +245,48 @@ func upgrade_stat(stat):
 		
 	if (stat in upgrade_increments) and upgrade_increments[stat].size() > 1:
 		upgrade_increments[stat].pop_front()
+
+
+#RESETS ALL VARIABLES, COPY OF VARIABLE DECLARATION AT TOP OF SCRIPT, CALLED WHEN RESTARTING GAME
+func reset_player():
+	global_position = Vector2(0, 0)
+	show()
+	stats_opened = false
+	dead = false
+	health = 80
+	max_health = 100
+	expirience = 5
+	max_expirience = 100
+	level_points = 5
+	speed = 300
+	dash_vector = Vector2(0, 0)
+	dash_power = 10
+	dash_cooldown = 10
+	dash_cooldown_progress = 0
+	ammo = 3
+	max_ammo = 5
+	gun_cooldown = 5
+	gun_cooldown_progress = 0
+	bullet_speed = 400
+	bullet_size = 1
+	bullet_damage = 50
+	bullets_in_range = []
+	enemies_in_range = []
+	sword_cooldown = 5
+	sword_cooldown_progress = 0
+	sword_damage = 50
+	sword_size = 1
+	upgrade_increments = {
+		"health": [25],
+		"speed": [50, 50, 25, 25, 10],
+		"ammo": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+		"gun_cooldown": [-1, -.5, -.5, -.5, -.5, -.25, -.25, -.25, -.25, -.1, -.1, -.1, -.1, -.1, 0],
+		"bullet_speed": [100, 50, 50, 25, 25, 10],
+		"bullet_size": [.5, .25, .25, .1, .1, .1, .1, .1, 0],
+		"bullet_damage": [25],
+		"sword_cooldown": [-1, -.5, -.5, -.5, -.5, -.25, -.25, -.25, -.25, -.1, -.1, -.1, -.1, -.1, 0],
+		"sword_damage": [25],
+		"sword_size": [.25, .1, .1, .1, .1, .1, 0],
+		"dash_cooldown": [-2, -2, -1, -1, -.5, -.5, -.5, -.5, -.25, -.25, -.25, -.25, -.1, -.1, -.1, -.1, -.1, 0],
+		"dash_power": [2.5, 2.5, 1, 1, 1, .5, .5, .5, .5, 0],
+	}

@@ -32,7 +32,7 @@ func set_sword_cooldown(current, max):
 func set_dash_cooldown(current, max):
 	$gameplay/dash_cooldown.ratio = float(current)/max
 
-#TOGGLE STATS
+#TOGGLE STATS, RETURNS WHETHER THE STAT PAGE IS OPEN
 func toggle_stats():
 	if $stats.visible:
 		$stats.hide()
@@ -41,10 +41,16 @@ func toggle_stats():
 		$stats.show()
 		return true
 
+#TOGGLE GAME OVER
+func game_over(player_dead):
+	if player_dead:
+		$game_over.show()
+	else:
+		$game_over.hide()
+
 #UPGRADE BUTTONS
 func upgrade_button(stat: String):
 	emit_signal('upgrade_stat', stat)
-	
 
 #UPDATE STATS PAGE
 func set_stats(health, speed, max_ammo, gun_cooldown, bullet_speed, bullet_size, bullet_damage, sword_cooldown, sword_damage, sword_size, dash_cooldown, dash_power, level_points, expirience, max_expirience):
@@ -101,6 +107,4 @@ func show_upgrades(level_points, upgrade_increments):
 	$stats/gun/gun_stats_upgrade.text = "(" + str(ammo) + ")\n\n(" + str(gun_cooldown) + ")\n\n(" + str(upgrade_increments['bullet_speed'][0]) + ")\n\n(" + str(bullet_size) + ")\n\n(" + str(upgrade_increments['bullet_damage'][0]) + ")"
 	$stats/sword/sword_stats_upgrade.text = "(" + str(sword_cooldown) + ")\n\n(" + str(upgrade_increments['sword_damage'][0]) + ")\n\n(" + str(sword_size) + ")"
 	$stats/dash/dash_stats_upgrade.text = "(" + str(dash_cooldown) + ")\n\n(" + str(dash_power) + ")"
-
-		
-
+	

@@ -36,4 +36,5 @@ volume_db = -15.0
 
 [node name="hud" parent="." instance=ExtResource("10_1ui1c")]
 
+[connection signal="player_death" from="player" to="." method="close_stats"]
 [connection signal="upgrade_stat" from="hud" to="." method="_on_hud_upgrade_stat"]

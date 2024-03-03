@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://jmtyntu3kstk"]
+[gd_scene load_steps=23 format=3 uid="uid://jmtyntu3kstk"]
 
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_lbv4i"]
 [ext_resource type="Texture2D" uid="uid://dksiou14pub57" path="res://art/symbols/bar_grey.png" id="2_n3sl8"]
@@ -28,6 +28,16 @@ font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_3dts4"]
 font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_irf15"]
+font_size = 72
+outline_size = 10
+outline_color = Color(0.172549, 0.172549, 0.172549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nkgc6"]
+font_size = 30
+outline_size = 10
+outline_color = Color(0.207843, 0.207843, 0.207843, 1)
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_lbv4i")
@@ -593,6 +603,31 @@ offset_bottom = 223.0
 text = "Current Exp: 0/0
 Unspent Levels: 0"
 label_settings = SubResource("LabelSettings_3dts4")
+
+[node name="game_over" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="title" type="Label" parent="game_over"]
+layout_mode = 0
+offset_left = 419.0
+offset_top = 227.0
+offset_right = 830.0
+offset_bottom = 326.0
+text = "Game Over!"
+label_settings = SubResource("LabelSettings_irf15")
+
+[node name="Label" type="Label" parent="game_over"]
+layout_mode = 0
+offset_left = 483.0
+offset_top = 331.0
+offset_right = 783.0
+offset_bottom = 373.0
+text = "Press 'R' to Try Again"
+label_settings = SubResource("LabelSettings_nkgc6")
 
 [connection signal="pressed" from="stats/base/upgrade_health" to="." method="upgrade_button" binds= ["health"]]
 [connection signal="pressed" from="stats/base/upgrade_speed" to="." method="upgrade_button" binds= ["speed"]]
