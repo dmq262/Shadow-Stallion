@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://rd3denslkv7e"]
+
+[ext_resource type="Script" path="res://scenes/room.gd" id="1_gukpx"]
+[ext_resource type="Texture2D" uid="uid://c55ju2fsp2bj2" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_07.png" id="2_kjck8"]
+[ext_resource type="PackedScene" uid="uid://t8wfyw8o5x4y" path="res://scenes/wall_solid.tscn" id="3_2hfyh"]
+[ext_resource type="PackedScene" uid="uid://chdfb7a3ytnyo" path="res://scenes/enemy_melee.tscn" id="4_flh01"]
+[ext_resource type="PackedScene" uid="uid://fyigbswlhc3n" path="res://scenes/enemy_ranged.tscn" id="5_5dot2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47gnu"]
+size = Vector2(953, 950)
+
+[node name="room_4" type="Area2D" groups=["room"]]
+script = ExtResource("1_gukpx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(7.62939e-05, 0.499966)
+scale = Vector2(15.625, 15.6406)
+texture = ExtResource("2_kjck8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, -5)
+shape = SubResource("RectangleShape2D_47gnu")
+
+[node name="top_left" type="Marker2D" parent="."]
+position = Vector2(-500, -500)
+
+[node name="bottom_right" type="Marker2D" parent="."]
+position = Vector2(500, 500)
+
+[node name="wall_solid" parent="." instance=ExtResource("3_2hfyh")]
+position = Vector2(256, -304)
+scale = Vector2(0.705, 0.375)
+
+[node name="wall_solid3" parent="." instance=ExtResource("3_2hfyh")]
+position = Vector2(86, 19)
+scale = Vector2(0.705, 0.375)
+
+[node name="wall_solid4" parent="." instance=ExtResource("3_2hfyh")]
+position = Vector2(-86, 19)
+scale = Vector2(0.705, 0.375)
+
+[node name="wall_solid2" parent="." instance=ExtResource("3_2hfyh")]
+position = Vector2(-241, -305)
+scale = Vector2(0.705, 0.375)
+
+[node name="enemy_melee2" parent="." instance=ExtResource("4_flh01")]
+position = Vector2(2, -65)
+
+[node name="enemy_melee3" parent="." instance=ExtResource("4_flh01")]
+position = Vector2(0, 79)
+
+[node name="enemy_ranged" parent="." instance=ExtResource("5_5dot2")]
+position = Vector2(396, -425)
+
+[node name="enemy_ranged2" parent="." instance=ExtResource("5_5dot2")]
+position = Vector2(-413, -427)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

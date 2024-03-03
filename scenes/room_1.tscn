@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctojywrvgekv8"]
+[gd_scene load_steps=7 format=3 uid="uid://ctojywrvgekv8"]
 
 [ext_resource type="Script" path="res://scenes/room.gd" id="1_mlc48"]
 [ext_resource type="Texture2D" uid="uid://c55ju2fsp2bj2" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_07.png" id="2_3gj7r"]
 [ext_resource type="PackedScene" uid="uid://fyigbswlhc3n" path="res://scenes/enemy_ranged.tscn" id="3_mmfld"]
 [ext_resource type="PackedScene" uid="uid://chdfb7a3ytnyo" path="res://scenes/enemy_melee.tscn" id="4_6qrex"]
+[ext_resource type="PackedScene" uid="uid://t8wfyw8o5x4y" path="res://scenes/wall_solid.tscn" id="5_dafc7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47gnu"]
 size = Vector2(953, 950)
@@ -28,9 +29,29 @@ position = Vector2(-500, -500)
 position = Vector2(500, 500)
 
 [node name="enemy_ranged" parent="." instance=ExtResource("3_mmfld")]
-position = Vector2(174, -139)
+position = Vector2(375, -377)
+
+[node name="enemy_ranged2" parent="." instance=ExtResource("3_mmfld")]
+position = Vector2(-409, -401)
 
 [node name="enemy_melee" parent="." instance=ExtResource("4_6qrex")]
-position = Vector2(-260, 204)
+position = Vector2(-385, 338)
+
+[node name="wall_solid" parent="." instance=ExtResource("5_dafc7")]
+scale = Vector2(0.685, 0.385)
+
+[node name="wall_solid2" parent="." instance=ExtResource("5_dafc7")]
+position = Vector2(287, -1)
+scale = Vector2(0.685, 0.385)
+
+[node name="wall_solid3" parent="." instance=ExtResource("5_dafc7")]
+position = Vector2(145, -178)
+rotation = 1.5708
+scale = Vector2(0.685, 0.3)
+
+[node name="wall_solid4" parent="." instance=ExtResource("5_dafc7")]
+position = Vector2(145, 180)
+rotation = 1.5708
+scale = Vector2(0.685, 0.3)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
