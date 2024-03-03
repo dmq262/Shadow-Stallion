@@ -25,16 +25,16 @@ var ammo = 3
 var max_ammo = 5
 var gun_cooldown = 5
 var gun_cooldown_progress = 0
-var bullet_speed = 1
+var bullet_speed = 400
 var bullet_size = 1
-var bullet_damage = 1
+var bullet_damage = 50
 
 #Sword Variables
 var bullets_in_range = []
 var enemies_in_range = []
 var sword_cooldown = 5
 var sword_cooldown_progress = 0
-var sword_damage = 1
+var sword_damage = 50
 var sword_size = 1
 
 #Upgrade Variables
@@ -43,12 +43,12 @@ var upgrade_increments = {
 	"speed": [50, 50, 25, 25, 10],
 	"ammo": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
 	"gun_cooldown": [-1, -.5, -.5, -.5, -.5, -.25, -.25, -.25, -.25, -.1, -.1, -.1, -.1, -.1, 0],
-	"bullet_speed": [50, 50, 25, 25, 10],
-	"bullet_size": [.5, .25, .25, .25, .25, .25, .25, 0],
-	"bullet_damage": [30],
+	"bullet_speed": [100, 50, 50, 25, 25, 10],
+	"bullet_size": [.5, .25, .25, .1, .1, .1, .1, .1, 0],
+	"bullet_damage": [25],
 	"sword_cooldown": [-1, -.5, -.5, -.5, -.5, -.25, -.25, -.25, -.25, -.1, -.1, -.1, -.1, -.1, 0],
-	"sword_damage": [30],
-	"sword_size": [.5, .25, .25, .25, .25, .25, .25, 0],
+	"sword_damage": [25],
+	"sword_size": [.25, .1, .1, .1, .1, .1, 0],
 	"dash_cooldown": [-2, -2, -1, -1, -.5, -.5, -.5, -.5, -.25, -.25, -.25, -.25, -.1, -.1, -.1, -.1, -.1, 0],
 	"dash_power": [2.5, 2.5, 1, 1, 1, .5, .5, .5, .5, 0],
 }
@@ -103,6 +103,7 @@ func update_cooldowns(delta):
 
 func process_combat():
 	look_at(get_global_mouse_position())
+	$sword_hitbox.scale = Vector2(sword_size, sword_size)
 	
 	#Shoot Bullet
 	if Input.is_action_just_pressed("shoot") and ammo > 0 and gun_cooldown_progress <= 0 and not stats_opened:
@@ -110,8 +111,14 @@ func process_combat():
 		ammo -= 1
 		
 		var bullet = bullet_scene.instantiate()
+		
+		#Set Bullet Variables
 		bullet.global_position = $gun_tip.global_position
 		bullet.direction = (get_global_mouse_position() - global_position).normalized()
+		bullet.speed = bullet_speed
+		bullet.scale = Vector2(bullet_size, bullet_size)
+		bullet.damage = bullet_damage
+		
 		bullet.add_to_group("player_bullet")
 		get_tree().current_scene.add_child(bullet)
 		
@@ -124,7 +131,7 @@ func process_combat():
 			enemy_bullet.queue_free()
 			
 		for enemy in enemies_in_range:
-			enemy.health -= 100
+			enemy.health -= sword_damage
 
 
 func process_movement(delta):
@@ -210,6 +217,7 @@ func upgrade_stat(stat):
 		bullet_speed += upgrade_increments[stat][0]
 	elif stat == "bullet_damage":
 		bullet_damage += upgrade_increments[stat][0]
+		upgrade_increments[stat][0] += 5
 	elif stat == "bullet_size":
 		bullet_size += upgrade_increments[stat][0]
 	#SWORD
@@ -217,6 +225,7 @@ func upgrade_stat(stat):
 		sword_cooldown += upgrade_increments[stat][0]
 	elif stat == "sword_damage":
 		sword_damage += upgrade_increments[stat][0]
+		upgrade_increments[stat][0] += 5
 	elif stat == "sword_size":
 		sword_size += upgrade_increments[stat][0]
 	#DASH
