@@ -43,7 +43,7 @@ func _physics_process(delta):
 	#Hit Player
 	if cooldown_progress <= 0 and player_in_range:
 		cooldown_progress = cooldown
-		player.health -= damage
+		player.hit(damage)
 	elif cooldown_progress > 0:
 		cooldown_progress -= delta
 	
