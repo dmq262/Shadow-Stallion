@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 signal player_death()
 
+@export var blood_splatter_scene: PackedScene
+
 #Gamestate Variables
 var stats_opened = false
 var dead = false
@@ -136,7 +138,7 @@ func process_combat():
 			enemy_bullet.queue_free()
 			
 		for enemy in enemies_in_range:
-			enemy.health -= sword_damage
+			enemy.hit(sword_damage)
 			
 		$sword_hitbox/sword_animation.sprite_frames.set_animation_loop('slash', false)
 		$sword_hitbox/sword_animation.play('slash')
@@ -184,7 +186,14 @@ func process_movement(delta):
 
 
 func hit(damage):
+	if dead:
+		return
+	
 	health -= damage
+	var blood_splatter = blood_splatter_scene.instantiate()
+	blood_splatter.global_position = global_position
+	get_tree().current_scene.add_child(blood_splatter)
+	get_tree().current_scene.move_child(blood_splatter, 0)
 
 func die():
 	emit_signal("player_death")

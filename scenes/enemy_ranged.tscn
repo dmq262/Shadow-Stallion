@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://fyigbswlhc3n"]
+[gd_scene load_steps=10 format=3 uid="uid://fyigbswlhc3n"]
 
 [ext_resource type="Script" path="res://scenes/enemy_ranged.gd" id="1_fblyt"]
 [ext_resource type="Texture2D" uid="uid://dqa61vv6okiyk" path="res://art/kenny_top_down_shooter/PNG/Hitman 1/hitman1_gun.png" id="1_w5ex8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://70r47x5kqg7o" path="res://scenes/health.tscn" id="3_g2r2f"]
 [ext_resource type="PackedScene" uid="uid://brxn0yu1liuyo" path="res://scenes/ammo.tscn" id="4_fpeab"]
 [ext_resource type="PackedScene" uid="uid://ykxldkk5vri2" path="res://scenes/expirience.tscn" id="5_577sq"]
+[ext_resource type="PackedScene" uid="uid://dleoeyy2mjhei" path="res://scenes/blood_splatter.tscn" id="6_khrhi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tjinq"]
 animations = [{
@@ -27,6 +28,7 @@ bullet_scene = ExtResource("2_nr0rn")
 health_scene = ExtResource("3_g2r2f")
 ammo_scene = ExtResource("4_fpeab")
 expirience_scene = ExtResource("5_577sq")
+blood_splatter_scene = ExtResource("6_khrhi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tjinq")

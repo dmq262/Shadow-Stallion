@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var health_scene: PackedScene
 @export var ammo_scene: PackedScene
 @export var expirience_scene: PackedScene
+@export var blood_splatter_scene: PackedScene
 
 const SPEED = 300.0
 var active = false
@@ -50,6 +51,11 @@ func shoot_bullet():
 
 func hit(damage):
 	health -= damage
+	
+	var blood_splatter = blood_splatter_scene.instantiate()
+	blood_splatter.global_position = global_position
+	get_tree().current_scene.add_child(blood_splatter)
+	get_tree().current_scene.move_child(blood_splatter, 0)
 
 func die():
 	for i in range(randi_range(1, 4)):

@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://lho1j1nn418x"]
+[gd_scene load_steps=14 format=3 uid="uid://lho1j1nn418x"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_jgedc"]
 [ext_resource type="Texture2D" uid="uid://cddi6lrbft6w6" path="res://art/kenny_top_down_shooter/PNG/Man Brown/manBrown_gun.png" id="2_6syta"]
+[ext_resource type="PackedScene" uid="uid://dleoeyy2mjhei" path="res://scenes/blood_splatter.tscn" id="2_jc4dr"]
 [ext_resource type="PackedScene" uid="uid://bjj1q82mdpxhu" path="res://scenes/bullet.tscn" id="2_otwcl"]
 [ext_resource type="AudioStream" uid="uid://clemdpp56tbbc" path="res://art/Audio/Footsteps - Effecism_single.mp3" id="3_bjjxd"]
 [ext_resource type="Texture2D" uid="uid://be5msdtfv7pyl" path="res://art/symbols/sword_slash_1.png" id="5_wg1hc"]
@@ -53,6 +54,7 @@ animations = [{
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_jgedc")
+blood_splatter_scene = ExtResource("2_jc4dr")
 bullet_scene = ExtResource("2_otwcl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
