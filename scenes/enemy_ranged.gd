@@ -47,7 +47,10 @@ func shoot_bullet():
 	bullet.direction = (player.global_position - global_position).normalized()
 	bullet.add_to_group("enemy_bullet")
 	get_tree().current_scene.add_child(bullet)
-	
+
+func hit(damage):
+	health -= damage
+
 func die():
 	for i in range(randi_range(1, 4)):
 		drop_loot(health_scene, "health", 20)

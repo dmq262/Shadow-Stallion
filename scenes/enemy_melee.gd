@@ -87,6 +87,9 @@ func process_movement(delta):
 	var collision = move_and_collide(velocity * delta * speed)
 
 
+func hit(damage):
+	health -= damage
+
 func die():
 	for i in range(randi_range(1, 4)):
 		drop_loot(health_scene, "health", 20)

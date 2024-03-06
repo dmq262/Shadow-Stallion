@@ -183,6 +183,9 @@ func process_movement(delta):
 	old_playback = $sound_footsteps.get_playback_position()
 
 
+func hit(damage):
+	health -= damage
+
 func die():
 	emit_signal("player_death")
 	dead = true
