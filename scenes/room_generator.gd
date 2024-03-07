@@ -13,7 +13,7 @@ var grid_size = 5
 var room_size = 1000
 
 #Generate Rooms
-func generate_rooms(grid_size_input = 5, max_rooms_input = 19, room_size_input = 1000):
+func generate_rooms(grid_size_input = 5, max_rooms_input = 19, room_size_input = 1000, tutorial = false):
 	#Set/Reset Variables
 	max_rooms = max_rooms_input
 	grid_size = grid_size_input
@@ -60,7 +60,8 @@ func generate_rooms(grid_size_input = 5, max_rooms_input = 19, room_size_input =
 	print_rooms()
 	
 	#Build Rooms
-	build_rooms(start_room.coordinates)
+	build_walls(start_room.coordinates)
+	build_rooms(start_room.coordinates, tutorial)
 
 #Uses depth first search to create rooms
 func add_room(parent, available_rooms):
@@ -139,7 +140,7 @@ func set_distances(parent):
 		parent = queue.pop_front()
 
 
-func build_rooms(center_coordinates):
+func build_walls(center_coordinates):
 	for row in room_grid:
 		for room in row:
 			#Skip if current room is not used
@@ -165,11 +166,29 @@ func build_rooms(center_coordinates):
 				build_wall((room.coordinates - center_coordinates + Vector2(0, .5)) * room_size, PI/2, wall_scene_door)
 			else:
 				build_wall((room.coordinates - center_coordinates + Vector2(0, .5)) * room_size, PI/2, wall_scene_solid)
+
+#Helper Function for build_rooms
+func build_wall(wall_position, wall_rotation, wall_scene):
+	var wall = wall_scene.instantiate()
+	wall.position = wall_position
+	wall.rotation = wall_rotation
+	get_tree().current_scene.add_child(wall)
+
+#Instantiate premade rooms in walls
+func build_rooms(center_coordinates, tutorial):
+	for row in room_grid:
+		for room in row:
+		#Skip if current room is not used
+			if not room.is_room:
+				continue
 				
 			#Put Room Scene in Walls
 			if room.distance == 0:
 				var new_room = start_room_scene.instantiate()
 				new_room.global_position = (room.coordinates - center_coordinates) * room_size
+				if not tutorial:
+					new_room.phase = 6
+				
 				get_tree().current_scene.add_child(new_room)
 				get_tree().current_scene.move_child(new_room, 0)
 			else:
@@ -178,14 +197,6 @@ func build_rooms(center_coordinates):
 				new_room.global_position = (room.coordinates - center_coordinates) * room_size
 				get_tree().current_scene.add_child(new_room)
 				get_tree().current_scene.move_child(new_room, 0)
-				
-
-#Helper Function for build_rooms
-func build_wall(wall_position, wall_rotation, wall_scene):
-	var wall = wall_scene.instantiate()
-	wall.position = wall_position
-	wall.rotation = wall_rotation
-	get_tree().current_scene.add_child(wall)
 
 #Print room_grid
 func print_rooms():

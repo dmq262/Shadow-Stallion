@@ -16,7 +16,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pd3ln"]
 size = Vector2(64, 64)
 
-[node name="room_start" type="Node2D"]
+[node name="room_start" type="Node2D" groups=["room"]]
 script = ExtResource("1_0021o")
 
 [node name="ground" type="Sprite2D" parent="."]

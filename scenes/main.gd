@@ -1,8 +1,11 @@
 extends Node
 
+var tutorial = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	game_start()
+	tutorial = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,7 +28,7 @@ func _process(delta):
 
 func game_start():
 	$music.play()
-	$room_generator.generate_rooms()
+	$room_generator.generate_rooms(5, 19 , 1000, tutorial)
 	$astar_generator.generate_astar()
 	
 func update_hud():
