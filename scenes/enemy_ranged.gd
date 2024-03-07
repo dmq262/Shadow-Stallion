@@ -7,16 +7,15 @@ extends CharacterBody2D
 @export var blood_splatter_scene: PackedScene
 
 const SPEED = 300.0
-var active = false
+@export var active = false
 var player
 var cooldown = 2
 var cooldown_progress = 2
 var health = 100
-var damage = 25
+@export var damage = 25
 
 func _ready():
 	cooldown_progress = randf_range(0, cooldown)
-	active = false
 	player = get_tree().current_scene.get_node('player')
 	if player == null:
 		print('player not found')
