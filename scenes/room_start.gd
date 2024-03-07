@@ -7,7 +7,6 @@ var next = false
 
 #PHASE SPECIFIC VARIABLES
 var player
-var prev_level_points = 5
 var loot_tutorial
 var gun_tutorial
 var sword_tutorial
@@ -25,7 +24,6 @@ func _ready():
 	remove_child(gun_tutorial)
 	sword_tutorial = $sword_tutorial
 	remove_child(sword_tutorial)
-	prev_level_points = player.level_points
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,8 +31,9 @@ func _process(delta):
 	if next:
 		timer += delta
 	
-	#MOVEMENT PHASE
+	#MOVEMENT PHASEr
 	if phase == 0:
+		player.level_points = 0
 		$move_instruction.show()
 		if Input.is_action_just_pressed("move_down") or Input.is_action_just_pressed("move_up") or Input.is_action_just_pressed("move_right") or Input.is_action_just_pressed("move_left"):
 			next = true
@@ -74,6 +73,8 @@ func _process(delta):
 	#GUN PHASE
 	elif phase == 3:
 		player.gun_cooldown = 1
+		player.ammo = 5
+		player.level_points = 0
 		var dummy_1 = get_node_or_null('gun_tutorial/gun_dummy_1')
 		var dummy_2 = get_node_or_null('gun_tutorial/gun_dummy_2')
 		
@@ -90,6 +91,7 @@ func _process(delta):
 	#SWORD PHASE
 	elif phase == 4:
 		player.sword_cooldown = 1
+		player.level_points = 0
 		var dummy_1 = get_node_or_null('sword_tutorial/sword_dummy_1')
 		var dummy_2 = get_node_or_null('sword_tutorial/sword_dummy_2')
 		var dummy_3 = get_node_or_null('sword_tutorial/sword_dummy_3')
@@ -103,10 +105,10 @@ func _process(delta):
 			next = false
 			player.sword_cooldown = 5              #PUT IN STARTING COOLDOWN HERE
 			$sword_tutorial.hide()
-			prev_level_points = player.level_points
+			player.level_points = 5
 	elif phase == 5:
 		#Upgrade Tutorial
-		if (player.level_points < prev_level_points) or (player.level_points < 3):
+		if player.level_points < 5:
 			next = true
 		
 		if timer > 2:

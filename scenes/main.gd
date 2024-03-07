@@ -16,7 +16,7 @@ func _process(delta):
 		$player.stats_opened = $hud.toggle_stats()
 	
 	#Temp Restart mechanic
-	if Input.is_action_just_pressed("restart"):
+	if Input.is_action_just_pressed("restart") and $player.dead:
 		for wall in get_tree().get_nodes_in_group('wall'):
 			wall.queue_free()
 		for room in get_tree().get_nodes_in_group('room'):
