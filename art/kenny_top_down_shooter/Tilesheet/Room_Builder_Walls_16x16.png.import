@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drlfjh28pbv3u"
-path="res://.godot/imported/Symbol_plus.png-77920a58115ba0cc8ee3aa7dc20f0a49.ctex"
+uid="uid://bdpns15i6p0"
+path="res://.godot/imported/Room_Builder_Walls_16x16.png-4eb8170fab33f3b4147ce8587f0167a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/symbols/Symbol_plus.png"
-dest_files=["res://.godot/imported/Symbol_plus.png-77920a58115ba0cc8ee3aa7dc20f0a49.ctex"]
+source_file="res://art/kenny_top_down_shooter/Tilesheet/Room_Builder_Walls_16x16.png"
+dest_files=["res://.godot/imported/Room_Builder_Walls_16x16.png-4eb8170fab33f3b4147ce8587f0167a9.ctex"]
 
 [params]
 

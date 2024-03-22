@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgh751mybevw0"]
+[gd_scene load_steps=5 format=3 uid="uid://bgh751mybevw0"]
 
 [ext_resource type="Texture2D" uid="uid://cq1uji5x58f52" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_19.png" id="1_3r24d"]
+[ext_resource type="TileSet" uid="uid://bip0gnhxw4os" path="res://art/tilesets_tilemap/WallTiles.tres" id="1_ufbsy"]
 [ext_resource type="PackedScene" uid="uid://cocjxwr5hoqg6" path="res://scenes/unwalkable.tscn" id="2_ukba5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dp022"]
@@ -8,12 +9,20 @@ size = Vector2(41, 405.75)
 
 [node name="wall_door" type="StaticBody2D" groups=["wall"]]
 
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(2, 2)
+tile_set = ExtResource("1_ufbsy")
+format = 2
+layer_0/tile_data = PackedInt32Array(-983041, 327682, 26, -917505, 327682, 26, -851969, 327682, 26, -786433, 327682, 26, -720897, 327682, 26, -655361, 327682, 26, -589825, 327682, 26, -524289, 327682, 26, -458753, 327682, 26, -393217, 327682, 26, -327681, 327682, 26, -262145, 327682, 26, -196609, 327682, 26, -1048576, 327682, 26, -983040, 327682, 26, -917504, 327682, 26, -851968, 327682, 26, -786432, 327682, 26, -720896, 327682, 26, -655360, 327682, 26, -589824, 327682, 26, -524288, 327682, 26, -458752, 327682, 26, -393216, 327682, 26, -327680, 327682, 26, -262144, 327682, 26, -131073, 327682, 26, 196607, 327682, 26, 262143, 327682, 26, 327679, 327682, 26, 393215, 327682, 26, 458751, 327682, 26, 524287, 327682, 26, 589823, 327682, 26, 655359, 327682, 26, 720895, 327682, 26, 786431, 327682, 26, 851967, 327682, 26, 917503, 327682, 26, 983039, 327682, 26, 1048575, 327682, 26, -196608, 327682, 26, 131072, 327682, 26, 196608, 327682, 26, 262144, 327682, 26, 327680, 327682, 26, 393216, 327682, 26, 458752, 327682, 26, 524288, 327682, 26, 589824, 327682, 26, 655360, 327682, 26, 720896, 327682, 26, 786432, 327682, 26, 851968, 327682, 26, 917504, 327682, 26, 983040, 327682, 26)
+
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-0.499999, 297)
 scale = Vector2(0.640625, 6.34375)
 texture = ExtResource("1_3r24d")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0.5, -297)
 scale = Vector2(0.640625, 6.34375)
 texture = ExtResource("1_3r24d")
