@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cr5s3ole88uiu"]
+[gd_scene load_steps=15 format=3 uid="uid://cr5s3ole88uiu"]
 
 [ext_resource type="Texture2D" uid="uid://c55ju2fsp2bj2" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_07.png" id="1_7ekuo"]
 [ext_resource type="Script" path="res://scenes/room_start.gd" id="1_0021o"]
 [ext_resource type="Texture2D" uid="uid://b5gnvnv3r7tti" path="res://art/symbols/instructions_dash.png" id="1_550dj"]
 [ext_resource type="Texture2D" uid="uid://e4ek2m0h50sg" path="res://art/symbols/instructions_move.png" id="2_i47jw"]
+[ext_resource type="TileSet" uid="uid://dy601r8ibycbc" path="res://art/custom_tilesets/tile_map.tres" id="2_rmflr"]
 [ext_resource type="Texture2D" uid="uid://c0hrgyub5f8l2" path="res://art/symbols/instructions_gun.png" id="4_kjf6s"]
 [ext_resource type="Texture2D" uid="uid://bhksxuo6papna" path="res://art/symbols/instructions_sword.png" id="5_shs0l"]
 [ext_resource type="PackedScene" uid="uid://fyigbswlhc3n" path="res://scenes/enemy_ranged.tscn" id="6_78pes"]
@@ -19,7 +20,17 @@ size = Vector2(64, 64)
 [node name="room_start" type="Node2D" groups=["room"]]
 script = ExtResource("1_0021o")
 
+[node name="TileMap" type="TileMap" parent="."]
+z_index = -1
+texture_filter = 1
+position = Vector2(7.62939e-05, 0.499966)
+scale = Vector2(10.425, 10.435)
+tile_set = ExtResource("2_rmflr")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65536, 327680, 28, 65535, 327680, 28, 0, 327680, 28, -1, 327680, 28, -131075, 327680, 28, -65539, 327680, 28, -3, 327680, 28, 65533, 327680, 28, 131069, 327680, 28, 196605, 327680, 28, 196606, 327680, 28, 196607, 327680, 28, 131072, 327680, 28, 131073, 327680, 28, 131074, 327680, 28, 65538, 327680, 28, 2, 327680, 28, 1, 327680, 28, -65535, 327680, 28, -131071, 327680, 28, -196606, 327680, 28, -131070, 327680, 28, -65534, 327680, 28, -196607, 327680, 28, -196608, 327680, 28, -131073, 327680, 28, -65537, 327680, 28, -65538, 327680, 28, -2, 327680, 28, 65534, 327680, 28, -131072, 327680, 28, -131074, 327680, 28, 131070, 327680, 28, 131071, 327680, 28, 65536, 327680, 28, 65537, 327680, 28)
+
 [node name="ground" type="Sprite2D" parent="."]
+visible = false
 z_index = -1
 position = Vector2(7.62939e-05, 0.499966)
 scale = Vector2(15.625, 15.6406)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ck0axooguxamp"]
+[gd_scene load_steps=8 format=3 uid="uid://ck0axooguxamp"]
 
 [ext_resource type="Script" path="res://scenes/room.gd" id="1_02bcy"]
+[ext_resource type="TileSet" uid="uid://dy601r8ibycbc" path="res://art/custom_tilesets/tile_map.tres" id="2_7lri5"]
 [ext_resource type="Texture2D" uid="uid://c55ju2fsp2bj2" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_07.png" id="2_o4yrg"]
 [ext_resource type="PackedScene" uid="uid://t8wfyw8o5x4y" path="res://scenes/wall_solid.tscn" id="3_p1puw"]
 [ext_resource type="PackedScene" uid="uid://chdfb7a3ytnyo" path="res://scenes/enemy_melee.tscn" id="4_f4xbe"]
@@ -12,7 +13,17 @@ size = Vector2(953, 950)
 [node name="room_3" type="Area2D" groups=["room"]]
 script = ExtResource("1_02bcy")
 
+[node name="TileMap" type="TileMap" parent="."]
+z_index = -1
+texture_filter = 1
+position = Vector2(7.62939e-05, 0.499966)
+scale = Vector2(10.425, 10.435)
+tile_set = ExtResource("2_7lri5")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65536, 327680, 28, 65535, 327680, 28, 0, 327680, 28, -1, 327680, 28, -131075, 327680, 28, -65539, 327680, 28, -3, 327680, 28, 65533, 327680, 28, 131069, 327680, 28, 196605, 327680, 28, 196606, 327680, 28, 196607, 327680, 28, 131072, 327680, 28, 131073, 327680, 28, 131074, 327680, 28, 65538, 327680, 28, 2, 327680, 28, 1, 327680, 28, -65535, 327680, 28, -131071, 327680, 28, -196606, 327680, 28, -131070, 327680, 28, -65534, 327680, 28, -196607, 327680, 28, -196608, 327680, 28, -131073, 327680, 28, -65537, 327680, 28, -65538, 327680, 28, -2, 327680, 28, 65534, 327680, 28, -131072, 327680, 28, -131074, 327680, 28, 131070, 327680, 28, 131071, 327680, 28, 65536, 327680, 28, 65537, 327680, 28)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 z_index = -1
 position = Vector2(7.62939e-05, 0.499966)
 scale = Vector2(15.625, 15.6406)

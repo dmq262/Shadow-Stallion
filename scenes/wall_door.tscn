@@ -1,41 +1,54 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgh751mybevw0"]
+[gd_scene load_steps=5 format=3 uid="uid://bgh751mybevw0"]
 
 [ext_resource type="Texture2D" uid="uid://cq1uji5x58f52" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_19.png" id="1_3r24d"]
+[ext_resource type="TileSet" uid="uid://dy601r8ibycbc" path="res://art/custom_tilesets/tile_map.tres" id="1_tjmgr"]
 [ext_resource type="PackedScene" uid="uid://cocjxwr5hoqg6" path="res://scenes/unwalkable.tscn" id="2_ukba5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dp022"]
-size = Vector2(41, 405.75)
+size = Vector2(67.5623, 406.947)
 
 [node name="wall_door" type="StaticBody2D" groups=["wall"]]
 
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+tile_set = ExtResource("1_tjmgr")
+format = 2
+layer_0/tile_data = PackedInt32Array(-655361, 1048576, 24, -589825, 1048576, 24, -524289, 1048576, 24, -458753, 1048576, 24, -393217, 1048576, 24, -327681, 1048576, 24, -262145, 1048576, 24, -196609, 1048576, 24, -720896, 1048576, 24, -655360, 1048576, 24, -589824, 1048576, 24, -524288, 1048576, 24, -458752, 1048576, 24, -393216, 1048576, 24, -327680, 1048576, 24, -262144, 1048576, 24, -983041, 1048576, 24, -917505, 1048576, 24, -851969, 1048576, 24, -786433, 1048576, 24, -720897, 1048576, 24, -1048576, 1048576, 24, -983040, 1048576, 24, -917504, 1048576, 24, -851968, 1048576, 24, -786432, 1048576, 24, 262143, 1048576, 24, 327679, 1048576, 24, 393215, 1048576, 24, 458751, 1048576, 24, 524287, 1048576, 24, 589823, 1048576, 24, 655359, 1048576, 24, 720895, 1048576, 24, 786431, 1048576, 24, 851967, 1048576, 24, 917503, 1048576, 24, 983039, 1048576, 24, 1048575, 1048576, 24, 196608, 1048576, 24, 262144, 1048576, 24, 327680, 1048576, 24, 393216, 1048576, 24, 458752, 1048576, 24, 524288, 1048576, 24, 589824, 1048576, 24, 655360, 1048576, 24, 720896, 1048576, 24, 786432, 1048576, 24, 851968, 1048576, 24, 917504, 1048576, 24, 983040, 1048576, 24)
+
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-0.499999, 297)
 scale = Vector2(0.640625, 6.34375)
 texture = ExtResource("1_3r24d")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0.5, -297)
 scale = Vector2(0.640625, 6.34375)
 texture = ExtResource("1_3r24d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 297.125)
+position = Vector2(0, 304.5)
 shape = SubResource("RectangleShape2D_dp022")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0, -297)
+texture_filter = 2
+position = Vector2(4.54867e-07, -305.614)
+rotation = -3.14159
+scale = Vector2(0.947273, -1.0351)
 shape = SubResource("RectangleShape2D_dp022")
 
 [node name="top_left" type="Marker2D" parent="."]
-position = Vector2(-20, -500)
+position = Vector2(-32, -512)
 
 [node name="bottom_right" type="Marker2D" parent="."]
-position = Vector2(20, 500)
+position = Vector2(33, 512)
 
 [node name="unwalkable" parent="." instance=ExtResource("2_ukba5")]
-position = Vector2(0, 297)
-scale = Vector2(0.4, 4)
+position = Vector2(0, 304.51)
+scale = Vector2(0.66, 4.185)
 
 [node name="unwalkable2" parent="." instance=ExtResource("2_ukba5")]
-position = Vector2(0, -297)
-scale = Vector2(0.4, 4.1)
+position = Vector2(0, -307.23)
+scale = Vector2(0.62, 4.26)
