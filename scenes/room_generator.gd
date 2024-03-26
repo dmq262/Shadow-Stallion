@@ -4,6 +4,7 @@ extends Node
 @export var wall_scene_door: PackedScene
 @export var room_scenes: Array
 @export var start_room_scene: PackedScene
+@export var boss_room_scene: PackedScene
 
 var room_grid = []
 var available_rooms = []
@@ -176,6 +177,9 @@ func build_wall(wall_position, wall_rotation, wall_scene):
 
 #Instantiate premade rooms in walls
 func build_rooms(center_coordinates, tutorial):
+	var boss_coordinates = get_boss_coordinates(center_coordinates)
+	print("Boss is at: ", boss_coordinates)
+	
 	for row in room_grid:
 		for room in row:
 		#Skip if current room is not used
@@ -183,20 +187,49 @@ func build_rooms(center_coordinates, tutorial):
 				continue
 				
 			#Put Room Scene in Walls
+			var new_room
+			#Start Room
 			if room.distance == 0:
-				var new_room = start_room_scene.instantiate()
-				new_room.global_position = (room.coordinates - center_coordinates) * room_size
+				new_room = start_room_scene.instantiate()
 				if not tutorial:
 					new_room.phase = 6
-				
-				get_tree().current_scene.add_child(new_room)
-				get_tree().current_scene.move_child(new_room, 0)
+			#Boss Room
+			elif room.coordinates == boss_coordinates:
+				new_room = boss_room_scene.instantiate()
+			#Other Rooms
 			else:
 				room_scenes.shuffle()
-				var new_room = room_scenes[0].instantiate()
-				new_room.global_position = (room.coordinates - center_coordinates) * room_size
-				get_tree().current_scene.add_child(new_room)
-				get_tree().current_scene.move_child(new_room, 0)
+				new_room = room_scenes[0].instantiate()
+			
+			#update position, add room to tree, move to bottom
+			new_room.global_position = (room.coordinates - center_coordinates) * room_size
+			get_tree().current_scene.add_child(new_room)
+			get_tree().current_scene.move_child(new_room, 0)
+
+func get_boss_coordinates(center_coordinates):
+	var possible_rooms = []
+	var furthest_room = room_grid[center_coordinates.y][center_coordinates.x]
+	
+	#APPEND ALL ROOMS WITH DISTANCE > 5, FIND FURTHEST ROOM
+	for row in room_grid:
+		for room in row:
+			#Skip non-rooms
+			if not room.is_room:
+				continue
+			
+			if room.distance >= 5:
+				possible_rooms.append(room)
+			if room.distance > furthest_room.distance:
+				furthest_room = room
+	
+	#IF MULTIPLE ROOMS WITH DISTANCE > 5, RETURN RANDOM
+	#ELSE, RETURN FURTHEST
+	if possible_rooms.size() > 0:
+		possible_rooms.shuffle()
+		return possible_rooms[0].coordinates
+	else:
+		return furthest_room.coordinates
+	
 
 #Print room_grid
 func print_rooms():
