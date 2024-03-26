@@ -20,14 +20,14 @@ var level_points = 5
 var speed = 300
 var dash_vector = Vector2(0, 0)
 var dash_power = 10
-var dash_cooldown = 10
+var dash_cooldown = 5
 var dash_cooldown_progress = 0
 
 #Gun Variables
 @export var bullet_scene: PackedScene
 var ammo = 3
 var max_ammo = 5
-var gun_cooldown = 5
+var gun_cooldown = 3
 var gun_cooldown_progress = 0
 var bullet_speed = 400
 var bullet_size = 1
@@ -36,7 +36,7 @@ var bullet_damage = 50
 #Sword Variables
 var bullets_in_range = []
 var enemies_in_range = []
-var sword_cooldown = 5
+var sword_cooldown = 3
 var sword_cooldown_progress = 0
 var sword_damage = 50
 var sword_size = 1
@@ -46,14 +46,14 @@ var upgrade_increments = {
 	"health": [25],
 	"speed": [50, 50, 25, 25, 10],
 	"ammo": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-	"gun_cooldown": [-1, -.5, -.5, -.5, -.5, -.25, -.25, -.25, -.25, -.1, -.1, -.1, -.1, -.1, 0],
+	"gun_cooldown": [-1, -.5, -.5, -.25, -.25, -.1, -.1, -.1, 0],
 	"bullet_speed": [100, 50, 50, 25, 25, 10],
 	"bullet_size": [.5, .25, .25, .1, .1, .1, .1, .1, 0],
 	"bullet_damage": [25],
-	"sword_cooldown": [-1, -.5, -.5, -.5, -.5, -.25, -.25, -.25, -.25, -.1, -.1, -.1, -.1, -.1, 0],
+	"sword_cooldown": [-1, -.5, -.5, -.25, -.25, -.1, -.1, -.1, 0],
 	"sword_damage": [25],
 	"sword_size": [.25, .1, .1, .1, .1, .1, 0],
-	"dash_cooldown": [-2, -2, -1, -1, -.5, -.5, -.5, -.5, -.25, -.25, -.25, -.25, -.1, -.1, -.1, -.1, -.1, 0],
+	"dash_cooldown": [-2, -1, -.5, -.5, -.25, -.25, 0],
 	"dash_power": [2.5, 2.5, 1, 1, 1, .5, .5, .5, .5, 0],
 }
 

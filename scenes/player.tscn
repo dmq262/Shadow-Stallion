@@ -25,7 +25,7 @@ animations = [{
 radius = 32.249
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1eh45"]
-size = Vector2(103, 125)
+size = Vector2(132, 125)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2plma"]
 animations = [{
@@ -78,7 +78,7 @@ position_smoothing_speed = 10.0
 position = Vector2(57, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sword_hitbox"]
-position = Vector2(15.5, -7.5)
+position = Vector2(30, -7.5)
 shape = SubResource("RectangleShape2D_1eh45")
 
 [node name="sword_animation" type="AnimatedSprite2D" parent="sword_hitbox"]
