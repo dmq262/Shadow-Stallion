@@ -5,7 +5,7 @@ var grid_size
 var cell_size
 var astar = AStarGrid2D.new()
 
-func generate_astar(room_size_input = 1000, grid_size_input = 5, cell_size_input = 25):
+func generate_astar(room_size_input = 1000, grid_size_input = 5, cell_size_input = 15):
 	#Set variables
 	astar = AStarGrid2D.new()
 	room_size = room_size_input
