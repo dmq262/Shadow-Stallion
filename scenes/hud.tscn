@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://jmtyntu3kstk"]
+[gd_scene load_steps=24 format=3 uid="uid://jmtyntu3kstk"]
 
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_lbv4i"]
 [ext_resource type="Texture2D" uid="uid://dksiou14pub57" path="res://art/symbols/bar_grey.png" id="2_n3sl8"]
@@ -22,6 +22,11 @@
 font_size = 25
 outline_size = 10
 outline_color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ibnwe"]
+font_size = 34
+outline_size = 10
+outline_color = Color(0.184314, 0.184314, 0.184314, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wwage"]
 font_size = 32
@@ -55,8 +60,8 @@ anchor_left = 0.04
 anchor_right = 0.04
 offset_left = 14.4
 offset_top = 75.0
-offset_right = 663.4
-offset_bottom = 129.0
+offset_right = 555.4
+offset_bottom = 120.0
 value = 10.0
 nine_patch_stretch = true
 texture_under = ExtResource("2_n3sl8")
@@ -66,18 +71,18 @@ texture_progress = ExtResource("3_gmy8h")
 layout_mode = 0
 offset_left = 18.0
 offset_top = 7.0
-offset_right = 1248.0
-offset_bottom = 67.0
+offset_right = 1064.0
+offset_bottom = 58.0
 nine_patch_stretch = true
 texture_under = ExtResource("4_fsupa")
 texture_progress = ExtResource("4_hb1qq")
 
 [node name="ammo_container" type="HBoxContainer" parent="gameplay"]
 layout_mode = 0
-offset_left = 675.0
+offset_left = 567.0
 offset_top = 68.0
-offset_right = 1268.0
-offset_bottom = 137.0
+offset_right = 1083.0
+offset_bottom = 128.0
 metadata/_edit_group_ = true
 
 [node name="ammo_1" type="TextureRect" parent="gameplay/ammo_container"]
@@ -217,6 +222,28 @@ offset_right = 982.0
 offset_bottom = 589.0
 text = "You have unspent levels. Press 'E' or 'Q' to upgrade."
 label_settings = SubResource("LabelSettings_dlg0k")
+
+[node name="next_level_notification" type="Label" parent="gameplay"]
+layout_mode = 0
+offset_left = 245.0
+offset_top = 131.0
+offset_right = 1017.0
+offset_bottom = 166.0
+text = "Continue Exploring this floor or Press \"Enter\" to start next level."
+label_settings = SubResource("LabelSettings_dlg0k")
+
+[node name="current_level" type="Label" parent="gameplay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 32.001
+anchor_right = 32.001
+offset_left = -162.04
+offset_top = 40.0
+offset_right = -45.0402
+offset_bottom = 107.0
+grow_horizontal = 0
+text = "Level 1"
+label_settings = SubResource("LabelSettings_ibnwe")
 
 [node name="stats" type="Control" parent="."]
 visible = false

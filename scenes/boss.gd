@@ -1,12 +1,14 @@
 extends CharacterBody2D
 
+signal boss_death
+
 @export var bullet_scene: PackedScene
 @export var health_scene: PackedScene
 @export var ammo_scene: PackedScene
 @export var expirience_scene: PackedScene
 @export var blood_splatter_scene: PackedScene
 
-const SPEED = 240
+const SPEED = 210
 @export var active = false
 var player
 var cooldown = .5
@@ -79,6 +81,7 @@ func die():
 	for i in range(randi_range(3, 7)):
 		drop_loot(expirience_scene, "expirience", 7)
 	
+	emit_signal("boss_death")
 	queue_free()
 
 func drop_loot(loot_scene, type, value):

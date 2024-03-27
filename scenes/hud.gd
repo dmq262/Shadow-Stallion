@@ -32,6 +32,13 @@ func set_sword_cooldown(current, max):
 func set_dash_cooldown(current, max):
 	$gameplay/dash_cooldown.ratio = float(current)/max
 
+func show_current_level(level, boss_killed):
+	$gameplay/current_level.text = "Level " + str(level)
+	if boss_killed:
+		$gameplay/next_level_notification.show()
+	else:
+		$gameplay/next_level_notification.hide()
+
 #TOGGLE STATS, RETURNS WHETHER THE STAT PAGE IS OPEN
 func toggle_stats():
 	if $stats.visible:

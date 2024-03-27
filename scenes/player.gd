@@ -261,7 +261,7 @@ func upgrade_stat(stat):
 	if (stat in upgrade_increments) and upgrade_increments[stat].size() > 1:
 		upgrade_increments[stat].pop_front()
 
-
+#FIX RESET PLAYER SO THAT IS DOES NOT REVERT BACK TO ORIGINAL
 #RESETS ALL VARIABLES, COPY OF VARIABLE DECLARATION AT TOP OF SCRIPT, CALLED WHEN RESTARTING GAME
 func reset_player():
 	global_position = Vector2(0, 0)
