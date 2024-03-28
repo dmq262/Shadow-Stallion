@@ -57,6 +57,8 @@ var upgrade_increments = {
 	"dash_power": [2.5, 2.5, 1, 1, 1, .5, .5, .5, .5, 0],
 }
 
+var checkpoint = {}
+
 func _ready():
 	pass
 
@@ -268,40 +270,46 @@ func reset_player():
 	show()
 	stats_opened = false
 	dead = false
-	health = 80
-	max_health = 100
+	health = checkpoint['health']
+	max_health = checkpoint['health']
 	expirience = 5
 	max_expirience = 100
-	level_points = 5
-	speed = 300
+	level_points = checkpoint['level_points']
+	speed = checkpoint['speed']
 	dash_vector = Vector2(0, 0)
-	dash_power = 10
-	dash_cooldown = 10
+	dash_power = checkpoint['dash_power']
+	dash_cooldown = checkpoint['dash_cooldown']
 	dash_cooldown_progress = 0
-	ammo = 3
-	max_ammo = 5
-	gun_cooldown = 5
+	ammo = checkpoint['ammo']
+	max_ammo = checkpoint['ammo']
+	gun_cooldown = checkpoint['gun_cooldown']
 	gun_cooldown_progress = 0
-	bullet_speed = 400
-	bullet_size = 1
-	bullet_damage = 50
+	bullet_speed = checkpoint['bullet_speed']
+	bullet_size = checkpoint['bullet_size']
+	bullet_damage = checkpoint['bullet_damage']
 	bullets_in_range = []
 	enemies_in_range = []
-	sword_cooldown = 5
+	sword_cooldown = checkpoint['sword_cooldown']
 	sword_cooldown_progress = 0
-	sword_damage = 50
-	sword_size = 1
-	upgrade_increments = {
-		"health": [25],
-		"speed": [50, 50, 25, 25, 10],
-		"ammo": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-		"gun_cooldown": [-1, -.5, -.5, -.5, -.5, -.25, -.25, -.25, -.25, -.1, -.1, -.1, -.1, -.1, 0],
-		"bullet_speed": [100, 50, 50, 25, 25, 10],
-		"bullet_size": [.5, .25, .25, .1, .1, .1, .1, .1, 0],
-		"bullet_damage": [25],
-		"sword_cooldown": [-1, -.5, -.5, -.5, -.5, -.25, -.25, -.25, -.25, -.1, -.1, -.1, -.1, -.1, 0],
-		"sword_damage": [25],
-		"sword_size": [.25, .1, .1, .1, .1, .1, 0],
-		"dash_cooldown": [-2, -2, -1, -1, -.5, -.5, -.5, -.5, -.25, -.25, -.25, -.25, -.1, -.1, -.1, -.1, -.1, 0],
-		"dash_power": [2.5, 2.5, 1, 1, 1, .5, .5, .5, .5, 0],
-	}
+	sword_damage = checkpoint['sword_damage']
+	sword_size = checkpoint['sword_size']
+	upgrade_increments = checkpoint['upgrade_increments'].duplicate()
+	
+func set_checkpoint():
+	health = max_health
+	ammo = max_ammo
+	checkpoint['health'] = max_health
+	checkpoint['speed'] = speed
+	checkpoint['ammo'] = max_ammo
+	checkpoint['gun_cooldown'] = gun_cooldown
+	checkpoint['bullet_speed'] = bullet_speed
+	checkpoint['bullet_size'] = bullet_size
+	checkpoint['bullet_damage'] = bullet_damage
+	checkpoint['sword_cooldown'] = sword_cooldown
+	checkpoint['sword_damage'] = sword_damage
+	checkpoint['sword_size'] = sword_size
+	checkpoint['dash_cooldown'] = dash_cooldown
+	checkpoint['dash_power'] = dash_power
+	checkpoint['upgrade_increments'] = upgrade_increments.duplicate()
+	checkpoint['level_points'] = level_points
+

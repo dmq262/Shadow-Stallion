@@ -7,6 +7,7 @@ var level = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	game_start()
+	$player.set_checkpoint()
 	tutorial = false
 
 
@@ -68,6 +69,7 @@ func next_level():
 	for room in get_tree().get_nodes_in_group('room'):
 		room.queue_free()
 	
+	$player.set_checkpoint()
 	$player.global_position = Vector2(0, 0)
 	$player.show()
 	await get_tree().process_frame
