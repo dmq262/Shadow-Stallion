@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var blood_splatter_scene: PackedScene
 
 #Stats
-var speed = 180
+var speed = 175
 var active = false
 var player
 var cooldown = 1.2
@@ -24,6 +24,12 @@ var room_size
 var grid_size
 var cell_size
 var target
+
+func scale_enemy(level):
+	health *= 1.6 ** (level - 1)
+	speed *= 1.4 ** (level - 1)
+	cooldown -= .2 * (level-1)
+	damage *= 1.6 ** (level - 1)
 
 func _ready():
 	active = false

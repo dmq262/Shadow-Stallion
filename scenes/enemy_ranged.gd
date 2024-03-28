@@ -6,13 +6,19 @@ extends CharacterBody2D
 @export var expirience_scene: PackedScene
 @export var blood_splatter_scene: PackedScene
 
-const SPEED = 300.0
 @export var active = false
 var player
 var cooldown = 2
 var cooldown_progress = 2
 var health = 100
+var bullet_speed = 350
 @export var damage = 25
+
+func scale_enemy(level):
+	health *= 1.5 ** (level - 1)
+	cooldown -= .1 * (level-1)
+	bullet_speed *= 1.5 ** (level -1)
+	damage *= 1.5 ** (level - 1)
 
 func _ready():
 	cooldown_progress = randf_range(0, cooldown)
@@ -44,6 +50,7 @@ func shoot_bullet():
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = $gun_tip.global_position
 	bullet.damage = damage
+	bullet.speed = bullet_speed
 	bullet.direction = (player.global_position - global_position).normalized()
 	bullet.add_to_group("enemy_bullet")
 	get_tree().current_scene.add_child(bullet)

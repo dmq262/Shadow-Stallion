@@ -8,7 +8,7 @@ signal boss_death
 @export var expirience_scene: PackedScene
 @export var blood_splatter_scene: PackedScene
 
-const SPEED = 210
+var speed = 210
 @export var active = false
 var player
 var cooldown = .5
@@ -24,6 +24,13 @@ var room_size
 var grid_size
 var cell_size
 var target
+
+func scale_enemy(level):
+	health *= 1.5 ** (level - 1)
+	speed *= 1.2 ** (level - 1)
+	cooldown -= .1 * (level-1)
+	damage *= 1.5 ** (level - 1)
+	
 
 func _ready():
 	cooldown_progress = randf_range(0, cooldown)
@@ -120,5 +127,5 @@ func process_movement(delta):
 	#Set velocity and move
 	velocity = Vector2i(target) - current_point
 	velocity.normalized()
-
-	var collision = move_and_collide(velocity * delta * SPEED)
+	
+	var collision = move_and_collide(velocity * delta * speed)

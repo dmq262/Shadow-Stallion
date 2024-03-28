@@ -38,6 +38,8 @@ func game_start():
 	$room_generator.generate_rooms(5, 19 , 1000, tutorial)
 	$room_boss/boss.boss_death.connect(level_complete)
 	$astar_generator.generate_astar()
+	for enemy in get_tree().get_nodes_in_group('enemy'):
+		enemy.scale_enemy(level)
 	
 	
 func update_hud():
