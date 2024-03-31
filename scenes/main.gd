@@ -1,6 +1,6 @@
 extends Node
 
-var tutorial = false
+var tutorial = true
 var boss_killed = false
 var level = 1
 

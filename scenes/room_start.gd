@@ -34,7 +34,7 @@ func _process(delta):
 	#MOVEMENT PHASEr
 	if phase == 0:
 		player.level_points = 0
-		$move_instruction.show()
+		$move_tutorial.show()
 		if Input.is_action_just_pressed("move_down") or Input.is_action_just_pressed("move_up") or Input.is_action_just_pressed("move_right") or Input.is_action_just_pressed("move_left"):
 			next = true
 		
@@ -42,18 +42,19 @@ func _process(delta):
 			phase += 1
 			timer = 0
 			next = false
-			$move_instruction.hide()
+			$move_tutorial.hide()
+			player.dash_cooldown_progress = 0
 	#DASH PHASE
 	elif phase == 1:
-		$dash_instruction.show()
-		if player.dash_cooldown_progress > 1:
+		$dash_tutorial.show()
+		if Input.is_action_just_pressed("dash"):
 			next = true
 			
 		if timer > 2:
 			phase += 1
 			timer = 0
 			next = false
-			$dash_instruction.hide()
+			$dash_tutorial.hide()
 			add_child(loot_tutorial)
 	#LOOT PHASE
 	elif phase == 2:
@@ -64,7 +65,7 @@ func _process(delta):
 		if (ammo == null) and (expirience == null) and (health == null):
 			next = true
 			
-		if timer > 1:
+		if timer > 2:
 			phase += 1
 			timer = 0
 			next = false
@@ -105,6 +106,7 @@ func _process(delta):
 			next = false
 			player.sword_cooldown = 5              #PUT IN STARTING COOLDOWN HERE
 			$sword_tutorial.hide()
+			$level_tutorial.show()
 			player.level_points = 5
 	elif phase == 5:
 		#Upgrade Tutorial
@@ -113,8 +115,10 @@ func _process(delta):
 		
 		if timer > 2:
 			next = false
+			$level_tutorial.hide()
 			phase += 1
 	else:
+		$objective_tutorial.show()
 		var doors = get_node_or_null('doors')
 		if doors != null:
 			doors.queue_free()
