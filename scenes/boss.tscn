@@ -23,6 +23,7 @@ animations = [{
 radius = 25.1794
 
 [node name="boss" type="CharacterBody2D" groups=["enemy"]]
+collision_mask = 2
 script = ExtResource("1_1gf4w")
 bullet_scene = ExtResource("2_3aqhq")
 health_scene = ExtResource("3_dyils")
