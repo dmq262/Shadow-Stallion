@@ -9,7 +9,7 @@ var speed = 200
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	global_position += velocity
+	global_position += velocity * delta * 50
 	
 	#Pick up if close enough
 	if player and (player.global_position - global_position).length() < 30:
