@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://70r47x5kqg7o"]
 
 [ext_resource type="Script" path="res://scenes/loot.gd" id="1_eh7hv"]
-[ext_resource type="Texture2D" uid="uid://vrrh5vtcnx7e" path="res://art/symbols/health_back.png" id="2_sm06w"]
+[ext_resource type="Texture2D" uid="uid://8c7mjhkm6umu" path="res://art/symbols/health_back_red.png" id="2_ijwcj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xmy05"]
 radius = 151.053
@@ -11,7 +11,7 @@ script = ExtResource("1_eh7hv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_sm06w")
+texture = ExtResource("2_ijwcj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["loot"]]
 shape = SubResource("CircleShape2D_xmy05")
