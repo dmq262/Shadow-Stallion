@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_xmy05"]
 radius = 151.053
 
-[node name="health" type="Area2D"]
+[node name="health" type="Area2D" groups=["loot"]]
 script = ExtResource("1_eh7hv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

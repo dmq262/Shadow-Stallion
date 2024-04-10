@@ -28,6 +28,8 @@ func _process(delta):
 			wall.queue_free()
 		for room in get_tree().get_nodes_in_group('room'):
 			room.queue_free()
+		for loot in get_tree().get_nodes_in_group('loot'):
+			loot.queue_free()
 		
 		$player.reset_player() #I would put this in game_start(), but it causes a bug where a new room detects the old player position
 		await get_tree().process_frame
@@ -70,6 +72,8 @@ func next_level():
 		wall.queue_free()
 	for room in get_tree().get_nodes_in_group('room'):
 		room.queue_free()
+	for loot in get_tree().get_nodes_in_group('loot'):
+		loot.queue_free()
 	
 	$player.set_checkpoint()
 	$player.global_position = Vector2(0, 0)

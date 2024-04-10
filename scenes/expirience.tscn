@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_jwmmq"]
 radius = 152.003
 
-[node name="expirience" type="Area2D"]
+[node name="expirience" type="Area2D" groups=["loot"]]
 script = ExtResource("1_dhb4f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
