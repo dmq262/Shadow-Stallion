@@ -140,7 +140,14 @@ func process_combat():
 			enemy_bullet.queue_free()
 			
 		for enemy in enemies_in_range:
-			enemy.hit(sword_damage)
+			#RayCast to Enemy
+			var space_state = get_world_2d().direct_space_state
+			var query = PhysicsRayQueryParameters2D.create(global_position, enemy.global_position)
+			query.exclude = [self]
+			var result = space_state.intersect_ray(query)
+			
+			if result['collider'] == enemy:
+				enemy.hit(sword_damage)
 			
 		$sword_hitbox/sword_animation.sprite_frames.set_animation_loop('slash', false)
 		$sword_hitbox/sword_animation.play('slash')
