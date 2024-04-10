@@ -60,7 +60,7 @@ var upgrade_increments = {
 var checkpoint = {}
 
 func _ready():
-	pass
+	set_checkpoint()
 
 func _physics_process(delta):
 	if dead:
@@ -293,7 +293,7 @@ func reset_player():
 	sword_cooldown_progress = 0
 	sword_damage = checkpoint['sword_damage']
 	sword_size = checkpoint['sword_size']
-	upgrade_increments = checkpoint['upgrade_increments'].duplicate()
+	upgrade_increments = checkpoint['upgrade_increments'].duplicate(true)
 	
 func set_checkpoint():
 	health = max_health
@@ -310,6 +310,5 @@ func set_checkpoint():
 	checkpoint['sword_size'] = sword_size
 	checkpoint['dash_cooldown'] = dash_cooldown
 	checkpoint['dash_power'] = dash_power
-	checkpoint['upgrade_increments'] = upgrade_increments.duplicate()
+	checkpoint['upgrade_increments'] = upgrade_increments.duplicate(true)
 	checkpoint['level_points'] = level_points
-
