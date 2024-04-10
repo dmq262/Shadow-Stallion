@@ -35,7 +35,7 @@ func _process(delta):
 
 func game_start():
 	$music.play()
-	$room_generator.generate_rooms(5, 19 , 1000, tutorial)
+	$room_generator.generate_rooms(5, (level * 5) + 5 , 1000, tutorial)
 	$room_boss/boss.boss_death.connect(level_complete)
 	$astar_generator.generate_astar()
 	for enemy in get_tree().get_nodes_in_group('enemy'):
