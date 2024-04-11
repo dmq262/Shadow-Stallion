@@ -43,6 +43,11 @@ func game_start():
 	for enemy in get_tree().get_nodes_in_group('enemy'):
 		enemy.scale_enemy(level)
 	
+	#Put Mouse on Top
+	var cursor = $mouse_cursor
+	remove_child($mouse_cursor)
+	add_child(cursor)
+	
 	
 func update_hud():
 	#HUD ELEMENTS
