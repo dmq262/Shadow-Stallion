@@ -27,7 +27,7 @@ var target
 
 func scale_enemy(level):
 	health *= 1.6 ** (level - 1)
-	speed *= 1.4 ** (level - 1)
+	speed *= 1.2 ** (level - 1)
 	cooldown -= .2 * (level-1)
 	damage *= 1.6 ** (level - 1)
 

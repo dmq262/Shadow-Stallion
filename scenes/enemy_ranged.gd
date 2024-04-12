@@ -17,7 +17,7 @@ var bullet_speed = 350
 func scale_enemy(level):
 	health *= 1.5 ** (level - 1)
 	cooldown -= .1 * (level-1)
-	bullet_speed *= 1.5 ** (level -1)
+	bullet_speed *= 1.3 ** (level -1)
 	damage *= 1.5 ** (level - 1)
 
 func _ready():
