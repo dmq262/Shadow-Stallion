@@ -20,7 +20,10 @@ func _process(delta):
 	
 	#Next Level Mechanic
 	if Input.is_action_just_pressed('next_level') and not $player.stats_opened:
-		next_level()
+		if level < 3:
+			next_level()
+		else:
+			get_tree().reload_current_scene()
 	
 	#Temp Restart mechanic
 	if Input.is_action_just_pressed("restart") and $player.dead:

@@ -656,6 +656,34 @@ offset_bottom = 373.0
 text = "Press 'R' to Try Again"
 label_settings = SubResource("LabelSettings_nkgc6")
 
+[node name="game_finish" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="title" type="Label" parent="game_finish"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 311.0
+offset_top = 272.0
+offset_right = 889.0
+offset_bottom = 371.0
+grow_horizontal = 2
+text = "Congratulations!"
+label_settings = SubResource("LabelSettings_irf15")
+
+[node name="Label" type="Label" parent="game_finish"]
+offset_left = 470.0
+offset_top = 381.0
+offset_right = 783.0
+offset_bottom = 423.0
+text = "Press 'Enter' to Play Again"
+label_settings = SubResource("LabelSettings_nkgc6")
+
 [connection signal="pressed" from="stats/base/upgrade_health" to="." method="upgrade_button" binds= ["health"]]
 [connection signal="pressed" from="stats/base/upgrade_speed" to="." method="upgrade_button" binds= ["speed"]]
 [connection signal="pressed" from="stats/gun/upgrade_ammo" to="." method="upgrade_button" binds= ["ammo"]]

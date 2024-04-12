@@ -34,10 +34,13 @@ func set_dash_cooldown(current, max):
 
 func show_current_level(level, boss_killed):
 	$gameplay/current_level.text = "Level " + str(level)
-	if boss_killed:
+	if boss_killed and level < 3:
 		$gameplay/next_level_notification.show()
+	elif boss_killed:
+		$game_finish.show()
 	else:
 		$gameplay/next_level_notification.hide()
+		$game_finish.hide()
 
 #TOGGLE STATS, RETURNS WHETHER THE STAT PAGE IS OPEN
 func toggle_stats():
