@@ -660,6 +660,15 @@ text = "Current Exp: 0/0
 Unspent Levels: 0"
 label_settings = SubResource("LabelSettings_3dts4")
 
+[node name="Label" type="Label" parent="stats"]
+layout_mode = 0
+offset_left = 938.0
+offset_top = 48.0
+offset_right = 1235.0
+offset_bottom = 83.0
+text = "Press 'Q', 'E', or 'Esc' to close"
+label_settings = SubResource("LabelSettings_3dts4")
+
 [node name="game_over" type="Control" parent="."]
 visible = false
 layout_mode = 3
