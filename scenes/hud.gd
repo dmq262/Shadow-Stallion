@@ -36,8 +36,10 @@ func show_current_level(level, boss_killed):
 	$gameplay/current_level.text = "Level " + str(level)
 	if boss_killed and level < 3:
 		$gameplay/next_level_notification.show()
+		$game_finish.hide()
 	elif boss_killed:
 		$game_finish.show()
+		$gameplay/next_level_notification.hide()
 	else:
 		$gameplay/next_level_notification.hide()
 		$game_finish.hide()
