@@ -131,6 +131,8 @@ func process_combat():
 		bullet.add_to_group("player_bullet")
 		get_tree().current_scene.add_child(bullet)
 		
+		$sound_gunshot.play()
+		
 	#Block/Parry/Swing Sword
 	if Input.is_action_just_pressed('block') and sword_cooldown_progress <= 0:
 		sword_cooldown_progress = sword_cooldown
@@ -151,6 +153,7 @@ func process_combat():
 			
 		$sword_hitbox/sword_animation.sprite_frames.set_animation_loop('slash', false)
 		$sword_hitbox/sword_animation.play('slash')
+		$sound_sword.play()
 
 
 func process_movement(delta):
