@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1nrtqhpo1nf2"]
+[gd_scene load_steps=12 format=3 uid="uid://c1nrtqhpo1nf2"]
 
 [ext_resource type="Script" path="res://scenes/boss.gd" id="1_1gf4w"]
 [ext_resource type="Texture2D" uid="uid://dgdqp8fxnv5bb" path="res://art/kenny_top_down_shooter/PNG/Soldier 1/soldier1_gun.png" id="1_k3ajx"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://brxn0yu1liuyo" path="res://scenes/ammo.tscn" id="4_nn1s7"]
 [ext_resource type="PackedScene" uid="uid://ykxldkk5vri2" path="res://scenes/expirience.tscn" id="5_7rx00"]
 [ext_resource type="PackedScene" uid="uid://dleoeyy2mjhei" path="res://scenes/blood_splatter.tscn" id="6_bbe7n"]
+[ext_resource type="PackedScene" uid="uid://cmneqquiof1tn" path="res://scenes/sound_enemy_damage.tscn" id="7_jhh75"]
 [ext_resource type="AudioStream" uid="uid://c11vrq8lxmurv" path="res://art/Audio/gunshot.mp3" id="8_r6rh4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dqed8"]
@@ -31,6 +32,7 @@ health_scene = ExtResource("3_dyils")
 ammo_scene = ExtResource("4_nn1s7")
 expirience_scene = ExtResource("5_7rx00")
 blood_splatter_scene = ExtResource("6_bbe7n")
+sound_enemy_damage_scene = ExtResource("7_jhh75")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dqed8")

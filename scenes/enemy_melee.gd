@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var ammo_scene: PackedScene
 @export var expirience_scene: PackedScene
 @export var blood_splatter_scene: PackedScene
+@export var sound_enemy_damage_scene: PackedScene
 
 #Stats
 var speed = 175
@@ -101,6 +102,9 @@ func hit(damage):
 	blood_splatter.global_position = global_position
 	get_tree().current_scene.add_child(blood_splatter)
 	get_tree().current_scene.move_child(blood_splatter, 0)
+	
+	var sound_damage = sound_enemy_damage_scene.instantiate()
+	get_tree().current_scene.add_child(sound_damage)
 
 func die():
 	for i in range(randi_range(1, 4)):

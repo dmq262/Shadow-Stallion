@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmneqquiof1tn"]
+
+[ext_resource type="Script" path="res://scenes/sound_enemy_damage.gd" id="1_1mxd5"]
+[ext_resource type="AudioStream" uid="uid://drulgwa5u7q1f" path="res://art/Audio/enemy_damage.mp3" id="1_aens7"]
+
+[node name="sound_enemy_damage" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_aens7")
+volume_db = -2.085
+autoplay = true
+script = ExtResource("1_1mxd5")
