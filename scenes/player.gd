@@ -206,6 +206,9 @@ func hit(damage):
 	blood_splatter.global_position = global_position
 	get_tree().current_scene.add_child(blood_splatter)
 	get_tree().current_scene.move_child(blood_splatter, 0)
+	
+	$sound_damage.pitch_scale = randf_range(.8, 1.2)
+	$sound_damage.play()
 
 func die():
 	emit_signal("player_death")

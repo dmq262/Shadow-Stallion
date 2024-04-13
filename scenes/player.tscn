@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://lho1j1nn418x"]
+[gd_scene load_steps=17 format=3 uid="uid://lho1j1nn418x"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_jgedc"]
 [ext_resource type="Texture2D" uid="uid://cddi6lrbft6w6" path="res://art/kenny_top_down_shooter/PNG/Man Brown/manBrown_gun.png" id="2_6syta"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://c11vrq8lxmurv" path="res://art/Audio/gunshot.mp3" id="6_lrp4f"]
 [ext_resource type="AudioStream" uid="uid://cyon88g7pnosg" path="res://art/Audio/swinging-sword-2.wav" id="7_ltckx"]
 [ext_resource type="Texture2D" uid="uid://cjmjq22trtkyc" path="res://art/symbols/sword_slash_3.png" id="7_sp5nf"]
+[ext_resource type="AudioStream" uid="uid://chm4tiy0y6mau" path="res://art/Audio/player_damage.mp3" id="8_m6a0b"]
 [ext_resource type="Texture2D" uid="uid://bamme0ywft6tt" path="res://art/symbols/sword_slash_4.png" id="8_y5mgy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l6d15"]
@@ -77,6 +78,9 @@ pitch_scale = 0.83
 [node name="sound_sword" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_ltckx")
 volume_db = -4.149
+
+[node name="sound_damage" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_m6a0b")
 
 [node name="gun_tip" type="Marker2D" parent="."]
 position = Vector2(23, 10)
