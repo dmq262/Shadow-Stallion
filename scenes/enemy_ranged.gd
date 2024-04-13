@@ -54,6 +54,8 @@ func shoot_bullet():
 	bullet.direction = (player.global_position - global_position).normalized()
 	bullet.add_to_group("enemy_bullet")
 	get_tree().current_scene.add_child(bullet)
+	
+	$sound_gunshot.play()
 
 func hit(damage):
 	health -= damage

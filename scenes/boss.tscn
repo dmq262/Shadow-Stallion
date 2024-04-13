@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1nrtqhpo1nf2"]
+[gd_scene load_steps=11 format=3 uid="uid://c1nrtqhpo1nf2"]
 
 [ext_resource type="Script" path="res://scenes/boss.gd" id="1_1gf4w"]
 [ext_resource type="Texture2D" uid="uid://dgdqp8fxnv5bb" path="res://art/kenny_top_down_shooter/PNG/Soldier 1/soldier1_gun.png" id="1_k3ajx"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://brxn0yu1liuyo" path="res://scenes/ammo.tscn" id="4_nn1s7"]
 [ext_resource type="PackedScene" uid="uid://ykxldkk5vri2" path="res://scenes/expirience.tscn" id="5_7rx00"]
 [ext_resource type="PackedScene" uid="uid://dleoeyy2mjhei" path="res://scenes/blood_splatter.tscn" id="6_bbe7n"]
+[ext_resource type="AudioStream" uid="uid://c11vrq8lxmurv" path="res://art/Audio/gunshot.mp3" id="8_r6rh4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dqed8"]
 animations = [{
@@ -39,3 +40,7 @@ shape = SubResource("CircleShape2D_xmy7h")
 
 [node name="gun_tip" type="Marker2D" parent="."]
 position = Vector2(26, 10)
+
+[node name="sound_gunshot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_r6rh4")
+volume_db = -12.433

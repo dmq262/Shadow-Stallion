@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://fyigbswlhc3n"]
+[gd_scene load_steps=11 format=3 uid="uid://fyigbswlhc3n"]
 
 [ext_resource type="Script" path="res://scenes/enemy_ranged.gd" id="1_fblyt"]
 [ext_resource type="Texture2D" uid="uid://dqa61vv6okiyk" path="res://art/kenny_top_down_shooter/PNG/Hitman 1/hitman1_gun.png" id="1_w5ex8"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://brxn0yu1liuyo" path="res://scenes/ammo.tscn" id="4_fpeab"]
 [ext_resource type="PackedScene" uid="uid://ykxldkk5vri2" path="res://scenes/expirience.tscn" id="5_577sq"]
 [ext_resource type="PackedScene" uid="uid://dleoeyy2mjhei" path="res://scenes/blood_splatter.tscn" id="6_khrhi"]
+[ext_resource type="AudioStream" uid="uid://c11vrq8lxmurv" path="res://art/Audio/gunshot.mp3" id="8_2kaxa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tjinq"]
 animations = [{
@@ -38,3 +39,7 @@ shape = SubResource("CircleShape2D_dbaqa")
 
 [node name="gun_tip" type="Marker2D" parent="."]
 position = Vector2(23, 10)
+
+[node name="sound_gunshot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_2kaxa")
+volume_db = -14.443
