@@ -6,6 +6,7 @@ var acceleration = 10
 var speed = 200
 @export var type = "ammo"
 @export var value = 20
+@export var sound_pickup_scene: PackedScene
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -36,6 +37,8 @@ func player_pickup():
 	else:
 		player.expirience += value
 	
+	var pickup = sound_pickup_scene.instantiate()
+	get_tree().current_scene.add_child(pickup)
 	queue_free()
 
 

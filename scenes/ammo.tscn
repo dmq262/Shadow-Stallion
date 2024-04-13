@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://brxn0yu1liuyo"]
+[gd_scene load_steps=5 format=3 uid="uid://brxn0yu1liuyo"]
 
 [ext_resource type="Script" path="res://scenes/loot.gd" id="1_5jt2e"]
+[ext_resource type="PackedScene" uid="uid://dka0ws0wec3iq" path="res://scenes/sound_pickup.tscn" id="2_26q55"]
 [ext_resource type="Texture2D" uid="uid://d18rteywmtapf" path="res://art/symbols/bullet_back.png" id="2_qls84"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_br3l4"]
@@ -8,6 +9,7 @@ radius = 147.085
 
 [node name="ammo" type="Area2D" groups=["loot"]]
 script = ExtResource("1_5jt2e")
+sound_pickup_scene = ExtResource("2_26q55")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["loot"]]
 shape = SubResource("CircleShape2D_br3l4")
