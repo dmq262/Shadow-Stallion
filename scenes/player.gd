@@ -123,6 +123,7 @@ func process_combat():
 		
 		#Set Bullet Variables
 		bullet.global_position = $gun_tip.global_position
+		bullet.rotation = rotation
 		bullet.direction = (get_global_mouse_position() - global_position).normalized()
 		bullet.speed = bullet_speed
 		bullet.scale = Vector2(bullet_size, bullet_size)

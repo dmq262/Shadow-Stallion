@@ -66,6 +66,7 @@ func _physics_process(delta):
 func shoot_bullet():
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = $gun_tip.global_position
+	bullet.rotation = rotation
 	bullet.damage = damage
 	bullet.direction = (player.global_position - global_position).normalized()
 	bullet.add_to_group("enemy_bullet")
