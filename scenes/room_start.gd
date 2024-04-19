@@ -86,7 +86,7 @@ func _process(delta):
 			phase += 1
 			timer = 0
 			next = false
-			player.gun_cooldown = 5              #PUT IN STARTING COOLDOWN HERE
+			player.gun_cooldown = 3              #PUT IN STARTING COOLDOWN HERE
 			add_child(sword_tutorial)
 			$gun_tutorial.hide()
 	#SWORD PHASE
@@ -104,7 +104,7 @@ func _process(delta):
 			phase += 1
 			timer = 0
 			next = false
-			player.sword_cooldown = 5              #PUT IN STARTING COOLDOWN HERE
+			player.sword_cooldown = 3              #PUT IN STARTING COOLDOWN HERE
 			$sword_tutorial.hide()
 			$level_tutorial.show()
 			player.level_points = 5

@@ -50,7 +50,7 @@ var upgrade_increments = {
 	"bullet_speed": [100, 50, 50, 25, 25, 10],
 	"bullet_size": [.5, .25, .25, .1, .1, .1, .1, .1, 0],
 	"bullet_damage": [25],
-	"sword_cooldown": [-1, -.5, -.5, -.25, -.25, -.1, -.1, -.1, 0],
+	"sword_cooldown": [-1, -.5, -.5, -.25, -.25, 0],
 	"sword_damage": [25],
 	"sword_size": [.25, .1, .1, .1, .1, .1, 0],
 	"dash_cooldown": [-2, -1, -.5, -.5, -.25, -.25, 0],
@@ -255,7 +255,6 @@ func upgrade_stat(stat):
 		bullet_speed += upgrade_increments[stat][0]
 	elif stat == "bullet_damage":
 		bullet_damage += upgrade_increments[stat][0]
-		upgrade_increments[stat][0] += 5
 	elif stat == "bullet_size":
 		bullet_size += upgrade_increments[stat][0]
 	#SWORD
@@ -263,7 +262,6 @@ func upgrade_stat(stat):
 		sword_cooldown += upgrade_increments[stat][0]
 	elif stat == "sword_damage":
 		sword_damage += upgrade_increments[stat][0]
-		upgrade_increments[stat][0] += 5
 	elif stat == "sword_size":
 		sword_size += upgrade_increments[stat][0]
 	#DASH
