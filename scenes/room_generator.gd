@@ -5,11 +5,6 @@ extends Node
 @export var room_scenes: Array
 @export var start_room_scene: PackedScene
 @export var boss_room_scene: PackedScene
-@export var decoration_scene: PackedScene
-
-
-
-
 
 var room_grid = []
 var available_rooms = []
@@ -210,7 +205,6 @@ func build_rooms(center_coordinates, tutorial):
 			new_room.global_position = (room.coordinates - center_coordinates) * room_size
 			get_tree().current_scene.add_child(new_room)
 			get_tree().current_scene.move_child(new_room, 0)
-			
 
 func get_boss_coordinates(center_coordinates):
 	var possible_rooms = []
@@ -268,7 +262,3 @@ func print_rooms():
 				
 			text += ' '
 		print(text)
-		
-
-
-
