@@ -1,0 +1,252 @@
+[gd_scene load_steps=27 format=3 uid="uid://cnmtqsqkxjrhl"]
+
+[ext_resource type="Script" path="res://scenes/room.gd" id="1_o2ege"]
+[ext_resource type="Texture2D" uid="uid://c55ju2fsp2bj2" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_07.png" id="2_gg13e"]
+[ext_resource type="TileSet" uid="uid://dy601r8ibycbc" path="res://art/custom_tilesets/tile_map.tres" id="2_ogkxp"]
+[ext_resource type="PackedScene" uid="uid://t8wfyw8o5x4y" path="res://scenes/wall_solid.tscn" id="3_u2bgx"]
+[ext_resource type="PackedScene" uid="uid://chdfb7a3ytnyo" path="res://scenes/enemy_melee.tscn" id="4_c5cox"]
+[ext_resource type="PackedScene" uid="uid://fyigbswlhc3n" path="res://scenes/enemy_ranged.tscn" id="5_7dbjl"]
+[ext_resource type="PackedScene" uid="uid://bgh751mybevw0" path="res://scenes/wall_door.tscn" id="6_fh5u1"]
+[ext_resource type="Texture2D" uid="uid://2cu6mi6hojpf" path="res://art/decorations/Japan_Swords.png" id="8_57n4d"]
+[ext_resource type="Texture2D" uid="uid://b5vm5nermdtd7" path="res://art/decorations/Japan_door.png" id="9_xpa3a"]
+[ext_resource type="PackedScene" uid="uid://cocjxwr5hoqg6" path="res://scenes/unwalkable.tscn" id="10_kkm81"]
+[ext_resource type="Texture2D" uid="uid://bx2q0iiu5n4sq" path="res://art/decorations/mat.png" id="11_sxusb"]
+[ext_resource type="Texture2D" uid="uid://fbtjauwr7pbm" path="res://art/decorations/seat.png" id="12_q23qe"]
+[ext_resource type="Texture2D" uid="uid://u7rxp845q3on" path="res://art/decorations/table_alt.png" id="13_erd0y"]
+[ext_resource type="Texture2D" uid="uid://bhohwvprrmf2p" path="res://art/decorations/teapots.png" id="14_lr7n6"]
+[ext_resource type="Texture2D" uid="uid://gdm28i60ev3q" path="res://art/decorations/plant.png" id="15_ycha6"]
+[ext_resource type="Texture2D" uid="uid://dcwq5v8cfaoy2" path="res://art/decorations/scripture.png" id="16_cwoid"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47gnu"]
+size = Vector2(953, 950)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5g3o7"]
+size = Vector2(50, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frj6o"]
+size = Vector2(51, 91)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2uwn8"]
+size = Vector2(48, 85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3dhv"]
+size = Vector2(51, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdek1"]
+size = Vector2(93, 95)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrf2s"]
+size = Vector2(22, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eerme"]
+size = Vector2(23, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0h44"]
+size = Vector2(44, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_buulv"]
+size = Vector2(43, 71)
+
+[node name="room_5" type="Area2D" groups=["room"]]
+script = ExtResource("1_o2ege")
+
+[node name="TileMap" type="TileMap" parent="."]
+z_index = -1
+texture_filter = 1
+position = Vector2(7.62939e-05, 0.499966)
+scale = Vector2(10.425, 10.435)
+tile_set = ExtResource("2_ogkxp")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65536, 327680, 28, 65535, 327680, 28, 0, 327680, 28, -1, 327680, 28, -131075, 327680, 28, -65539, 327680, 28, -3, 327680, 28, 65533, 327680, 28, 131069, 327680, 28, 196605, 327680, 28, 196606, 327680, 28, 196607, 327680, 28, 131072, 327680, 28, 131073, 327680, 28, 131074, 327680, 28, 65538, 327680, 28, 2, 327680, 28, 1, 327680, 28, -65535, 327680, 28, -131071, 327680, 28, -196606, 327680, 28, -131070, 327680, 28, -65534, 327680, 28, -196607, 327680, 28, -196608, 327680, 28, -131073, 327680, 28, -65537, 327680, 28, -65538, 327680, 28, -2, 327680, 28, 65534, 327680, 28, -131072, 327680, 28, -131074, 327680, 28, 131070, 327680, 28, 131071, 327680, 28, 65536, 327680, 28, 65537, 327680, 28)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(7.62939e-05, 0.499966)
+scale = Vector2(15.625, 15.6406)
+texture = ExtResource("2_gg13e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, -5)
+shape = SubResource("RectangleShape2D_47gnu")
+
+[node name="top_left" type="Marker2D" parent="."]
+position = Vector2(-500, -500)
+
+[node name="bottom_right" type="Marker2D" parent="."]
+position = Vector2(500, 500)
+
+[node name="wall_solid" parent="." instance=ExtResource("3_u2bgx")]
+position = Vector2(323, -1)
+scale = Vector2(0.705, 0.635)
+
+[node name="wall_solid3" parent="." instance=ExtResource("3_u2bgx")]
+position = Vector2(-6, 303)
+rotation = 1.5708
+scale = Vector2(0.705, 0.635)
+
+[node name="wall_solid2" parent="." instance=ExtResource("3_u2bgx")]
+position = Vector2(-335, -1)
+scale = Vector2(0.705, 0.635)
+
+[node name="enemy_melee2" parent="." instance=ExtResource("4_c5cox")]
+position = Vector2(2, -65)
+
+[node name="enemy_melee3" parent="." instance=ExtResource("4_c5cox")]
+position = Vector2(0, 79)
+
+[node name="enemy_ranged" parent="." instance=ExtResource("5_7dbjl")]
+position = Vector2(-275, 246)
+
+[node name="enemy_ranged3" parent="." instance=ExtResource("5_7dbjl")]
+position = Vector2(-274, -232)
+
+[node name="enemy_ranged2" parent="." instance=ExtResource("5_7dbjl")]
+position = Vector2(265, 247)
+
+[node name="enemy_ranged4" parent="." instance=ExtResource("5_7dbjl")]
+position = Vector2(257, -232)
+
+[node name="wall_door" parent="." instance=ExtResource("6_fh5u1")]
+position = Vector2(0, -303)
+rotation = 1.5708
+scale = Vector2(0.665, 0.67)
+
+[node name="JapanSwords" type="Sprite2D" parent="."]
+position = Vector2(-335, 288)
+texture = ExtResource("8_57n4d")
+
+[node name="JapanSwords2" type="Sprite2D" parent="."]
+position = Vector2(325, -293)
+texture = ExtResource("8_57n4d")
+
+[node name="JapanDoor" type="Sprite2D" parent="."]
+position = Vector2(-173, 137)
+texture = ExtResource("9_xpa3a")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="JapanDoor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JapanDoor/StaticBody2D"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_5g3o7")
+
+[node name="unwalkable" parent="JapanDoor" instance=ExtResource("10_kkm81")]
+
+[node name="JapanDoor2" type="Sprite2D" parent="."]
+position = Vector2(-173, -120)
+scale = Vector2(1.02083, 1.01042)
+texture = ExtResource("9_xpa3a")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="JapanDoor2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JapanDoor2/StaticBody2D"]
+position = Vector2(-5.24521e-06, -1.90735e-06)
+shape = SubResource("RectangleShape2D_frj6o")
+
+[node name="unwalkable" parent="JapanDoor2" instance=ExtResource("10_kkm81")]
+
+[node name="JapanDoor3" type="Sprite2D" parent="."]
+position = Vector2(161, 137)
+texture = ExtResource("9_xpa3a")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="JapanDoor3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JapanDoor3/StaticBody2D"]
+shape = SubResource("RectangleShape2D_2uwn8")
+
+[node name="unwalkable" parent="JapanDoor3" instance=ExtResource("10_kkm81")]
+
+[node name="JapanDoor4" type="Sprite2D" parent="."]
+position = Vector2(162, -125)
+texture = ExtResource("9_xpa3a")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="JapanDoor4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JapanDoor4/StaticBody2D"]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_u3dhv")
+
+[node name="unwalkable" parent="JapanDoor4" instance=ExtResource("10_kkm81")]
+
+[node name="Mat" type="Sprite2D" parent="."]
+position = Vector2(-1, 2)
+texture = ExtResource("11_sxusb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Mat"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mat/StaticBody2D"]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_qdek1")
+
+[node name="unwalkable" parent="Mat" instance=ExtResource("10_kkm81")]
+
+[node name="Seat" type="Sprite2D" parent="."]
+position = Vector2(-59.5, 14)
+scale = Vector2(0.645833, 0.791667)
+texture = ExtResource("12_q23qe")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Seat"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Seat/StaticBody2D"]
+position = Vector2(-1, -4)
+shape = SubResource("RectangleShape2D_hrf2s")
+
+[node name="unwalkable" parent="Seat" instance=ExtResource("10_kkm81")]
+
+[node name="Seat2" type="Sprite2D" parent="."]
+position = Vector2(58.5, 14.5)
+scale = Vector2(0.604167, 0.770833)
+texture = ExtResource("12_q23qe")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Seat2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Seat2/StaticBody2D"]
+position = Vector2(-1.5, -3.5)
+shape = SubResource("RectangleShape2D_eerme")
+
+[node name="unwalkable" parent="Seat2" instance=ExtResource("10_kkm81")]
+
+[node name="TableAlt" type="Sprite2D" parent="."]
+position = Vector2(1, 9)
+texture = ExtResource("13_erd0y")
+
+[node name="Teapots" type="Sprite2D" parent="."]
+texture = ExtResource("14_lr7n6")
+
+[node name="Plant" type="Sprite2D" parent="."]
+position = Vector2(-85.5, -336)
+scale = Vector2(0.6875, 0.660714)
+texture = ExtResource("15_ycha6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Plant"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plant/StaticBody2D"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_a0h44")
+
+[node name="unwalkable" parent="Plant" instance=ExtResource("10_kkm81")]
+
+[node name="Plant2" type="Sprite2D" parent="."]
+position = Vector2(106, -333)
+scale = Vector2(0.666667, 0.642857)
+texture = ExtResource("15_ycha6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Plant2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plant2/StaticBody2D"]
+position = Vector2(0.5, -11.5)
+shape = SubResource("RectangleShape2D_buulv")
+
+[node name="unwalkable" parent="Plant2" instance=ExtResource("10_kkm81")]
+
+[node name="Scripture" type="Sprite2D" parent="."]
+position = Vector2(320, -14)
+scale = Vector2(1.5, 3.375)
+texture = ExtResource("16_cwoid")
+
+[node name="Scripture2" type="Sprite2D" parent="."]
+position = Vector2(-337.5, -10)
+scale = Vector2(1.5625, 3.325)
+texture = ExtResource("16_cwoid")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
