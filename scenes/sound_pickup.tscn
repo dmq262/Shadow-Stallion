@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dka0ws0wec3iq"]
+
+[ext_resource type="Script" path="res://sound_pickup.gd" id="1_bxqo1"]
+[ext_resource type="AudioStream" uid="uid://bi8fec43856do" path="res://art/Audio/pickup.mp3" id="1_dsk1w"]
+
+[node name="sound_pickup" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_dsk1w")
+volume_db = 6.029
+autoplay = true
+script = ExtResource("1_bxqo1")

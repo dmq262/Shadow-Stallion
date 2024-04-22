@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cocjxwr5hoqg6"]
+
+[node name="unwalkable" type="Node2D" groups=["unwalkable"]]
+
+[node name="top_left" type="Marker2D" parent="."]
+position = Vector2(-50, -50)
+
+[node name="bottom_right" type="Marker2D" parent="."]
+position = Vector2(50, 50)

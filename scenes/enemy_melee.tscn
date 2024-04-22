@@ -1,0 +1,38 @@
+[gd_scene load_steps=10 format=3 uid="uid://chdfb7a3ytnyo"]
+
+[ext_resource type="Texture2D" uid="uid://cmygsj2xf6kj" path="res://art/kenny_top_down_shooter/PNG/Robot 1/robot1_hold.png" id="1_jkp1e"]
+[ext_resource type="Script" path="res://scenes/enemy_melee.gd" id="1_x3320"]
+[ext_resource type="PackedScene" uid="uid://70r47x5kqg7o" path="res://scenes/health.tscn" id="2_uimye"]
+[ext_resource type="PackedScene" uid="uid://brxn0yu1liuyo" path="res://scenes/ammo.tscn" id="3_bntxw"]
+[ext_resource type="PackedScene" uid="uid://ykxldkk5vri2" path="res://scenes/expirience.tscn" id="4_m1wjr"]
+[ext_resource type="PackedScene" uid="uid://dleoeyy2mjhei" path="res://scenes/blood_splatter.tscn" id="5_y231q"]
+[ext_resource type="PackedScene" uid="uid://cmneqquiof1tn" path="res://scenes/sound_enemy_damage.tscn" id="6_tv6m1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_52tsa"]
+radius = 26.0768
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j75tg"]
+radius = 52.0096
+
+[node name="enemy_melee" type="CharacterBody2D" groups=["enemy"]]
+collision_mask = 2
+script = ExtResource("1_x3320")
+health_scene = ExtResource("2_uimye")
+ammo_scene = ExtResource("3_bntxw")
+expirience_scene = ExtResource("4_m1wjr")
+blood_splatter_scene = ExtResource("5_y231q")
+sound_enemy_damage_scene = ExtResource("6_tv6m1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jkp1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_52tsa")
+
+[node name="hit_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_area"]
+shape = SubResource("CircleShape2D_j75tg")
+
+[connection signal="body_entered" from="hit_area" to="." method="_on_hit_area_body_entered"]
+[connection signal="body_exited" from="hit_area" to="." method="_on_hit_area_body_exited"]

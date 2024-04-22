@@ -70,7 +70,7 @@ scale = Vector2(15.625, 15.6406)
 texture = ExtResource("2_kjck8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.5, -5)
+position = Vector2(-2, 1)
 shape = SubResource("RectangleShape2D_47gnu")
 
 [node name="top_left" type="Marker2D" parent="."]

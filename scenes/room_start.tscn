@@ -1,0 +1,225 @@
+[gd_scene load_steps=19 format=3 uid="uid://cr5s3ole88uiu"]
+
+[ext_resource type="Texture2D" uid="uid://c55ju2fsp2bj2" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_07.png" id="1_7ekuo"]
+[ext_resource type="Script" path="res://scenes/room_start.gd" id="1_0021o"]
+[ext_resource type="Texture2D" uid="uid://b5gnvnv3r7tti" path="res://art/symbols/instructions_dash.png" id="1_550dj"]
+[ext_resource type="Texture2D" uid="uid://e4ek2m0h50sg" path="res://art/symbols/instructions_move.png" id="2_i47jw"]
+[ext_resource type="TileSet" uid="uid://dy601r8ibycbc" path="res://art/custom_tilesets/tile_map.tres" id="2_rmflr"]
+[ext_resource type="Texture2D" uid="uid://c0hrgyub5f8l2" path="res://art/symbols/instructions_gun.png" id="4_kjf6s"]
+[ext_resource type="Texture2D" uid="uid://bhkyo7aremhst" path="res://art/symbols/instructions_background.png" id="5_qcjuu"]
+[ext_resource type="Texture2D" uid="uid://bhksxuo6papna" path="res://art/symbols/instructions_sword.png" id="5_shs0l"]
+[ext_resource type="PackedScene" uid="uid://fyigbswlhc3n" path="res://scenes/enemy_ranged.tscn" id="6_78pes"]
+[ext_resource type="PackedScene" uid="uid://70r47x5kqg7o" path="res://scenes/health.tscn" id="6_b1lds"]
+[ext_resource type="PackedScene" uid="uid://ykxldkk5vri2" path="res://scenes/expirience.tscn" id="6_vlj85"]
+[ext_resource type="PackedScene" uid="uid://brxn0yu1liuyo" path="res://scenes/ammo.tscn" id="7_4cjpv"]
+[ext_resource type="Texture2D" uid="uid://btfvcflrngqx8" path="res://art/symbols/instructions_loot.png" id="9_dv21a"]
+[ext_resource type="Texture2D" uid="uid://cq1uji5x58f52" path="res://art/kenny_top_down_shooter/PNG/Tiles/tile_19.png" id="10_2tqhe"]
+[ext_resource type="Texture2D" uid="uid://cduam6l4211vu" path="res://art/symbols/instructions_level.png" id="13_w7xoj"]
+[ext_resource type="Texture2D" uid="uid://dgvm4tjxi2fs3" path="res://art/symbols/instructions_level1.png" id="14_5mrea"]
+[ext_resource type="Texture2D" uid="uid://b2sd1oqq4tlj6" path="res://art/symbols/instructions_objective.png" id="16_rnpmu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pd3ln"]
+size = Vector2(64, 64)
+
+[node name="room_start" type="Node2D" groups=["room"]]
+script = ExtResource("1_0021o")
+
+[node name="TileMap" type="TileMap" parent="."]
+z_index = -1
+texture_filter = 1
+position = Vector2(7.62939e-05, 0.499966)
+scale = Vector2(10.425, 10.435)
+tile_set = ExtResource("2_rmflr")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65536, 327680, 28, 65535, 327680, 28, 0, 327680, 28, -1, 327680, 28, -131075, 327680, 28, -65539, 327680, 28, -3, 327680, 28, 65533, 327680, 28, 131069, 327680, 28, 196605, 327680, 28, 196606, 327680, 28, 196607, 327680, 28, 131072, 327680, 28, 131073, 327680, 28, 131074, 327680, 28, 65538, 327680, 28, 2, 327680, 28, 1, 327680, 28, -65535, 327680, 28, -131071, 327680, 28, -196606, 327680, 28, -131070, 327680, 28, -65534, 327680, 28, -196607, 327680, 28, -196608, 327680, 28, -131073, 327680, 28, -65537, 327680, 28, -65538, 327680, 28, -2, 327680, 28, 65534, 327680, 28, -131072, 327680, 28, -131074, 327680, 28, 131070, 327680, 28, 131071, 327680, 28, 65536, 327680, 28, 65537, 327680, 28)
+
+[node name="ground" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(7.62939e-05, 0.499966)
+scale = Vector2(15.625, 15.6406)
+texture = ExtResource("1_7ekuo")
+
+[node name="top_left" type="Marker2D" parent="."]
+position = Vector2(-500, -500)
+
+[node name="bottom_right" type="Marker2D" parent="."]
+position = Vector2(500, 500)
+
+[node name="move_tutorial" type="Node2D" parent="."]
+visible = false
+
+[node name="background" type="Sprite2D" parent="move_tutorial"]
+position = Vector2(-1.5, -6.5)
+scale = Vector2(0.481, 0.555)
+texture = ExtResource("5_qcjuu")
+
+[node name="move_instruction" type="Sprite2D" parent="move_tutorial"]
+position = Vector2(1, 1)
+scale = Vector2(0.385191, 0.385191)
+texture = ExtResource("2_i47jw")
+
+[node name="dash_tutorial" type="Node2D" parent="."]
+visible = false
+
+[node name="background" type="Sprite2D" parent="dash_tutorial"]
+position = Vector2(-1.5, -6.5)
+scale = Vector2(0.481, 0.555)
+texture = ExtResource("5_qcjuu")
+
+[node name="dash_instruction" type="Sprite2D" parent="dash_tutorial"]
+scale = Vector2(0.355474, 0.355474)
+texture = ExtResource("1_550dj")
+
+[node name="loot_tutorial" type="Node2D" parent="."]
+position = Vector2(-255, -573)
+
+[node name="background" type="Sprite2D" parent="loot_tutorial"]
+position = Vector2(272.75, 359.75)
+scale = Vector2(0.5745, 0.2805)
+texture = ExtResource("5_qcjuu")
+
+[node name="health" parent="loot_tutorial" instance=ExtResource("6_b1lds")]
+position = Vector2(87, 278)
+type = "health"
+
+[node name="expirience" parent="loot_tutorial" instance=ExtResource("6_vlj85")]
+position = Vector2(447, 276)
+type = "expirience"
+
+[node name="ammo" parent="loot_tutorial" instance=ExtResource("7_4cjpv")]
+position = Vector2(261, 277)
+value = 2
+
+[node name="instructionsLoot" type="Sprite2D" parent="loot_tutorial"]
+position = Vector2(273, 381)
+scale = Vector2(0.392531, 0.392531)
+texture = ExtResource("9_dv21a")
+
+[node name="gun_tutorial" type="Node2D" parent="."]
+
+[node name="background" type="Sprite2D" parent="gun_tutorial"]
+position = Vector2(-2, -39)
+scale = Vector2(0.481, 0.555)
+texture = ExtResource("5_qcjuu")
+
+[node name="gun_instruction" type="Sprite2D" parent="gun_tutorial"]
+position = Vector2(6, -56)
+scale = Vector2(0.309059, 0.309059)
+texture = ExtResource("4_kjf6s")
+
+[node name="gun_dummy_1" parent="gun_tutorial" instance=ExtResource("6_78pes")]
+position = Vector2(-179, -202)
+active = true
+damage = 0
+
+[node name="gun_dummy_2" parent="gun_tutorial" instance=ExtResource("6_78pes")]
+position = Vector2(141, -201)
+active = true
+damage = 0
+
+[node name="sword_tutorial" type="Node2D" parent="."]
+
+[node name="background" type="Sprite2D" parent="sword_tutorial"]
+position = Vector2(5.50002, -18.5)
+scale = Vector2(0.527, 0.591)
+texture = ExtResource("5_qcjuu")
+
+[node name="sword_instruction" type="Sprite2D" parent="sword_tutorial"]
+position = Vector2(3, -12)
+scale = Vector2(0.415126, 0.430887)
+texture = ExtResource("5_shs0l")
+
+[node name="sword_dummy_1" parent="sword_tutorial" instance=ExtResource("6_78pes")]
+position = Vector2(327, -133)
+active = true
+damage = 0
+
+[node name="sword_dummy_2" parent="sword_tutorial" instance=ExtResource("6_78pes")]
+position = Vector2(-293, -232)
+active = true
+damage = 0
+
+[node name="sword_dummy_3" parent="sword_tutorial" instance=ExtResource("6_78pes")]
+position = Vector2(-281, 301)
+active = true
+damage = 0
+
+[node name="level_tutorial" type="Node2D" parent="."]
+visible = false
+
+[node name="background" type="Sprite2D" parent="level_tutorial"]
+position = Vector2(-10, 47)
+scale = Vector2(0.7, 0.554)
+texture = ExtResource("5_qcjuu")
+
+[node name="level_instruction_1" type="Sprite2D" parent="level_tutorial"]
+position = Vector2(-23, -141)
+scale = Vector2(0.22541, 0.22541)
+texture = ExtResource("13_w7xoj")
+
+[node name="level_instruction_2" type="Sprite2D" parent="level_tutorial"]
+position = Vector2(6.99999, 188)
+scale = Vector2(0.241551, 0.241551)
+texture = ExtResource("14_5mrea")
+
+[node name="doors" type="Node2D" parent="."]
+
+[node name="door_1" type="StaticBody2D" parent="doors" groups=["wall"]]
+position = Vector2(0, -502)
+scale = Vector2(4, 0.3)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="doors/door_1"]
+texture = ExtResource("10_2tqhe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="doors/door_1"]
+shape = SubResource("RectangleShape2D_pd3ln")
+
+[node name="door_2" type="StaticBody2D" parent="doors" groups=["wall"]]
+position = Vector2(504, 0)
+rotation = 1.5708
+scale = Vector2(4, 0.3)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="doors/door_2"]
+texture = ExtResource("10_2tqhe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="doors/door_2"]
+shape = SubResource("RectangleShape2D_pd3ln")
+
+[node name="door_4" type="StaticBody2D" parent="doors" groups=["wall"]]
+position = Vector2(-497, 1.81899e-12)
+rotation = 1.5708
+scale = Vector2(4, 0.3)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="doors/door_4"]
+texture = ExtResource("10_2tqhe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="doors/door_4"]
+shape = SubResource("RectangleShape2D_pd3ln")
+
+[node name="door_3" type="StaticBody2D" parent="doors" groups=["wall"]]
+position = Vector2(0, 501)
+scale = Vector2(4, 0.3)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="doors/door_3"]
+texture = ExtResource("10_2tqhe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="doors/door_3"]
+shape = SubResource("RectangleShape2D_pd3ln")
+
+[node name="objective_tutorial" type="Node2D" parent="."]
+visible = false
+
+[node name="background" type="Sprite2D" parent="objective_tutorial"]
+position = Vector2(3.99998, -0.86009)
+scale = Vector2(0.48, 0.158828)
+texture = ExtResource("5_qcjuu")
+
+[node name="objective_instruction" type="Sprite2D" parent="objective_tutorial"]
+position = Vector2(0.999939, 1.00006)
+scale = Vector2(0.286177, 0.286177)
+texture = ExtResource("16_rnpmu")

@@ -1,0 +1,48 @@
+[gd_scene load_steps=12 format=3 uid="uid://c1nrtqhpo1nf2"]
+
+[ext_resource type="Script" path="res://scenes/boss.gd" id="1_1gf4w"]
+[ext_resource type="Texture2D" uid="uid://dgdqp8fxnv5bb" path="res://art/kenny_top_down_shooter/PNG/Soldier 1/soldier1_gun.png" id="1_k3ajx"]
+[ext_resource type="PackedScene" uid="uid://bjj1q82mdpxhu" path="res://scenes/bullet.tscn" id="2_3aqhq"]
+[ext_resource type="PackedScene" uid="uid://70r47x5kqg7o" path="res://scenes/health.tscn" id="3_dyils"]
+[ext_resource type="PackedScene" uid="uid://brxn0yu1liuyo" path="res://scenes/ammo.tscn" id="4_nn1s7"]
+[ext_resource type="PackedScene" uid="uid://ykxldkk5vri2" path="res://scenes/expirience.tscn" id="5_7rx00"]
+[ext_resource type="PackedScene" uid="uid://dleoeyy2mjhei" path="res://scenes/blood_splatter.tscn" id="6_bbe7n"]
+[ext_resource type="PackedScene" uid="uid://cmneqquiof1tn" path="res://scenes/sound_enemy_damage.tscn" id="7_jhh75"]
+[ext_resource type="AudioStream" uid="uid://c11vrq8lxmurv" path="res://art/Audio/gunshot.mp3" id="8_r6rh4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dqed8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k3ajx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xmy7h"]
+radius = 25.1794
+
+[node name="boss" type="CharacterBody2D" groups=["enemy"]]
+collision_mask = 2
+script = ExtResource("1_1gf4w")
+bullet_scene = ExtResource("2_3aqhq")
+health_scene = ExtResource("3_dyils")
+ammo_scene = ExtResource("4_nn1s7")
+expirience_scene = ExtResource("5_7rx00")
+blood_splatter_scene = ExtResource("6_bbe7n")
+sound_enemy_damage_scene = ExtResource("7_jhh75")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dqed8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xmy7h")
+
+[node name="gun_tip" type="Marker2D" parent="."]
+position = Vector2(26, 10)
+
+[node name="sound_gunshot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_r6rh4")
+volume_db = -12.433

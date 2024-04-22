@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ykxldkk5vri2"]
+
+[ext_resource type="Script" path="res://scenes/loot.gd" id="1_dhb4f"]
+[ext_resource type="Texture2D" uid="uid://b11gama7x4jeu" path="res://art/symbols/exp_back.png" id="2_l56te"]
+[ext_resource type="PackedScene" uid="uid://dka0ws0wec3iq" path="res://scenes/sound_pickup.tscn" id="2_u32ob"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jwmmq"]
+radius = 152.003
+
+[node name="expirience" type="Area2D" groups=["loot"]]
+script = ExtResource("1_dhb4f")
+sound_pickup_scene = ExtResource("2_u32ob")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("2_l56te")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["loot"]]
+shape = SubResource("CircleShape2D_jwmmq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

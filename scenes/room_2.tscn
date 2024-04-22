@@ -75,7 +75,7 @@ position = Vector2(180, -106)
 position = Vector2(-222, 122)
 
 [node name="Scripture" type="Sprite2D" parent="."]
-position = Vector2(-359.5, -182.5)
+position = Vector2(-357, -190)
 scale = Vector2(1.22917, 1.7125)
 texture = ExtResource("7_u1kqt")
 

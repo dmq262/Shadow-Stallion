@@ -1,0 +1,47 @@
+[gd_scene load_steps=12 format=3 uid="uid://fyigbswlhc3n"]
+
+[ext_resource type="Script" path="res://scenes/enemy_ranged.gd" id="1_fblyt"]
+[ext_resource type="Texture2D" uid="uid://dqa61vv6okiyk" path="res://art/kenny_top_down_shooter/PNG/Hitman 1/hitman1_gun.png" id="1_w5ex8"]
+[ext_resource type="PackedScene" uid="uid://bjj1q82mdpxhu" path="res://scenes/bullet.tscn" id="2_nr0rn"]
+[ext_resource type="PackedScene" uid="uid://70r47x5kqg7o" path="res://scenes/health.tscn" id="3_g2r2f"]
+[ext_resource type="PackedScene" uid="uid://brxn0yu1liuyo" path="res://scenes/ammo.tscn" id="4_fpeab"]
+[ext_resource type="PackedScene" uid="uid://ykxldkk5vri2" path="res://scenes/expirience.tscn" id="5_577sq"]
+[ext_resource type="PackedScene" uid="uid://dleoeyy2mjhei" path="res://scenes/blood_splatter.tscn" id="6_khrhi"]
+[ext_resource type="PackedScene" uid="uid://cmneqquiof1tn" path="res://scenes/sound_enemy_damage.tscn" id="7_ravyr"]
+[ext_resource type="AudioStream" uid="uid://c11vrq8lxmurv" path="res://art/Audio/gunshot.mp3" id="8_2kaxa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tjinq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_w5ex8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dbaqa"]
+radius = 28.0179
+
+[node name="enemy_ranged" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_fblyt")
+bullet_scene = ExtResource("2_nr0rn")
+health_scene = ExtResource("3_g2r2f")
+ammo_scene = ExtResource("4_fpeab")
+expirience_scene = ExtResource("5_577sq")
+blood_splatter_scene = ExtResource("6_khrhi")
+sound_enemy_damage_scene = ExtResource("7_ravyr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tjinq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dbaqa")
+
+[node name="gun_tip" type="Marker2D" parent="."]
+position = Vector2(23, 10)
+
+[node name="sound_gunshot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_2kaxa")
+volume_db = -14.443

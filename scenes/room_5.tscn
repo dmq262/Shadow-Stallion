@@ -140,7 +140,7 @@ texture = ExtResource("9_xpa3a")
 [node name="StaticBody2D" type="StaticBody2D" parent="JapanDoor2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JapanDoor2/StaticBody2D"]
-position = Vector2(-5.24521e-06, -1.90735e-06)
+position = Vector2(-5.24521e-06, -0.989693)
 shape = SubResource("RectangleShape2D_frj6o")
 
 [node name="unwalkable" parent="JapanDoor2" instance=ExtResource("10_kkm81")]

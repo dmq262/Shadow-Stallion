@@ -1,0 +1,110 @@
+[gd_scene load_steps=17 format=3 uid="uid://lho1j1nn418x"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_jgedc"]
+[ext_resource type="Texture2D" uid="uid://cddi6lrbft6w6" path="res://art/kenny_top_down_shooter/PNG/Man Brown/manBrown_gun.png" id="2_6syta"]
+[ext_resource type="PackedScene" uid="uid://dleoeyy2mjhei" path="res://scenes/blood_splatter.tscn" id="2_jc4dr"]
+[ext_resource type="PackedScene" uid="uid://bjj1q82mdpxhu" path="res://scenes/bullet.tscn" id="2_otwcl"]
+[ext_resource type="AudioStream" uid="uid://clemdpp56tbbc" path="res://art/Audio/Footsteps - Effecism_single.mp3" id="3_bjjxd"]
+[ext_resource type="Texture2D" uid="uid://be5msdtfv7pyl" path="res://art/symbols/sword_slash_1.png" id="5_wg1hc"]
+[ext_resource type="Texture2D" uid="uid://cb3xckqvtb1qn" path="res://art/symbols/sword_slash_2.png" id="6_20elm"]
+[ext_resource type="AudioStream" uid="uid://c11vrq8lxmurv" path="res://art/Audio/gunshot.mp3" id="6_lrp4f"]
+[ext_resource type="AudioStream" uid="uid://cyon88g7pnosg" path="res://art/Audio/swinging-sword-2.wav" id="7_ltckx"]
+[ext_resource type="Texture2D" uid="uid://cjmjq22trtkyc" path="res://art/symbols/sword_slash_3.png" id="7_sp5nf"]
+[ext_resource type="AudioStream" uid="uid://chm4tiy0y6mau" path="res://art/Audio/player_damage.mp3" id="8_m6a0b"]
+[ext_resource type="Texture2D" uid="uid://bamme0ywft6tt" path="res://art/symbols/sword_slash_4.png" id="8_y5mgy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l6d15"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6syta")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w7e8e"]
+radius = 32.249
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1eh45"]
+size = Vector2(132, 125)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2plma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_wg1hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_20elm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sp5nf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y5mgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wg1hc")
+}],
+"loop": true,
+"name": &"slash",
+"speed": 24.0
+}]
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_jgedc")
+blood_splatter_scene = ExtResource("2_jc4dr")
+bullet_scene = ExtResource("2_otwcl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l6d15")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w7e8e")
+
+[node name="sound_footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bjjxd")
+volume_db = -9.379
+
+[node name="sound_gunshot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_lrp4f")
+volume_db = -7.536
+pitch_scale = 0.83
+
+[node name="sound_sword" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ltckx")
+volume_db = -4.149
+
+[node name="sound_damage" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_m6a0b")
+
+[node name="gun_tip" type="Marker2D" parent="."]
+position = Vector2(23, 10)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="sword_hitbox" type="Area2D" parent="."]
+position = Vector2(57, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sword_hitbox"]
+position = Vector2(30, -7.5)
+shape = SubResource("RectangleShape2D_1eh45")
+
+[node name="sword_animation" type="AnimatedSprite2D" parent="sword_hitbox"]
+position = Vector2(-69, 19)
+rotation = 1.5708
+scale = Vector2(0.146187, 0.139763)
+sprite_frames = SubResource("SpriteFrames_2plma")
+animation = &"slash"
+flip_h = true
+
+[connection signal="area_entered" from="sword_hitbox" to="." method="_on_sword_hitbox_area_entered"]
+[connection signal="area_exited" from="sword_hitbox" to="." method="_on_sword_hitbox_area_exited"]
+[connection signal="body_entered" from="sword_hitbox" to="." method="_on_sword_hitbox_body_entered"]
+[connection signal="body_exited" from="sword_hitbox" to="." method="_on_sword_hitbox_body_exited"]
