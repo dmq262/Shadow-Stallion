@@ -182,7 +182,7 @@ func process_movement(delta):
 	
 	var collision = move_and_collide(velocity.normalized() * delta * speed + dash_vector)
 	
-	if collision and (collision.get_collider().is_in_group('wall') or collision.get_collider().is_in_group('enemy')):
+	if collision and (collision.get_collider().is_in_group('wall') or collision.get_collider().is_in_group('enemy') or  collision.get_collider().is_in_group('obstacle')):
 		velocity = velocity.slide(collision.get_normal())
 		dash_vector = dash_vector.slide(collision.get_normal())
 		move_and_collide(velocity * delta * speed + dash_vector)

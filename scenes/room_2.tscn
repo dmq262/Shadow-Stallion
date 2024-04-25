@@ -89,11 +89,11 @@ position = Vector2(347.5, 198.5)
 scale = Vector2(1.3125, 1.4875)
 texture = ExtResource("7_u1kqt")
 
-[node name="TallPlant" type="Sprite2D" parent="."]
+[node name="TallPlant" type="Sprite2D" parent="." groups=["obstacle"]]
 position = Vector2(-307, 219)
 texture = ExtResource("8_mstua")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="TallPlant"]
+[node name="StaticBody2D" type="StaticBody2D" parent="TallPlant" groups=["obstacle"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TallPlant/StaticBody2D"]
 position = Vector2(-1.5, -12)
@@ -101,11 +101,11 @@ shape = SubResource("RectangleShape2D_3auyc")
 
 [node name="unwalkable" parent="TallPlant" instance=ExtResource("9_gqgau")]
 
-[node name="TallPlant2" type="Sprite2D" parent="."]
+[node name="TallPlant2" type="Sprite2D" parent="." groups=["obstacle"]]
 position = Vector2(303, -196)
 texture = ExtResource("8_mstua")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="TallPlant2"]
+[node name="StaticBody2D" type="StaticBody2D" parent="TallPlant2" groups=["obstacle"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TallPlant2/StaticBody2D"]
 position = Vector2(-1, -12.5)

@@ -133,26 +133,25 @@ position = Vector2(-260.5, 3)
 scale = Vector2(9.9375, 2.47917)
 texture = ExtResource("13_s0e3k")
 
-[node name="JapanDoor" type="Sprite2D" parent="."]
+[node name="JapanDoor" type="Sprite2D" parent="." groups=["obstacle"]]
 position = Vector2(-56.5, -123.5)
 scale = Vector2(1.52083, 1.53125)
 texture = ExtResource("14_be2sm")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="JapanDoor"]
+[node name="StaticBody2D" type="StaticBody2D" parent="JapanDoor" groups=["obstacle"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JapanDoor/StaticBody2D"]
 position = Vector2(-0.328766, -0.653061)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_yo4b1")
 
 [node name="unwalkable" parent="JapanDoor" instance=ExtResource("8_mgpqq")]
 
-[node name="JapanDoor2" type="Sprite2D" parent="."]
+[node name="JapanDoor2" type="Sprite2D" parent="." groups=["obstacle"]]
 position = Vector2(-58, 125.5)
 scale = Vector2(1.5, 1.63542)
 texture = ExtResource("14_be2sm")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="JapanDoor2"]
+[node name="StaticBody2D" type="StaticBody2D" parent="JapanDoor2" groups=["obstacle"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JapanDoor2/StaticBody2D"]
 position = Vector2(-0.333332, 0.917198)
