@@ -19,7 +19,7 @@ func _process(delta):
 		$player.stats_opened = $hud.toggle_stats()
 	
 	#Next Level Mechanic
-	if Input.is_action_just_pressed('next_level') and not $player.stats_opened:
+	if Input.is_action_just_pressed('next_level') and not $player.stats_opened and boss_killed:
 		if level < 3:
 			next_level()
 		else:
