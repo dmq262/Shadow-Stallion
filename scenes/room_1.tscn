@@ -145,6 +145,7 @@ position = Vector2(-0.328766, -0.653061)
 shape = SubResource("RectangleShape2D_yo4b1")
 
 [node name="unwalkable" parent="JapanDoor" instance=ExtResource("8_mgpqq")]
+scale = Vector2(0.64, 1)
 
 [node name="JapanDoor2" type="Sprite2D" parent="." groups=["obstacle"]]
 position = Vector2(-58, 125.5)
@@ -158,5 +159,6 @@ position = Vector2(-0.333332, 0.917198)
 shape = SubResource("RectangleShape2D_is2w6")
 
 [node name="unwalkable" parent="JapanDoor2" instance=ExtResource("8_mgpqq")]
+scale = Vector2(0.64, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

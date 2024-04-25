@@ -100,6 +100,8 @@ position = Vector2(-1.5, -12)
 shape = SubResource("RectangleShape2D_3auyc")
 
 [node name="unwalkable" parent="TallPlant" instance=ExtResource("9_gqgau")]
+position = Vector2(0, -12.045)
+scale = Vector2(0.67, 0.84)
 
 [node name="TallPlant2" type="Sprite2D" parent="." groups=["obstacle"]]
 position = Vector2(303, -196)
@@ -112,5 +114,7 @@ position = Vector2(-1, -12.5)
 shape = SubResource("RectangleShape2D_iimol")
 
 [node name="unwalkable" parent="TallPlant2" instance=ExtResource("9_gqgau")]
+position = Vector2(0, -12.045)
+scale = Vector2(0.67, 0.84)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
