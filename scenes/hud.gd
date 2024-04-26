@@ -70,7 +70,7 @@ func set_stats(health, speed, max_ammo, gun_cooldown, bullet_speed, bullet_size,
 	$stats/gun/gun_stats.text = str(max_ammo) + "\n\n" + str(gun_cooldown) + "\n\n" + str(bullet_speed) + "\n\n" + str(bullet_size) + "\n\n" + str(bullet_damage)
 	$stats/sword/sword_stats.text = str(sword_cooldown) + "\n\n" + str(sword_damage) + "\n\n" + str(sword_size)
 	$stats/dash/dash_stats.text = str(dash_cooldown) + "\n\n" + str(dash_power)
-	$stats/level_points.text = "Current Expirience: " + str(expirience) + "/" + str(max_expirience) + "\nUnspent Levels: " + str(level_points)
+	$stats/level_points.text = "Current Experience: " + str(expirience) + "/" + str(max_expirience) + "\nUnspent Levels: " + str(level_points)
 
 func show_upgrades(level_points, upgrade_increments):
 	if level_points <= 0:

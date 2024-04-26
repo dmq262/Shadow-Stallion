@@ -190,7 +190,6 @@ texture = ExtResource("13_qrgrg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChairRightAlt/StaticBody2D"]
 position = Vector2(4, -5.58823)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_jskg6")
 
 [node name="unwalkable" parent="ChairRightAlt" instance=ExtResource("8_7g0wi")]
