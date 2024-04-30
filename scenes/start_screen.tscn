@@ -1,12 +1,65 @@
-[gd_scene load_steps=3 format=3 uid="uid://cut1m4pektgf7"]
+[gd_scene load_steps=5 format=3 uid="uid://cut1m4pektgf7"]
 
 [ext_resource type="Script" path="res://scenes/start_screen.gd" id="1_m7jwg"]
+[ext_resource type="Texture2D" uid="uid://yce8lp46qtju" path="res://art/splash.png" id="2_ub3yv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2xing"]
+font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_rcu5t"]
-font_size = 35
+font_size = 30
 
 [node name="start_screen" type="Node"]
 script = ExtResource("1_m7jwg")
+
+[node name="Splash" type="Sprite2D" parent="."]
+position = Vector2(610, 347)
+scale = Vector2(0.5024, 0.5024)
+texture = ExtResource("2_ub3yv")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -174.0
+offset_right = 227.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
+
+[node name="title" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.0
+offset_top = -145.0
+offset_right = 221.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Shadow Stallion"
+label_settings = SubResource("LabelSettings_2xing")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = 11.0
+offset_right = 214.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 8
@@ -15,10 +68,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -216.5
-offset_top = -24.5
+offset_top = 20.5
 offset_right = 216.5
-offset_bottom = 24.5
+offset_bottom = 69.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Press Enter to Start Game"
 label_settings = SubResource("LabelSettings_rcu5t")
+horizontal_alignment = 1

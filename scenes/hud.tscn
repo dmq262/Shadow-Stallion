@@ -246,7 +246,6 @@ text = "Level 1"
 label_settings = SubResource("LabelSettings_ibnwe")
 
 [node name="game_finish" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -271,7 +270,7 @@ offset_left = 470.0
 offset_top = 381.0
 offset_right = 783.0
 offset_bottom = 423.0
-text = "Press 'Enter' to Play Again"
+text = "Press 'Enter' to Continue"
 label_settings = SubResource("LabelSettings_nkgc6")
 
 [node name="stats" type="Control" parent="."]

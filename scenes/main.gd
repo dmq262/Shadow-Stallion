@@ -23,7 +23,7 @@ func _process(delta):
 		if level < 3:
 			next_level()
 		else:
-			get_tree().reload_current_scene()
+			get_tree().change_scene_to_file("res://scenes/credits.tscn")
 	
 	#Temp Restart mechanic
 	if Input.is_action_just_pressed("restart") and $player.dead:
