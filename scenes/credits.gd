@@ -7,10 +7,6 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	if Input.is_action_just_pressed("next_level"):
-		next_scene()
-		
-
-func next_scene():
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+		get_tree().change_scene_to_file("res://scenes/start_screen.tscn")

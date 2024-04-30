@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dus156mfc0fry"]
+
+[ext_resource type="Script" path="res://scenes/credits.gd" id="1_268fy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_47mxx"]
+font_size = 24
+
+[node name="credits" type="Node"]
+script = ExtResource("1_268fy")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -62.0
+offset_top = -69.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press Enter to Play Again"
+label_settings = SubResource("LabelSettings_47mxx")
