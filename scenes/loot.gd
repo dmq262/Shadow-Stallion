@@ -38,6 +38,7 @@ func player_pickup():
 		player.expirience += value
 	
 	var pickup = sound_pickup_scene.instantiate()
+	pickup.global_position = global_position
 	get_tree().current_scene.add_child(pickup)
 	queue_free()
 

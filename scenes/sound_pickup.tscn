@@ -5,6 +5,6 @@
 
 [node name="sound_pickup" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_dsk1w")
-volume_db = 6.029
+volume_db = 3.517
 autoplay = true
 script = ExtResource("1_bxqo1")
