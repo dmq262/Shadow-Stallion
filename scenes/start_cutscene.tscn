@@ -1,12 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca5jr8fb3wuyl"]
+[gd_scene load_steps=5 format=3 uid="uid://ca5jr8fb3wuyl"]
 
 [ext_resource type="Script" path="res://scenes/start_cutscene.gd" id="1_jrfs8"]
+[ext_resource type="VideoStream" path="res://art/Shadow-Stallion-Intro-_online-video-cutter.com_.ogv" id="2_ctx7k"]
+[ext_resource type="AudioStream" uid="uid://sr3nqjbur7p4" path="res://art/Audio/Music/ShadowStallionIntro.wav" id="3_6fqcr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_it47u"]
 font_size = 24
 
 [node name="start_cutscene" type="Node"]
 script = ExtResource("1_jrfs8")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_top = -3.0
+offset_right = 1282.0
+offset_bottom = 724.0
+stream = ExtResource("2_ctx7k")
+autoplay = true
+expand = true
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 3
@@ -22,3 +32,9 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Press Enter to Skip"
 label_settings = SubResource("LabelSettings_it47u")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6fqcr")
+autoplay = true
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="next_scene"]
