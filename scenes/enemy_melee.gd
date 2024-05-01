@@ -104,6 +104,7 @@ func hit(damage):
 	get_tree().current_scene.move_child(blood_splatter, 0)
 	
 	var sound_damage = sound_enemy_damage_scene.instantiate()
+	sound_damage.global_position = global_position
 	get_tree().current_scene.add_child(sound_damage)
 
 func die():
